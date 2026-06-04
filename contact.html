@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | WITHX Defence</title>
+  <meta name="description" content="Reach the WITHX Defence engineering and project coordination desks. Inquire about custom UAV surveillance rigs and airbag flotation compatibility.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glows -->
+  <div class="ambient-glows">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+  <div class="subtle-grid-overlay"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="technologies.html" class="nav-link">Technologies</a>
+        <a href="showcase.html" class="nav-link">Showcase</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="technologies.html" class="mobile-nav-link">Technologies</a>
+    <a href="showcase.html" class="mobile-nav-link">Showcase</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-primary btn-block">Get in Touch</a>
+  </div>
+
+  <main>
+    <!-- Contact Form & Info Grid -->
+    <section class="contact-section" style="padding-top: calc(var(--header-height) + 5rem); padding-bottom: 6rem; min-height: 90vh; display: flex; align-items: center;">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info scroll-reveal">
+            <span class="section-tag">Connection Hub</span>
+            <h2 class="section-title">Start a Defense Project with WITHX</h2>
+            <p class="contact-description">
+              Contact our engineering and sales desks to schedule secure system demonstrations, procure field trial access, or request system compatibility data.
+            </p>
+            
+            <div class="contact-details">
+              <div class="contact-detail-item">
+                <div class="detail-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <h4>Secure Inquiries</h4>
+                  <p>contact@withxdefence.com</p>
+                </div>
+              </div>
+
+              <div class="contact-detail-item">
+                <div class="detail-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-10 10c0 5.25 10 12 10 12s10-6.75 10-12a10 10 0 0 0-10-10z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <h4>Primary HQ</h4>
+                  <p>Aerospace Innovation Hub, Block A, Suite 402</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper scroll-reveal">
+            <form id="contact-form" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="john@organization.com" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization" placeholder="Defense Dept, Research Inst, Commercial Ops" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Specify project requirements, flight platform, and integration timeframe..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <span>Send Secure Message</span>
+                <svg class="submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              
+              <div id="form-status" class="form-status"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+      <div class="container" style="max-width: 800px;">
+        <div class="section-header text-center scroll-reveal" style="margin-bottom: 4rem;">
+          <span class="section-tag">Frequently Asked Questions</span>
+          <h2>System Deploy & Procurement</h2>
+        </div>
+
+        <div class="scroll-reveal" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Accordion item 1 -->
+          <div class="faq-item" style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.75rem 2rem; cursor: pointer; transition: var(--transition-fast);">
+            <div style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('active')">
+              <h3 style="font-size: 1.05rem; font-weight: 600;">What drone platforms are compatible with the Airbag Recovery System?</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-arrow" style="width: 16px; height: 16px; transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; margin-top: 0;">
+              <p style="font-size: 0.925rem; line-height: 1.6; color: var(--text-secondary); padding-top: 1rem;">
+                The WITHX Airbag Recovery System features a modular bracket assembly. It is compatible with DJI Enterprise series (M300/M350 RTK), Custom Carbon Quadcopters/Hexacopters with standard rail installations, and medium-scale fixed-wing surveying platforms.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion item 2 -->
+          <div class="faq-item" style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.75rem 2rem; cursor: pointer; transition: var(--transition-fast);">
+            <div style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('active')">
+              <h3 style="font-size: 1.05rem; font-weight: 600;">How does the water-activated deployment trigger without power?</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-arrow" style="width: 16px; height: 16px; transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; margin-top: 0;">
+              <p style="font-size: 0.925rem; line-height: 1.6; color: var(--text-secondary); padding-top: 1rem;">
+                The sensors trigger gas canisters using mechanical hydro-valves paired with high-frequency resistive grids. If the main battery fails during a water landing, the chemical backup cell maintains sufficient electrical potential to ignite the micro gas-generator instant-inflation mechanism automatically.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion item 3 -->
+          <div class="faq-item" style="background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.75rem 2rem; cursor: pointer; transition: var(--transition-fast);">
+            <div style="display: flex; justify-content: space-between; align-items: center;" onclick="this.parentElement.classList.toggle('active')">
+              <h3 style="font-size: 1.05rem; font-weight: 600;">Is the surveillance system compliant with export control regulations?</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-arrow" style="width: 16px; height: 16px; transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; margin-top: 0;">
+              <p style="font-size: 0.925rem; line-height: 1.6; color: var(--text-secondary); padding-top: 1rem;">
+                Yes, our surveillance systems are designed to meet ITAR compliance guidelines for electro-optical sensors. Procurement queries require organizational verification prior to hardware disclosure.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
+        </a>
+        <p class="footer-desc">
+          Developing Next-Generation Surveillance and Recovery Technologies for Unmanned Systems.
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="technologies.html">Technologies</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Solutions</h4>
+        <div class="footer-links">
+          <a href="technologies.html">Surveillance System</a>
+          <a href="technologies.html">Airbag Recovery</a>
+          <a href="showcase.html">Showcase Model</a>
+        </div>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Compliance</h4>
+        <div class="footer-links">
+          <a href="#">Export Controlled (ITAR)</a>
+          <a href="#">Security Protocols</a>
+          <a href="#">Quality Assurance</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="copyright">&copy; 2026 WITHX Defence. All rights reserved. Aerospace Engineering Division.</p>
+      <p class="security-classification">CLASSIFICATION: PUBLIC RELATIONS PROTOCOL SEC-441</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <script>
+    // Custom Accordion behavior for FAQ items
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+        
+        // Close all items first for a accordion look
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          const content = i.querySelector('.faq-content');
+          content.style.maxHeight = '0';
+          content.style.marginTop = '0';
+          const arrow = i.querySelector('.faq-arrow');
+          if (arrow) arrow.style.transform = 'rotate(0deg)';
+        });
+        
+        if (!isOpen) {
+          item.classList.add('active');
+          const content = item.querySelector('.faq-content');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.marginTop = '1rem';
+          const arrow = item.querySelector('.faq-arrow');
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
