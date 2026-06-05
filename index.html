@@ -565,5 +565,16 @@
 
   <!-- Script Execution -->
   <script src="script.js"></script>
+  <script>
+window.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth -0.5)*20;
+const y=(e.clientY/window.innerHeight-0.5)*20;
+
+document.querySelector(".hero-title").style.transform=
+`rotateY(${x/2}deg) rotateX(${-y/2}deg)`;
+
+});
+</script>
 </body>
 </html>
