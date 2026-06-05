@@ -61,6 +61,240 @@
   </div>
 
   <main>
+    /* HERO */
+.hero{
+  padding-top:120px;
+  text-align:center;
+  padding-bottom:60px;
+}
+.hero h1{
+  font-size:3.5rem;
+  color:#0a1f44;
+}
+.hero p{
+  color:#64748b;
+  margin-top:10px;
+}
+
+/* CONTAINER */
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+/* GLASS CARD */
+.card{
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(15px);
+  padding:30px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* FORM */
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  outline:none;
+}
+textarea{height:120px;}
+
+button{
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  background:#38bdf8;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+button:hover{background:#0284c7}
+
+/* CONTACT INFO */
+.info{margin:15px 0;font-size:1rem}
+
+/* CLICK CALL BUTTON */
+.call-btn{
+  display:inline-block;
+  padding:12px 20px;
+  background:#38bdf8;
+  color:white;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  margin-top:10px;
+}
+.call-btn:hover{background:#0284c7}
+
+/* WHATSAPP */
+.whatsapp-btn{
+  display:inline-block;
+  padding:12px 20px;
+  background:#25D366;
+  color:white;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  margin-top:10px;
+  margin-left:10px;
+}
+
+/* SOCIAL */
+.social a{
+  margin-right:10px;
+  text-decoration:none;
+  color:#111;
+  font-weight:500;
+}
+.social a:hover{color:#38bdf8}
+
+/* MAP */
+.map{
+  margin-top:40px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+/* FLOATING BUTTONS */
+.float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999;
+}
+.float a{
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  color:white;
+  text-decoration:none;
+  font-size:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+.call{background:#38bdf8;}
+.whatsapp{background:#25D366;}
+
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr;}
+  .hero h1{font-size:2.5rem;}
+  nav{
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo">
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+<!-- HERO -->
+<div class="hero">
+  <h1>Contact Us</h1>
+  <p>Let’s build something innovative together</p>
+</div>
+
+<div class="container">
+
+  <div class="grid">
+
+    <!-- FORM -->
+    <div class="card">
+      <h3>Send Message</h3>
+
+      <form action="https://formsubmit.co/withx.innovations@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Message from WITHX Website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="card">
+      <h3>Contact Details</h3>
+
+      <div class="info">📍EDF MITAoE, Dehu Phata, Alandi (D), Pune, Maharashtra</div>
+
+      <a href="tel:+919067936323" class="call-btn">📞 Call Now</a>
+     <a href="https://wa.me/919067936323"class="whatsapp-btn" target="_blank">💬 WhatsApp</a>
+
+      <div class="info">📧 withx.innovations@gmail.com</div>
+
+      <div class="social">
+        <br>
+        <a href="https://www.linkedin.com/company/withx-innovations/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/withx.in?igsh=MWJuNDR4dmxiZDJh" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com/@withxinnovation?si=sRdB0OaLzHoDtcV5" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAP -->
+   <div class="map">
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.7499388364977!2d73.8919792!3d18.675214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c9000eac9117%3A0xd7fd686ff2f30062!2sWITHX%20innovation%20Private%20limited!5e0!3m2!1sen!2sin!4v1780552675306!5m2!1sen!2sin"
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+
+<!-- FLOAT BUTTONS -->
+<div class="float">
+  <a href="tel:+919067936323" class="call">📞</a>
+  <a href="https://wa.me/919067936323" class="whatsapp" target="_blank">💬</a>
+</div>
+
     <!-- Contact Form & Info Grid -->
     <section class="contact-section" style="padding-top: calc(var(--header-height) + 5rem); padding-bottom: 6rem; min-height: 90vh; display: flex; align-items: center;">
       <div class="container">
