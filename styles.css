@@ -1618,3 +1618,61 @@ header.scrolled {
   height: 100%;
   object-fit: cover;
 }
+
+/* ====================================
+   CINEMATIC VIDEO HERO SECTION
+==================================== */
+
+.video-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #02040a;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(2,4,10,.92) 0%, rgba(2,4,10,.68) 42%, rgba(2,4,10,.25) 100%),
+    linear-gradient(180deg, rgba(2,4,10,.35) 0%, rgba(2,4,10,.85) 100%);
+}
+
+.hero-video-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding-top: 120px;
+}
+
+.video-hero .hero-title {
+  color: #ffffff;
+}
+
+.video-hero .hero-subtitle {
+  color: rgba(255,255,255,.8);
+}
+
+.video-hero .badge-tag {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(12px);
+}
+
+.video-hero .text-gradient {
+  background: linear-gradient(90deg,#00d4ff,#4f8cff,#ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
