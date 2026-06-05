@@ -412,58 +412,107 @@ header.scrolled {
 
 /* --- Hero Section --- */
 
-.video-hero {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: #02040a;
+.video-hero{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.hero-bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+.hero-bg-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+    transform:scale(1.08);
+    animation:zoomVideo 20s ease-in-out infinite alternate;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(90deg, rgba(2,4,10,.92) 0%, rgba(2,4,10,.68) 42%, rgba(2,4,10,.25) 100%),
-    linear-gradient(180deg, rgba(2,4,10,.35) 0%, rgba(2,4,10,.85) 100%);
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.4),
+        rgba(0,0,0,.75)
+    );
+    z-index:2;
 }
 
-.hero-video-content {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-  padding-top: 120px;
+.hero-video-content{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    max-width:1000px;
 }
 
-.video-hero .hero-title {
-  color: #ffffff;
+.hero-title{
+    font-size:clamp(3rem,8vw,7rem);
+    font-weight:800;
+    line-height:1;
+    margin-bottom:25px;
+    color:white;
+    text-shadow:0 10px 30px rgba(0,0,0,.7);
+    animation:fadeUp 1.2s ease;
 }
 
-.video-hero .hero-subtitle {
-  color: rgba(255,255,255,.8);
+.hero-subtitle{
+    font-size:1.25rem;
+    color:rgba(255,255,255,.85);
+    max-width:700px;
+    margin:auto;
+    animation:fadeUp 1.5s ease;
 }
 
-.video-hero .badge-tag {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
-  backdrop-filter: blur(12px);
+.hero-ctas{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    animation:fadeUp 1.8s ease;
 }
 
-.video-hero .text-gradient {
-  background: linear-gradient(90deg,#00d4ff,#4f8cff,#ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.text-gradient{
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #4ecdc4,
+        #ffffff
+    );
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+    0%{background-position:0% center;}
+    100%{background-position:200% center;}
+}
+
+@keyframes zoomVideo{
+    from{
+        transform:scale(1.08);
+    }
+    to{
+        transform:scale(1.18);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 /* --- About Section --- */
 .about-section {
