@@ -16,6 +16,61 @@
   
   <!-- Three.js from CDN for interactive 3D model showcase -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    /* HERO VIDEO */
+
+.hero-video{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* VIDEO */
+
+.hero-video-bg{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:1;
+}
+
+/* DARK OVERLAY */
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,0.45);
+
+    z-index:2;
+}
+
+/* CONTENT */
+
+.hero-content-wrapper{
+    position:relative;
+    z-index:3;
+
+    height:100%;
+
+    display:flex;
+    align-items:center;
+}
+
+/* REMOVE GAP BELOW NAVBAR */
+
+#hero{
+    margin-top:0;
+    padding-top:0;
+}
+  </style>
 </head>
 <body>
 
@@ -73,33 +128,49 @@
   <main>
     
     <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-      <div class="container hero-grid">
+   <section id="hero" class="hero-video">
+
+    <video autoplay muted loop playsinline preload="auto" class="hero-video-bg">
+        <source src="OIG4 (1).mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-grid hero-content-wrapper">
+
         <div class="hero-content">
-          <div class="badge-tag scroll-reveal">
-            <span class="badge-dot"></span>
-            Aero-Defense Technology Leader
-          </div>
-          <h1 class="hero-title scroll-reveal">
-            Next-Generation <span class="text-gradient">Surveillance & Recovery</span> Technologies
-          </h1>
-          <p class="hero-subtitle scroll-reveal">
-            Developing advanced drone systems that improve monitoring, situational awareness, operational safety, and mission reliability.
-          </p>
-          <div class="hero-ctas scroll-reveal">
-            <a href="#technologies" class="btn btn-primary btn-lg">Explore Technologies</a>
-            <a href="#contact" class="btn btn-secondary btn-lg">Contact Us</a>
-          </div>
+            <div class="badge-tag scroll-reveal">
+                <span class="badge-dot"></span>
+                Aero-Defense Technology Leader
+            </div>
+
+            <h1 class="hero-title scroll-reveal">
+                Next-Generation
+                <span class="text-gradient">
+                    Surveillance & Recovery
+                </span>
+                Technologies
+            </h1>
+
+            <p class="hero-subtitle scroll-reveal">
+                Developing advanced drone systems that improve monitoring,
+                situational awareness, operational safety, and mission reliability.
+            </p>
+
+            <div class="hero-ctas scroll-reveal">
+                <a href="#technologies" class="btn btn-primary btn-lg">
+                    Explore Technologies
+                </a>
+
+                <a href="#contact" class="btn btn-secondary btn-lg">
+                    Contact Us
+                </a>
+            </div>
         </div>
-        <div class="hero-visual scroll-reveal">
-          <div class="drone-image-wrapper">
-            <img src="assets/hero_drone.png" alt="WITHX Advanced Surveillance Drone" class="floating-drone">
-            <div class="drone-shadow"></div>
-            <div class="radar-pulse"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    </div>
+
+</section>
 
     <!-- About Section -->
     <section id="about" class="about-section section-padding">
