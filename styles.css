@@ -268,28 +268,17 @@ img {
 }
 
 /* --- Header / Navigation Bar --- */
-header{
-    position:fixed;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:95%;
-    max-width:1400px;
-
-    height:85px;
-
-    background:rgba(255,255,255,.75);
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.4);
-
-    border-radius:20px;
-
-    z-index:1000;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.08),
-    0 0 30px rgba(0,174,255,.08);
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  transition: var(--transition-smooth);
 }
 
 header.scrolled {
@@ -338,50 +327,12 @@ header.scrolled {
   gap: 2.25rem;
 }
 
-.nav-link{
-    padding:12px 18px;
-    border-radius:12px;
-
-    font-size:.9rem;
-    font-weight:600;
-
-    transition:.3s;
-}
-.nav-link:hover{
-    color:white;
-
-    background:linear-gradient(
-        135deg,
-        #00bfff,
-        #0066ff
-    );
-
-    box-shadow:
-    0 0 20px rgba(0,191,255,.5),
-    0 0 40px rgba(0,191,255,.2);
-
-    transform:translateY(-2px);
-}
-.btn-primary{
-    background:linear-gradient(
-        135deg,
-        #00bfff,
-        #0066ff
-    );
-
-    border:none;
-
-    box-shadow:
-    0 0 20px rgba(0,191,255,.5),
-    0 0 40px rgba(0,191,255,.2);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 35px rgba(0,191,255,.8),
-    0 0 60px rgba(0,191,255,.3);
+.nav-link {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.5rem 0;
 }
 
 .nav-link::after {
@@ -460,112 +411,133 @@ header.scrolled {
 }
 
 /* --- Hero Section --- */
-
-#hero{
-    margin-top:110px;
-}
-.video-hero{
-    position:relative;
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.hero-section {
+  position: relative;
+  padding-top: calc(var(--header-height) + 4rem);
+  padding-bottom: 6rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-.hero-bg-video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:1;
-    transform:scale(1.08);
-    animation:zoomVideo 20s ease-in-out infinite alternate;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(0,0,0,.4),
-        rgba(0,0,0,.75)
-    );
-    z-index:2;
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
-.hero-video-content{
-    position:relative;
-    z-index:3;
-    text-align:center;
-    max-width:1000px;
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-blue);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--accent-blue-light);
+  animation: pulse-dot 2s infinite;
 }
 
-.hero-title{
-    font-size:clamp(3rem,8vw,7rem);
-    font-weight:800;
-    line-height:1;
-    margin-bottom:25px;
-    color:white;
-    text-shadow:0 10px 30px rgba(0,0,0,.7);
-    animation:fadeUp 1.2s ease;
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
 }
 
-.hero-subtitle{
-    font-size:1.25rem;
-    color:rgba(255,255,255,.85);
-    max-width:700px;
-    margin:auto;
-    animation:fadeUp 1.5s ease;
+.hero-title {
+  margin-bottom: 1.5rem;
+  font-weight: 800;
 }
 
-.hero-ctas{
-    margin-top:40px;
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    animation:fadeUp 1.8s ease;
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 620px;
+  color: var(--text-secondary);
 }
 
-.text-gradient{
-    background:linear-gradient(
-        90deg,
-        #ffffff,
-        #4ecdc4,
-        #ffffff
-    );
-    background-size:200% auto;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:shine 5s linear infinite;
+.hero-ctas {
+  display: flex;
+  gap: 1.25rem;
 }
 
-@keyframes shine{
-    0%{background-position:0% center;}
-    100%{background-position:200% center;}
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes zoomVideo{
-    from{
-        transform:scale(1.08);
-    }
-    to{
-        transform:scale(1.18);
-    }
+.drone-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.floating-drone {
+  width: 100%;
+  height: auto;
+  animation: drone-bob 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.08));
 }
+
+.drone-shadow {
+  position: absolute;
+  bottom: -40px;
+  left: 10%;
+  right: 10%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  animation: shadow-size 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+.radar-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(2, 132, 199, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: radar-ping 4s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  z-index: -2;
+}
+
+@keyframes drone-bob {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes shadow-size {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes radar-ping {
+  0% { width: 100px; height: 100px; opacity: 0.8; }
+  100% { width: 500px; height: 500px; opacity: 0; }
+}
+
 /* --- About Section --- */
 .about-section {
   position: relative;
@@ -1646,8 +1618,3 @@ header.scrolled {
   height: 100%;
   object-fit: cover;
 }
-
-/* ====================================
-   CINEMATIC VIDEO HERO SECTION
-==================================== */
-
