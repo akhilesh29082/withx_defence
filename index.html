@@ -19,7 +19,165 @@
 </head>
   <style>
   
+.video-hero{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding-top:120px;
+}
+
+.hero-bg-video{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.55)
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:10;
+
+    text-align:center;
+
+    max-width:800px;
+
+    padding:20px;
+}
+
+.hero-badge{
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:.85rem;
+
+    margin-bottom:25px;
+}
+
+.hero-title{
+    color:white;
+
+    font-size:clamp(2.5rem,5vw,4.5rem);
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    line-height:1.1;
+}
+
+.hero-subtitle{
+    color:rgba(255,255,255,.85);
+
+    font-size:1.1rem;
+
+    margin-bottom:35px;
+
+    max-width:650px;
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:35px;
+}
+
+.hero-btn{
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.hero-btn.primary{
+    background:#00bfff;
+    color:white;
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.5);
+}
+
+.hero-btn.primary:hover{
+    transform:translateY(-3px);
+}
+
+.hero-btn.secondary{
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    color:white;
+
+    backdrop-filter:blur(10px);
+}
+
+.hero-links{
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.hero-links a{
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+}
+
+.hero-links a:hover{
+    background:#00bfff;
+
+    box-shadow:
+    0 0 20px rgba(0,191,255,.5);
+}
 .company-logo{
     width:120px;
     height:120px;
@@ -84,31 +242,15 @@
     <!-- Hero Section -->
     <section id="hero" class="hero-section video-hero">
   <video autoplay loop muted playsinline class="hero-bg-video">
-    <source src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4" type="video/mp4">
+    <source src="hero_video.mp4" type="video/mp4">
   </video>
 
-  <div class="hero-overlay"></div>
-
-  <div class="container hero-video-content">
-    <div class="badge-tag">
-      <span class="badge-dot"></span>
-      Aero-Defense Technology Leader
-    </div>
-
-    <h1 class="hero-title">
-      Next-Generation <span class="text-gradient">Surveillance & Recovery</span> Technologies
-    </h1>
-
-    <p class="hero-subtitle">
-      Developing advanced drone systems that improve monitoring, situational awareness,
-      operational safety, and mission reliability.
-    </p>
-
+ 
     <div class="hero-ctas">
       <a href="#technologies" class="btn btn-primary btn-lg">Explore Technologies</a>
       <a href="#contact" class="btn btn-secondary btn-lg">Contact Us</a>
     </div>
-  </div>
+
 </section>
 
     <!-- About Section -->
