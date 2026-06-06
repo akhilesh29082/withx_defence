@@ -16,8 +16,6 @@
   
   <!-- Three.js from CDN for interactive 3D model showcase -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
- 
 </head>
 <body>
 
@@ -29,129 +27,80 @@
   </div>
   <div class="subtle-grid-overlay"></div>
 
-<!-- ================= NAVBAR ================= -->
+  <!-- Header / Navigation -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="technologies.html" class="nav-link">Technologies</a>
+        <a href="showcase.html" class="nav-link">Showcase</a>
+        <a href="#why-choose" class="nav-link">Why Us</a>
+        <a href="#progress" class="nav-link">Progress</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
 
-<header class="main-header">
-    <div class="container nav-container">
-
-        <!-- Logo -->
-        <a href="index.html" class="logo">
-            <img src="withx_logo.png" alt="WITHX Defence" class="logo-img">
-        </a>
-
-        <!-- Navigation -->
-        <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#technologies" class="nav-link">Technology</a>
-            <a href="#showcase" class="nav-link">Showcase</a>
-            <a href="#why-choose" class="nav-link">Why Us</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-
-        <!-- CTA -->
-        <div class="nav-actions">
-
-            <a href="#contact" class="nav-cta">
-                Get In Touch
-            </a>
-
-            <button class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-        </div>
-
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </div>
-</header>
+  </header>
 
-<!-- Mobile Navigation -->
+  <!-- Mobile Dropdown Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="technologies.html" class="mobile-nav-link">Technologies</a>
+    <a href="showcase.html" class="mobile-nav-link">Showcase</a>
+    <a href="#why-choose" class="mobile-nav-link">Why Us</a>
+    <a href="#progress" class="mobile-nav-link">Progress</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="#contact" class="btn btn-primary btn-block">Get in Touch</a>
+  </div>
 
-<div class="mobile-nav">
-    <a href="#about">About</a>
-    <a href="#technologies">Technology</a>
-    <a href="#showcase">Showcase</a>
-    <a href="#why-choose">Why Us</a>
-    <a href="#contact">Contact</a>
-</div>
-
-
-<!-- ================= HERO ================= -->
-<!-- HERO SECTION -->
-<section id="hero" class="hero">
-
-    <!-- Video Background -->
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="andruil.mp4" type="video/mp4">
-    </video>
-
-    <!-- Dark Overlay -->
-    <div class="hero-overlay"></div>
-
-    <!-- Hero Content -->
-    <div class="container hero-container">
-
+  <main>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
         <div class="hero-content">
-
-            <div class="hero-badge">
-                Advanced Aerospace & Defence Innovation
-            </div>
-
-            <h1 class="hero-title">
-                Building The Future Of
-                <span>Drone Surveillance</span>
-                & Recovery Systems
-            </h1>
-
-            <p class="hero-subtitle">
-                WITHX Defence develops next-generation unmanned technologies
-                focused on aerial surveillance, mission safety, autonomous
-                operations, and drone recovery solutions.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#technologies" class="hero-btn hero-btn-primary">
-                    Explore Technology
-                </a>
-
-                <a href="#showcase" class="hero-btn hero-btn-secondary">
-                    View Showcase
-                </a>
-
-            </div>
-
-            <div class="hero-stats">
-
-                <div class="hero-stat">
-                    <h3>2+</h3>
-                    <span>Core Projects</span>
-                </div>
-
-                <div class="hero-stat">
-                    <h3>100%</h3>
-                    <span>R&D Focused</span>
-                </div>
-
-                <div class="hero-stat">
-                    <h3>24/7</h3>
-                    <span>Innovation Cycle</span>
-                </div>
-
-            </div>
-
+          <div class="badge-tag scroll-reveal">
+            <span class="badge-dot"></span>
+            Aero-Defense Technology Leader
+          </div>
+          <h1 class="hero-title scroll-reveal">
+            Next-Generation <span class="text-gradient">Surveillance & Recovery</span> Technologies
+          </h1>
+          <p class="hero-subtitle scroll-reveal">
+            Developing advanced drone systems that improve monitoring, situational awareness, operational safety, and mission reliability.
+          </p>
+          <div class="hero-ctas scroll-reveal">
+            <a href="#technologies" class="btn btn-primary btn-lg">Explore Technologies</a>
+            <a href="#contact" class="btn btn-secondary btn-lg">Contact Us</a>
+          </div>
         </div>
+        <div class="hero-visual scroll-reveal">
+          <div class="drone-image-wrapper">
+            <img src="assets/hero_drone.png" alt="WITHX Advanced Surveillance Drone" class="floating-drone">
+            <div class="drone-shadow"></div>
+            <div class="radar-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        ↓ Scroll To Explore
-    </div>
-
-</section>
     <!-- About Section -->
     <section id="about" class="about-section section-padding">
       <div class="container">
