@@ -306,6 +306,16 @@ header.scrolled {
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
+.logo-img {
+    height: 60px; /* adjust size */
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
 
 .logo-icon {
   width: 28px;
