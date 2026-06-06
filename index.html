@@ -17,290 +17,6 @@
   <!-- Three.js from CDN for interactive 3D model showcase -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-  <style>
-  
-.video-hero{
-    position:relative;
-    height:100vh;
-    overflow:hidden;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding-top:70px;
-}
-
-.hero-bg-video{
-    position:absolute;
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        rgba(0,0,0,.35),
-        rgba(0,0,0,.55)
-    );
-}
-
-.hero-content{
-    position:relative;
-    z-index:10;
-
-    text-align:center;
-
-    max-width:800px;
-
-    padding:20px;
-}
-
-.hero-badge{
-    display:inline-block;
-
-    padding:10px 18px;
-
-    border-radius:50px;
-
-    background:rgba(255,255,255,.15);
-
-    backdrop-filter:blur(10px);
-
-    color:white;
-
-    font-size:.85rem;
-
-    margin-bottom:25px;
-}
-
-.hero-title{
-    color:white;
-
-    font-size:clamp(2.5rem,5vw,4.5rem);
-
-    font-weight:800;
-
-    margin-bottom:20px;
-
-    line-height:1.1;
-}
-
-.hero-subtitle{
-    color:rgba(255,255,255,.85);
-
-    font-size:1.1rem;
-
-    margin-bottom:35px;
-
-    max-width:650px;
-
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:35px;
-}
-
-.hero-btn{
-    padding:14px 28px;
-
-    border-radius:50px;
-
-    font-weight:600;
-
-    transition:.3s;
-}
-
-.hero-btn.primary{
-    background:#00bfff;
-    color:white;
-
-    box-shadow:
-    0 0 25px rgba(0,191,255,.5);
-}
-
-.hero-btn.primary:hover{
-    transform:translateY(-3px);
-}
-
-.hero-btn.secondary{
-    background:rgba(255,255,255,.12);
-
-    border:1px solid rgba(255,255,255,.25);
-
-    color:white;
-
-    backdrop-filter:blur(10px);
-}
-
-.hero-links{
-    display:flex;
-
-    justify-content:center;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-}
-
-.hero-links a{
-    padding:10px 18px;
-
-    border-radius:30px;
-
-    color:white;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    transition:.3s;
-}
-
-.hero-links a:hover{
-    background:#00bfff;
-
-    box-shadow:
-    0 0 20px rgba(0,191,255,.5);
-}
-
-
-    .hero-overlay{
-    z-index:1;
-}
-
-.hero-content{
-    z-index:2;
-}
-.company-logo{
-    width:120px;
-    height:120px;
-    object-fit:contain;
-}
-  .hero-title{
-    color:white;
-    text-shadow:
-        0 0 10px rgba(0,191,255,.6),
-        0 0 20px rgba(0,191,255,.4),
-        0 0 40px rgba(0,191,255,.3);
-
-    animation: glowPulse 3s ease-in-out infinite;
-}
-
-@keyframes glowPulse{
-    0%,100%{
-        text-shadow:
-        0 0 10px rgba(0,191,255,.6),
-        0 0 20px rgba(0,191,255,.4);
-    }
-
-    50%{
-        text-shadow:
-        0 0 20px rgba(0,191,255,.9),
-        0 0 40px rgba(0,191,255,.7),
-        0 0 60px rgba(0,191,255,.5);
-    }
-}
-    /* Reset */
-html,
-body{
-    margin:0;
-    padding:0;
-}
-
-/* Full-width navbar */
-#header{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-
-    width:100%;
-    height:80px;
-
-    margin:0;
-    padding:0;
-
-    border-radius:0;
-
-    background:#050b15;
-    border:none;
-
-    z-index:1000;
-}
-
-/* Navbar layout */
-.nav-container{
-    height:100%;
-
-    max-width:none;
-
-    width:100%;
-
-    padding:0 30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    box-sizing:border-box;
-}
-
-/* Smaller logo */
-.company-logo{
-    width:70px;
-    height:70px;
-    object-fit:contain;
-}
-
-/* Navigation links */
-.nav-links{
-    display:flex;
-    gap:28px;
-    align-items:center;
-}
-
-.nav-link{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-}
-
-/* Button */
-.nav-actions .btn{
-    padding:10px 20px;
-}
-    .video-hero{
-    position:relative;
-
-    min-height:100vh;
-
-    margin:0;
-
-    padding-top:80px; /* same as navbar height */
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
-}
-  </style>
 <body>
 
   <!-- Background Ambient Particles and Glows -->
@@ -312,27 +28,36 @@ body{
   <div class="subtle-grid-overlay"></div>
 
   <!-- Header / Navigation -->
-<header id="header">
+  <header id="header">
     <div class="nav-container">
+      <a href="#hero" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="technologies.html" class="nav-link">Technologies</a>
+        <a href="showcase.html" class="nav-link">Showcase</a>
+        <a href="#why-choose" class="nav-link">Why Us</a>
+        <a href="#progress" class="nav-link">Progress</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
 
-        <a href="#hero" class="logo">
-            <img src="logo.png" class="company-logo">
-        </a>
-
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Technologies</a>
-            <a href="#">Showcase</a>
-            <a href="#">Contact</a>
-        </nav>
-
-        <div class="nav-actions">
-            <a href="#" class="btn btn-primary">Get in Touch</a>
-        </div>
-
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </div>
-</header>
+  </header>
+
   <!-- Mobile Dropdown Navigation -->
   <div class="mobile-nav">
     <a href="index.html" class="mobile-nav-link">Home</a>
@@ -348,35 +73,33 @@ body{
   <main>
     
     <!-- Hero Section -->
-    
-<section id="hero" class="hero-section video-hero">
-
-    <video autoplay muted loop playsinline class="hero-bg-video">
-        <source src="OIG3 (3).mp4" type="video/mp4">
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    
-        <div class="hero-buttons">
-            <a href="#technologies" class="hero-btn primary">
-                Explore Technologies
-            </a>
-
-            <a href="#contact" class="hero-btn secondary">
-                Contact Us
-            </a>
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-tag scroll-reveal">
+            <span class="badge-dot"></span>
+            Aero-Defense Technology Leader
+          </div>
+          <h1 class="hero-title scroll-reveal">
+            Next-Generation <span class="text-gradient">Surveillance & Recovery</span> Technologies
+          </h1>
+          <p class="hero-subtitle scroll-reveal">
+            Developing advanced drone systems that improve monitoring, situational awareness, operational safety, and mission reliability.
+          </p>
+          <div class="hero-ctas scroll-reveal">
+            <a href="#technologies" class="btn btn-primary btn-lg">Explore Technologies</a>
+            <a href="#contact" class="btn btn-secondary btn-lg">Contact Us</a>
+          </div>
         </div>
-
-        <div class="hero-links">
-            <a href="#showcase">3D Showcase</a>
-            <a href="#progress">Progress</a>
-            <a href="#about">About Us</a>
+        <div class="hero-visual scroll-reveal">
+          <div class="drone-image-wrapper">
+            <img src="assets/hero_drone.png" alt="WITHX Advanced Surveillance Drone" class="floating-drone">
+            <div class="drone-shadow"></div>
+            <div class="radar-pulse"></div>
+          </div>
         </div>
-
-  
-
-</section>
+      </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about-section section-padding">
@@ -832,16 +555,5 @@ body{
 
   <!-- Script Execution -->
   <script src="script.js"></script>
-  <script>
-window.addEventListener("mousemove",(e)=>{
-
-const x=(e.clientX/window.innerWidth -0.5)*20;
-const y=(e.clientY/window.innerHeight-0.5)*20;
-
-document.querySelector(".hero-title").style.transform=
-`rotateY(${x/2}deg) rotateX(${-y/2}deg)`;
-
-});
-</script>
 </body>
 </html>
