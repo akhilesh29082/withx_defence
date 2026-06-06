@@ -1592,29 +1592,3 @@ header.scrolled {
     text-align: center;
   }
 }
-.product-visual-box {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.product-3d-viewer {
-  width: 100%;
-  height: 340px;
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  background: radial-gradient(circle at top, #e0f2fe, #ffffff 55%);
-  overflow: hidden;
-}
-
-.detail-image {
-  height: 260px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-}
-
-.detail-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
