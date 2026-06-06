@@ -411,60 +411,68 @@ header.scrolled {
 }
 
 /* --- Hero Section --- */
+/* ================= HERO VIDEO ================= */
 
 .hero-video{
     position: relative;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
     margin-top: 80px;
     overflow: hidden;
 }
 
-/* VIDEO */
-
 .hero-video-bg{
-    position:absolute;
-    top:0;
-    left:0;
+    position: absolute;
+    inset: 0;
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    object-fit:cover;
-
-    z-index:1;
+    object-fit: cover;
+    z-index: 1;
 }
-
-/* DARK OVERLAY */
 
 .hero-overlay{
-    position:absolute;
-    inset:0;
+    position: absolute;
+    inset: 0;
 
-    background:rgba(0,0,0,0.45);
+    background: linear-gradient(
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+    );
 
-    z-index:2;
+    z-index: 2;
 }
-
-/* CONTENT */
 
 .hero-content-wrapper{
-    position:relative;
-    z-index:3;
+    position: relative;
+    z-index: 3;
 
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    display:flex;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* REMOVE GAP BELOW NAVBAR */
-
-#hero{
-    margin-top:0;
-    padding-top:0;
+.hero-content{
+    max-width: 900px;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
 }
 
+.hero-content h1{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-content p{
+    color: rgba(255,255,255,0.9);
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+}
 
 
 /* --- About Section --- */
