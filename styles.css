@@ -307,8 +307,8 @@ header.scrolled {
   letter-spacing: -0.02em;
 }
 .logo-img {
-    height: 60px; /* adjust size */
-    width: auto;
+    height: 60px; 
+    width: 60px;
     display: block;
     transition: transform 0.3s ease;
 }
@@ -317,20 +317,6 @@ header.scrolled {
     transform: scale(1.05);
 }
 
-.logo-icon {
-  width: 28px;
-  height: 28px;
-  color: var(--accent-blue);
-  transition: var(--transition-smooth);
-}
-
-.logo:hover .logo-icon {
-  transform: rotate(180deg);
-}
-
-.logo-accent {
-  color: var(--accent-blue);
-}
 
 .nav-links {
   display: flex;
