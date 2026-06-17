@@ -1,264 +1,697 @@
+<html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | WITHX Defence</title>
-  <meta name="description" content="Learn about WITHX Defence's mission, our core engineering philosophy for intelligent unmanned systems, and our research roadmap.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | WITHX Defence</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#f8fbff;
+    color:#0f172a;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+}
+
+.nav{
+    height:90px;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    border-bottom:1px solid rgba(0,0,0,0.08);
+    box-shadow:0 5px 20px rgba(0,0,0,0.03);
+}
+
+.nav-logo{
+    width:150px;
+    height:57px;
+    background:url("withx_logo.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:left center;
+}
+
+.nav-links{
+    display:flex;
+    gap:45px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#0f172a;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.nav-touch{
+    width:180px;
+    height:52px;
+    border:1px solid #2563eb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:12px;
+    cursor:pointer;
+    color:#2563eb;
+    transition:.3s;
+}
+
+.nav-touch:hover{
+    background:#2563eb;
+    color:white;
+}
+
+/* HERO */
+
+.about-hero{
+    padding:170px 8% 100px;
+    background:linear-gradient(180deg,#ffffff,#f8fbff);
+}
+
+.hero-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.hero-tag{
+    display:inline-block;
+    padding:10px 20px;
+    background:#eff6ff;
+    color:#2563eb;
+    border-radius:40px;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.hero-content h1{
+    font-size:4.8rem;
+    line-height:1.05;
+    font-family:'Outfit',sans-serif;
+    margin-bottom:30px;
+}
+
+.hero-content p{
+    color:#64748b;
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:35px;
+    box-shadow:0 25px 60px rgba(0,0,0,.08);
+}
+
+/* ABOUT */
+
+.about-section{
+    padding:100px 8%;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-header h2{
+    font-size:3.5rem;
+    font-family:'Outfit',sans-serif;
+    margin-bottom:20px;
+}
+
+.section-header p{
+    max-width:700px;
+    margin:auto;
+    color:#64748b;
+    line-height:1.8;
+}
+
+/* CARDS */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.about-card{
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    box-shadow:0 10px 40px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.about-card:hover{
+    transform:translateY(-10px);
+}
+
+.about-card span{
+    font-size:4rem;
+    color:#2563eb;
+    font-weight:700;
+}
+
+.about-card h3{
+    margin:20px 0;
+    font-size:1.8rem;
+}
+
+.about-card p{
+    color:#64748b;
+    line-height:1.8;
+}
+
+/* DOMAINS */
+
+.domains{
+    padding:100px 8%;
+    background:white;
+}
+
+.domain-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.domain-card{
+    background:#f8fbff;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.domain-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.domain-card-content{
+    padding:30px;
+}
+
+.domain-card h3{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.domain-card p{
+    color:#64748b;
+    line-height:1.8;
+}
+
+/* STATS */
+
+.stats{
+    padding:100px 8%;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.stat-card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.stat-card h2{
+    font-size:3.5rem;
+    color:#2563eb;
+}
+
+.stat-card p{
+    color:#64748b;
+    margin-top:10px;
+}
+
+/* CTA */
+
+.cta{
+    padding:100px 8%;
+}
+
+.cta-box{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    border-radius:40px;
+    padding:80px;
+    text-align:center;
+    color:white;
+}
+
+.cta-box h2{
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.cta-box p{
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.cta-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 35px;
+    background:white;
+    color:#2563eb;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:80px 8% 40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-grid h3{
+    margin-bottom:25px;
+}
+
+.footer-grid p,
+.footer-grid a{
+    color:#cbd5e1;
+    line-height:2;
+    text-decoration:none;
+}
+
+.footer-bottom{
+    margin-top:60px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    color:#94a3b8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.hero-container,
+.about-grid,
+.domain-grid,
+.stats-grid,
+.footer-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-content h1{
+    font-size:3rem;
+}
+
+.section-header h2{
+    font-size:2.5rem;
+}
+
+.cta-box{
+    padding:50px 30px;
+}
+
+.cta-box h2{
+    font-size:2rem;
+}
+}
+
+
+
+
+
+/* nav css */
+/* NAVBAR */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:1000;
+}
+
+.nav{
+
+height:90px;
+
+width:100%;
+
+background:black;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 60px;
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGO */
+
+.nav-logo{
+
+width:150px;
+
+height:57px;
+
+background:url("withx_logo.png");
+
+background-size:cover;
+
+background-repeat:no-repeat;
+
+background-position:left center;
+}
+
+/* LINKS */
+
+.nav-links{
+
+display:flex;
+
+gap:45px;
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:14px;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+transition:0.2s;
+}
+
+.nav-links a:hover{
+
+color:#6bbcff;
+text-decoration:underline;
+}
+
+/* BUTTON */
+
+.nav-touch{
+
+width:180px;
+
+height:52px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.nav-touch:hover{
+
+background:white;
+
+color:black;
+}
+
+
+
+
+
+
+
+
+
+</style>
 </head>
+
 <body>
 
-  <!-- Ambient Glows -->
-  <div class="ambient-glows">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-  </div>
-  <div class="subtle-grid-overlay"></div>
+ <header>
 
-  <!-- Header -->
-  <header id="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
-      </a>
-      
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link active">About</a>
-        <a href="technologies.html" class="nav-link">Technologies</a>
-        <a href="showcase.html" class="nav-link">Showcase</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
+<div class="nav">
+<div class="nav-logo border">
+</div> <!--nav logo -->
 
-      <div class="nav-actions">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
-        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-      </div>
-    </div>
-  </header>
+<div class="nav-links">
+<a href="index.html" class="border">HOME</a>
+<a href="about.html" class="border">ABOUT</a>
+<a href="#"class="nav-links-tech border">TECHNOLOGY</a>
+<a href="#"class="border">SEA</a>
+<a href="#"class="border">LAND</a>
+<a href="#"class="border">CONTACT</a>
+</div>
 
-  <!-- Mobile Dropdown Navigation -->
-  <div class="mobile-nav">
-    <a href="index.html" class="mobile-nav-link">Home</a>
-    <a href="about.html" class="mobile-nav-link">About</a>
-    <a href="technologies.html" class="mobile-nav-link">Technologies</a>
-    <a href="showcase.html" class="mobile-nav-link">Showcase</a>
-    <a href="contact.html" class="mobile-nav-link">Contact</a>
-    <a href="contact.html" class="btn btn-primary btn-block">Get in Touch</a>
-  </div>
 
-  <main>
-    <!-- About Hero Section -->
-    <section class="hero-section" style="min-height: 60vh; padding-top: calc(var(--header-height) + 6rem); padding-bottom: 4rem;">
-      <div class="container">
-        <div class="badge-tag scroll-reveal">
-          <span class="badge-dot"></span>
-          Engineering Leadership
-        </div>
-        <h1 class="hero-title scroll-reveal" style="max-width: 800px;">
-          Pioneering the Next Era of <span class="text-gradient">Aerial Autonomy</span>
-        </h1>
-        <p class="hero-subtitle scroll-reveal" style="max-width: 700px;">
-          We build robust, intelligent, and water-resilient unmanned system infrastructures designed for high-stress defense and industrial operations.
-        </p>
-      </div>
-    </section>
+<div class="nav-touch border">
+<p>Get in Touch</p>
+</div>
 
-    <!-- Detailed Corporate Mission & Impact -->
-    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-      <div class="container">
-        <div class="about-grid" style="grid-template-columns: 1.1fr 0.9fr;">
-          <div class="about-content scroll-reveal">
-            <span class="section-tag">Our Mission</span>
-            <h2 style="margin-bottom: 1.5rem; font-size: 2.25rem;">Engineering Intelligent Unmanned Systems</h2>
-            <p class="lead-text" style="margin-bottom: 1.5rem;">
-              WITHX Defence is committed to bridging the gap between theoretical autonomy and practical field survival.
-            </p>
-            <p style="margin-bottom: 1.5rem;">
-              Unmanned Aerial Vehicles (UAVs) perform critical operations globally, but remain vulnerable to mechanical hazards and environmental threats. We develop active, intelligent protection solutions alongside highly responsive sensory arrays.
-            </p>
-            <p>
-              By aligning next-generation edge machine learning with responsive mechanical hardware (such as water-activated flotation bladders), we seek to minimize equipment loss, maximize reconnaissance timeframes, and protect operational assets.
-            </p>
-          </div>
-          <div class="scroll-reveal" style="display: flex; justify-content: center; align-items: center;">
-            <div style="background: var(--glass-bg); border: 1px solid var(--border-glass); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%;">
-              <h3 style="margin-bottom: 1.5rem; font-size: 1.35rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-blue);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-                Core Values
-              </h3>
-              <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">Design for Extremes</h4>
-                  <p style="font-size: 0.875rem;">Our systems are engineered to withstand rough landings, ocean spray, and high wind shear.</p>
-                </div>
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">Redundancy by Default</h4>
-                  <p style="font-size: 0.875rem;">Every deployment mechanism is backed by mechanical failsafes to guarantee operation.</p>
-                </div>
-                <div>
-                  <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">Rapid Hardware Loops</h4>
-                  <p style="font-size: 0.875rem;">Continuous simulation testing, water tank drops, and wind tunnel calibration iterations.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
+</header>
 
-    <!-- Engineering Timeline / Milestones -->
-    <section class="section-padding">
-      <div class="container">
-        <div class="section-header text-center scroll-reveal" style="margin-bottom: 5rem;">
-          <span class="section-tag">R&D Roadmap</span>
-          <h2>Our Milestone History</h2>
-          <p class="section-subtitle">A timeline of our design evolution and hardware prototyping progress.</p>
-        </div>
 
-        <div style="max-width: 800px; margin: 0 auto; position: relative;">
-          <!-- Central Line -->
-          <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 2px; background-color: var(--border-color);"></div>
 
-          <!-- Timeline Event 1 -->
-          <div class="scroll-reveal" style="display: flex; margin-bottom: 4rem; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="width: 45%; text-align: right; padding-right: 2rem;">
-              <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; color: var(--accent-blue);">2024 Q3</span>
-              <h3 style="font-size: 1.15rem; margin: 0.5rem 0;">Concept Initiation</h3>
-              <p style="font-size: 0.9rem;">Initial design loops for maritime emergency drone protection and high-buoyancy inflatable membranes.</p>
-            </div>
-            <div style="width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-blue); border: 4px solid var(--bg-primary); z-index: 10; box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);"></div>
-            <div style="width: 45%; padding-left: 2rem;"></div>
-          </div>
 
-          <!-- Timeline Event 2 -->
-          <div class="scroll-reveal" style="display: flex; margin-bottom: 4rem; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="width: 45%;"></div>
-            <div style="width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-blue); border: 4px solid var(--bg-primary); z-index: 10; box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);"></div>
-            <div style="width: 45%; padding-left: 2rem;">
-              <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; color: var(--accent-blue);">2025 Q1</span>
-              <h3 style="font-size: 1.15rem; margin: 0.5rem 0;">Airbag Flotation V1</h3>
-              <p style="font-size: 0.9rem;">Successful laboratory tests of water-activated deployment sensors with a cold-gas inflation cycle under 150ms.</p>
-            </div>
-          </div>
+<section class="about-hero">
 
-          <!-- Timeline Event 3 -->
-          <div class="scroll-reveal" style="display: flex; margin-bottom: 4rem; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="width: 45%; text-align: right; padding-right: 2rem;">
-              <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; color: var(--accent-blue);">2025 Q4</span>
-              <h3 style="font-size: 1.15rem; margin: 0.5rem 0;">Surveillance Rig Integration</h3>
-              <p style="font-size: 0.9rem;">Initial prototype integration of lightweight stabilization carbon gimbal systems and thermal reconnaissance clusters.</p>
-            </div>
-            <div style="width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-blue); border: 4px solid var(--bg-primary); z-index: 10; box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);"></div>
-            <div style="width: 45%; padding-left: 2rem;"></div>
-          </div>
+<div class="hero-container">
 
-          <!-- Timeline Event 4 -->
-          <div class="scroll-reveal" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="width: 45%;"></div>
-            <div style="width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-primary); border: 4px solid var(--bg-primary); z-index: 10; box-shadow: 0 0 10px rgba(15, 23, 42, 0.4);"></div>
-            <div style="width: 45%; padding-left: 2rem;">
-              <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; color: var(--accent-primary);">Current Phase</span>
-              <h3 style="font-size: 1.15rem; margin: 0.5rem 0;">Surveillance Sys V1 & Field Trials</h3>
-              <p style="font-size: 0.9rem;">Conducting multi-scenario autonomous flights and scaling flotation deployments across diverse test platforms.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="hero-content">
 
-    <!-- Lab Facilities Section -->
-    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
-      <div class="container">
-        <div class="section-header text-center scroll-reveal" style="margin-bottom: 4rem;">
-          <span class="section-tag">Operational Base</span>
-          <h2>Research Facilities & Labs</h2>
-          <p class="section-subtitle">Where aerospace materials, telemetry computing, and emergency airbags are calibrated.</p>
-        </div>
+<span class="hero-tag">ABOUT WITHX DEFENCE</span>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-          <div class="why-card scroll-reveal" style="background: #ffffff;">
-            <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--accent-blue);">Hydro-Test & Calibration Pool</h3>
-            <p style="font-size: 0.925rem; line-height: 1.7; color: var(--text-secondary);">
-              Our laboratory includes a custom water calibration tank where automated deployment sensors are tested against varying salinity levels, ocean currents, and high-impact drops.
-            </p>
-          </div>
-          <div class="why-card scroll-reveal" style="background: #ffffff;">
-            <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--accent-blue);">Carbon Composites Studio</h3>
-            <p style="font-size: 0.925rem; line-height: 1.7; color: var(--text-secondary);">
-              An air-locked fabrication facility equipped with autoclave machines to compress and lay carbon fibers, developing light, rigid fuselage modules tailored for military operations.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+<h1>Engineering Tomorrow's Defence Technologies.</h1>
 
-  <!-- Footer -->
- <footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-          <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
-        </a>
-        <p class="footer-desc">
-          Developing Next-Generation Surveillance and Recovery Technologies for Unmanned Systems.
-        </p>
-      </div>
+<p>
+WITHX Defence develops advanced autonomous systems across sea, land and air domains. We combine innovation, intelligence and engineering excellence to create mission-critical solutions for surveillance, recovery and defence operations.
+</p>
 
-      <div class="footer-links-group">
-        <h4>Navigation</h4>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="technologies.html">Technologies</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
+</div>
 
-      <div class="footer-links-group">
-        <h4>Solutions</h4>
-        <div class="footer-links">
-          <a href="technologies.html">Surveillance System</a>
-          <a href="technologies.html">Airbag Recovery</a>
-          <a href="showcase.html">Showcase Model</a>
-        </div>
-      </div>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1517976487492-576ea6b2936d?w=1200" alt="">
+</div>
 
-      <div class="footer-links-group">
-        <h4>Compliance</h4>
-        <div class="footer-links">
-          <a href="#">Export Controlled (ITAR)</a>
-          <a href="#">Security Protocols</a>
-          <a href="#">Quality Assurance</a>
-        </div>
-      </div>
-    </div>
+</div>
 
-    <div class="container footer-bottom">
-      <p class="copyright">&copy; 2026 WITHX Defence. All rights reserved. Aerospace Engineering, Unmanned Systems R&D Division.</p>
-      <p class="security-classification">CLASSIFICATION: PUBLIC RELATIONS PROTOCOL SEC-441</p>
-    </div>
-  </footer>
+</section>
 
-     
+<section class="about-section">
 
-  <script src="script.js"></script>
+<div class="section-header">
+<h2>Who We Are</h2>
+
+<p>
+Driven by innovation and precision engineering, WITHX Defence delivers intelligent technologies designed for future operational environments.
+</p>
+</div>
+
+<div class="about-grid">
+
+<div class="about-card">
+<span>01</span>
+<h3>Our Mission</h3>
+<p>Build autonomous defence systems that improve operational awareness and mission effectiveness.</p>
+</div>
+
+<div class="about-card">
+<span>02</span>
+<h3>Innovation</h3>
+<p>Combining AI, robotics and advanced sensing technologies to redefine defence capabilities.</p>
+</div>
+
+<div class="about-card">
+<span>03</span>
+<h3>Future Ready</h3>
+<p>Developing scalable platforms prepared for tomorrow's challenges.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="domains">
+
+<div class="section-header">
+<h2>Operational Domains</h2>
+</div>
+
+<div class="domain-grid">
+
+<div class="domain-card">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1000">
+<div class="domain-card-content">
+<h3>Sea</h3>
+<p>Maritime surveillance, autonomous recovery systems and coastal monitoring solutions.</p>
+</div>
+</div>
+
+<div class="domain-card">
+<img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?w=1000">
+<div class="domain-card-content">
+<h3>Land</h3>
+<p>Ground intelligence platforms supporting tactical operations and monitoring.</p>
+</div>
+</div>
+
+<div class="domain-card">
+<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1000">
+<div class="domain-card-content">
+<h3>Air</h3>
+<p>Advanced aerial systems enabling autonomous reconnaissance missions.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>3+</h2>
+<p>Operational Domains</p>
+</div>
+
+<div class="stat-card">
+<h2>10+</h2>
+<p>Research Areas</p>
+</div>
+
+<div class="stat-card">
+<h2>24/7</h2>
+<p>Innovation Focus</p>
+</div>
+
+<div class="stat-card">
+<h2>100%</h2>
+<p>Mission Driven</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<div class="cta-box">
+
+<h2>Partner With WITHX Defence</h2>
+
+<p>
+Together, we can build the next generation of intelligent defence technologies.
+</p>
+
+<a href="#" class="cta-btn">Contact Us</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>WITHX Defence</h3>
+
+<p>
+Engineering autonomous technologies for sea, land and air operations through innovation and precision.
+</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+
+<a href="#">Home</a><br>
+<a href="#">About</a><br>
+<a href="#">Technology</a><br>
+<a href="#">Contact</a>
+</div>
+
+<div>
+<h3>Domains</h3>
+
+<a href="#">Sea</a><br>
+<a href="#">Land</a><br>
+<a href="#">Air</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 WITHX Defence. All Rights Reserved.
+</div>
+
+</footer>
+
 </body>
 </html>
