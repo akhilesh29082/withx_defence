@@ -1,358 +1,2038 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technologies | WITHX Defence</title>
-  <meta name="description" content="Explore advanced drone surveillance and automatic water-activated flotation airbag recovery systems developed by WITHX Defence.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WITHX Defence | Advanced Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:    #ffffff;
+  --black2:   #f4f6fa;
+  --gold:     #b8860b;
+  --gold-dim: #a8892a;
+  --gold-glow:#b8860b30;
+  --blue:     #2563eb;
+  --blue-dim: #1e50c0;
+  --blue-glow:#2563eb25;
+  --blue-soft:#2563eb;
+  --white:    #111827;
+  --muted:    #6b7280;
+  --glass:    rgba(37,99,235,0.04);
+  --glass-border: rgba(37,99,235,0.15);
+  --radius:   12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #e5e7eb; }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+
+/* ===== CUSTOM CURSOR ===== */
+#cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, background 0.2s, width 0.2s, height 0.2s;
+  mix-blend-mode: normal;
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(212,175,55,0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+/* ===== MOUSE SPOTLIGHT ===== */
+#spotlight {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle 350px at var(--mx,50%) var(--my,50%), rgba(37,99,235,0.06) 0%, transparent 70%);
+  transition: background 0.05s;
+}
+
+/* ===== PARTICLES ===== */
+#particles-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(37,99,235,0.12);
+  transition: all 0.3s;
+}
+nav.scrolled {
+  padding: 12px 60px;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+.nav-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--blue);
+  text-decoration: none;
+  position: relative;
+}
+.nav-logo::after {
+  content: 'DEFENCE';
+  display: block;
+  font-size: 0.45rem;
+  letter-spacing: 6px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--blue);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.nav-cta:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ===== SECTION BASE ===== */
+section { position: relative; z-index: 2; }
+
+/* ===== SECTION LABEL ===== */
+.section-label {
+  display: inline-block;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: var(--blue);
+  border: 1px solid rgba(37,99,235,0.25);
+  padding: 6px 16px;
+  margin-bottom: 20px;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  background: rgba(37,99,235,0.05);
+}
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  color: #0f172a;
+}
+.section-title span { color: var(--blue); }
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-top: 16px;
+}
+
+/* ===== HERO ===== */
+#hero {
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.35;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.75) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  color: var(--blue);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeDown 0.8s 0.3s forwards;
+}
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 0.95;
+  min-height: 2.5em;
+  color: #0f172a;
+}
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+}
+.hero-title .line span {
+  display: block;
+  transform: translateY(100%);
+  animation: slideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-title .line:nth-child(1) span { animation-delay: 0.4s; }
+.hero-title .line:nth-child(2) span { animation-delay: 0.6s; color: var(--blue); }
+.hero-title .line:nth-child(3) span { animation-delay: 0.8s; }
+
+.hero-sub {
+  max-width: 540px;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s forwards;
+}
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.3s forwards;
+}
+.btn-primary {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 16px 36px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(37,99,235,0.25); }
+.btn-outline {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 16px 36px;
+  background: transparent;
+  color: #0f172a;
+  border: 1px solid rgba(15,23,42,0.25);
+  cursor: pointer;
+  text-decoration: none;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(37,99,235,0.06); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 1s 1.6s forwards;
+}
+.scroll-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+  color: #374151;
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--blue), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.3; transform: scaleY(0.6); }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp   { from { opacity:0; transform:translateY(20px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes slideUp  { from { transform:translateY(100%); }             to { transform:translateY(0); } }
+@keyframes float    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-16px)} }
+@keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.95)} }
+@keyframes glow     { 0%,100%{box-shadow:0 0 20px var(--blue-glow)} 50%{box-shadow:0 0 50px rgba(37,99,235,0.5)} }
+@keyframes rotate   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes counterRotate { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+@keyframes radarSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes shimmer  { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left  { opacity:0; transform:translateX(-40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s; }
+.reveal-right { opacity:0; transform:translateX(40px);  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s; }
+.reveal-left.visible, .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+/* ===== GLASS CARD ===== */
+.glass {
+  background: #ffffff;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.glass:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 30px var(--blue-glow), 0 12px 40px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--blue), #93c5fd);
+  margin: 20px 0;
+}
+
+/* ===== SECTION 2: OVERVIEW ===== */
+#overview {
+  padding: 120px 60px;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.overview-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+.overview-card .card-img {
+  width: 100%; height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  filter: brightness(0.7) saturate(0.8);
+}
+.overview-card:hover .card-img { transform: scale(1.08); filter: brightness(0.9) saturate(1); }
+.overview-card .card-body {
+  padding: 28px;
+}
+.card-icon {
+  width: 48px; height: 48px;
+  border: 1px solid var(--gold-glow);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+.overview-card:hover .card-icon {
+  border-color: var(--blue);
+  box-shadow: 0 0 20px var(--blue-glow);
+  background: rgba(37,99,235,0.1);
+}
+.card-icon svg { width: 24px; height: 24px; fill: var(--blue); }
+.card-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.card-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+.gradient-border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, var(--gold-glow), transparent, var(--blue-glow), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.overview-card:hover .gradient-border { opacity: 1; }
+
+/* ===== SECTION 3: AI TRACKING ===== */
+#ai-tracking {
+  padding: 120px 60px;
+  background: #ffffff;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+.glow-image-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: float 6s ease-in-out infinite;
+}
+.glow-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--gold), var(--blue), var(--gold));
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+.glow-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 80px rgba(37,99,235,0.4), inset 0 0 40px rgba(37,99,235,0.1);
+  pointer-events: none;
+}
+.glow-image-wrap img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  filter: saturate(0.8);
+}
+.features-list { list-style: none; margin: 28px 0; }
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #374151;
+  transition: color 0.3s;
+}
+.features-list li:hover { color: var(--blue); }
+.feat-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(37,99,235,0.4);
+}
+.progress-bars { margin-top: 32px; }
+.prog-item { margin-bottom: 20px; }
+.prog-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+.prog-label span:last-child { color: var(--blue); }
+.prog-track {
+  height: 3px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 0 10px var(--blue-glow);
+}
+
+/* ===== SECTION 4: COMPUTER VISION ===== */
+#computer-vision {
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+  background: #f0f4ff;
+}
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.vision-header { text-align: center; position: relative; }
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+  margin-top: 60px;
+  position: relative;
+}
+.stat-card {
+  text-align: center;
+  padding: 50px 30px;
+  position: relative;
+}
+.stat-number {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--blue), #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #374151;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+.radar-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  border: 1px solid rgba(37,99,235,0.15);
+  animation: glow 3s ease-in-out infinite;
+}
+.radar-ring:nth-child(1) { width:120px;height:120px;animation-delay:0s; }
+.radar-ring:nth-child(2) { width:200px;height:200px;animation-delay:0.5s; }
+.radar-ring:nth-child(3) { width:280px;height:280px;animation-delay:1s; }
+
+/* ===== SECTION 5: SWARM ===== */
+#swarm {
+  padding: 120px 60px;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+}
+.swarm-header { text-align: center; }
+.swarm-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0;
+  margin-top: 60px;
+  position: relative;
+}
+.swarm-grid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), var(--gold), var(--blue), transparent);
+  transform: translateY(-50%);
+  animation: shimmer 3s linear infinite;
+  background-size: 200% 100%;
+}
+.swarm-card {
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+.swarm-card:nth-child(2) { animation-delay: 1.5s; }
+.swarm-card:nth-child(3) { animation-delay: 3s; }
+.swarm-card:nth-child(4) { animation-delay: 4.5s; }
+.swarm-icon {
+  width: 70px; height: 70px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.swarm-icon::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(37,99,235,0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+.swarm-icon svg { width: 32px; height: 32px; fill: var(--blue-soft); }
+.swarm-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.swarm-id {
+  font-size: 0.7rem;
+  color: var(--blue);
+  font-family: 'Rajdhani', monospace;
+  letter-spacing: 3px;
+}
+.swarm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #4ade80;
+  margin-top: 12px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 6px #4ade80;
+}
+
+/* ===== SECTION 6: AIRBAG RECOVERY ===== */
+#airbag {
+  padding: 120px 60px;
+  background: #ffffff;
+}
+.airbag-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.airbag-media {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.airbag-media img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  filter: saturate(0.7);
+  transition: filter 0.4s;
+}
+.airbag-media:hover img { filter: saturate(1); }
+.airbag-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 16px;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+.airbag-media:hover::after {
+  border-color: var(--gold);
+  box-shadow: 0 0 60px rgba(212,175,55,0.2);
+}
+.timeline-v {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  position: relative;
+}
+.timeline-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.t-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 12px rgba(37,99,235,0.4);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.t-line {
+  width: 1px;
+  flex: 1;
+  min-height: 40px;
+  background: linear-gradient(180deg, var(--blue), rgba(37,99,235,0.1));
+  margin-top: 4px;
+}
+.timeline-item:last-child .t-line { display: none; }
+.t-content { padding-bottom: 36px; }
+.t-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+.t-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+
+/* ===== SECTION 7: WORKFLOW ===== */
+#workflow {
+  padding: 120px 60px;
+  background: #f0f4ff;
+  text-align: center;
+}
+.workflow-timeline {
+  max-width: 700px;
+  margin: 60px auto 0;
+  position: relative;
+}
+.workflow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--blue), var(--blue), transparent);
+  transform: translateX(-50%);
+}
+.wf-item {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.wf-item:nth-child(even) { flex-direction: row-reverse; }
+.wf-item:nth-child(even) .wf-text { text-align: right; }
+.wf-dot {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(37,99,235,0.08);
+  border: 1px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--blue);
+  position: relative;
+  transition: all 0.3s;
+}
+.wf-item:hover .wf-dot {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 30px var(--blue-glow);
+}
+.wf-text { flex: 1; }
+.wf-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+.wf-sub { color: var(--muted); font-size: 0.8rem; }
+
+/* ===== SECTION 8: FEATURE GRID ===== */
+#features {
+  padding: 120px 60px;
+  background: #ffffff;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.feat-card {
+  padding: 40px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.feat-card:hover::before { opacity: 1; }
+.feat-icon-wrap {
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+}
+.feat-card:hover .feat-icon-wrap {
+  background: rgba(37,99,235,0.12);
+  border-color: var(--blue);
+  box-shadow: 0 0 30px var(--blue-glow);
+  transform: scale(1.1) rotate(5deg);
+}
+.feat-icon-wrap svg { width: 28px; height: 28px; fill: var(--blue); }
+.feat-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.feat-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+
+/* ===== SECTION 9: COUNTERS ===== */
+#counters {
+  padding: 100px 60px;
+  background: linear-gradient(180deg, #f0f4ff 0%, #e8eeff 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#counters::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%);
+}
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 40px;
+  position: relative;
+}
+.counter-item {}
+.counter-num {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(37,99,235,0.2);
+}
+.counter-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #374151;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* ===== SECTION 10: VIDEO SHOWCASE ===== */
+#video-showcase {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#showcase-video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  transform: scale(1.1);
+  transition: transform 0.1s;
+}
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(15,23,42,0.5) 50%, rgba(255,255,255,0.3) 100%);
+}
+.showcase-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+.showcase-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.showcase-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  max-width: 700px;
+  margin: 0 auto 36px;
+}
+
+/* ===== SECTION 11: R&D ===== */
+#rnd {
+  padding: 120px 60px;
+  background: #ffffff;
+}
+.rnd-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 28px;
+  margin-top: 60px;
+}
+.rnd-card {
+  overflow: hidden;
+}
+.rnd-img {
+  width: 100%; height: 200px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.6);
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
+}
+.rnd-card:hover .rnd-img { transform: scale(1.06); filter: saturate(1); }
+.rnd-body { padding: 28px; }
+.rnd-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+.rnd-card:hover .rnd-icon {
+  background: var(--blue);
+  box-shadow: 0 0 20px var(--blue-glow);
+}
+.rnd-icon svg { width: 20px; height: 20px; fill: var(--blue-soft); }
+.rnd-card:hover .rnd-icon svg { fill: #fff; }
+.rnd-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.rnd-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+
+/* ===== SECTION 12: FUTURE INNOVATIONS ===== */
+#future {
+  padding: 120px 60px;
+  background: #f0f4ff;
+}
+.future-header { text-align: center; }
+.future-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 70px auto 0;
+}
+.future-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue), #93c5fd, var(--blue));
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(37,99,235,0.2);
+}
+.future-item {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 50px;
+}
+.future-item:nth-child(even) { flex-direction: row-reverse; }
+.future-item:nth-child(even) .fi-card { text-align: right; }
+.fi-card {
+  flex: 1;
+  padding: 28px 32px;
+  transition: all 0.4s;
+}
+.fi-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px var(--gold-glow);
+}
+.fi-year {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--blue);
+  margin-bottom: 8px;
+  text-shadow: 0 0 20px rgba(37,99,235,0.2);
+}
+.fi-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+.fi-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+.fi-node {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 3px solid #f0f4ff;
+  box-shadow: 0 0 12px rgba(37,99,235,0.4);
+  flex-shrink: 0;
+  margin-top: 36px;
+  position: relative;
+  z-index: 2;
+}
+.fi-spacer { flex: 1; }
+
+/* ===== SECTION 13: FOOTER ===== */
+footer {
+  background: #0f172a;
+  border-top: 1px solid rgba(37,99,235,0.2);
+  padding: 80px 60px 40px;
+  position: relative;
+  z-index: 2;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.footer-tagline { color: #94a3b8; font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+.footer-col-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: #93c5fd;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+.footer-socials { display: flex; gap: 16px; }
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.social-btn:hover { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+.social-btn svg { width: 16px; height: 16px; fill: var(--muted); }
+.social-btn:hover svg { fill: var(--gold); }
+
+/* ===== RADAR WIDGET ===== */
+.radar-widget {
+  position: relative;
+  width: 220px; height: 220px;
+  margin: 0 auto;
+}
+.radar-circle {
+  position: absolute;
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.radar-sweep {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 50%; height: 1px;
+  transform-origin: left center;
+  animation: radarSpin 3s linear infinite;
+  background: linear-gradient(90deg, rgba(37,99,235,0.8), transparent);
+}
+.radar-sweep::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  box-shadow: 0 0 8px var(--blue);
+}
+
+/* ===== RINGS DECORATION ===== */
+.rings-wrap {
+  position: absolute;
+  right: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 300px; height: 300px;
+  pointer-events: none;
+  opacity: 0.15;
+}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.ring:nth-child(1) { width:100px;height:100px; animation: rotate 8s linear infinite; }
+.ring:nth-child(2) { width:180px;height:180px; animation: counterRotate 12s linear infinite; }
+.ring:nth-child(3) { width:260px;height:260px; animation: rotate 16s linear infinite; }
+
+/* ===== MAGNETIC BUTTON WRAPPER ===== */
+.mag-btn-wrap { display: inline-block; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .overview-grid { grid-template-columns: repeat(2,1fr); }
+  .swarm-grid { grid-template-columns: repeat(2,1fr); }
+  .counter-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 40px; }
+  .stat-cards { grid-template-columns: 1fr; }
+  .swarm-grid { grid-template-columns: 1fr 1fr; }
+  .counter-grid { grid-template-columns: 1fr 1fr; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .rnd-grid { grid-template-columns: 1fr; }
+  .airbag-inner { grid-template-columns: 1fr; gap: 40px; }
+  #overview,#ai-tracking,#computer-vision,#swarm,#airbag,#workflow,#features,#counters,#rnd,#future,#workflow { padding: 80px 24px; }
+  .future-timeline::before { left: 20px; }
+  .future-item,.future-item:nth-child(even) { flex-direction: column; gap: 16px; }
+  .fi-node { margin-top: 0; }
+  .fi-card,.future-item:nth-child(even) .fi-card { text-align: left; }
+  footer { padding: 60px 24px 28px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ===== UTILITY ===== */
+.text-center { text-align: center; }
+.mt-60 { margin-top: 60px; }
+.col-gold { color: var(--gold); }
+.col-blue { color: var(--blue-soft); }
+
+/* ===== OVERFLOW SECTION BG FIXES ===== */
+#features { overflow: hidden; }
+</style>
 </head>
+
 <body>
 
-  <!-- Ambient Glows -->
-  <div class="ambient-glows">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-3"></div>
-  </div>
-  <div class="subtle-grid-overlay"></div>
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
-  <!-- Header -->
-  <header id="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
-      </a>
-      
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="technologies.html" class="nav-link active">Technologies</a>
-        <a href="showcase.html" class="nav-link">Showcase</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
+<!-- SPOTLIGHT -->
+<div id="spotlight"></div>
 
-      <div class="nav-actions">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
-        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-      </div>
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">WITHX</a>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="technologies.html">TECHNOLOGY</a></li>
+    <li><a href="sea.html">SEA</a></li>
+    <li><a href="land.html">LAND</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">GET IN TOUCH</a>
+</nav>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section id="hero">
+  <video id="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">WITHX DEFENCE // TECHNOLOGY DIVISION</div>
+    <h1 class="hero-title">
+      <span class="line"><span>ADVANCED</span></span>
+      <span class="line"><span>DEFENCE</span></span>
+      <span class="line"><span>TECHNOLOGIES</span></span>
+    </h1>
+    <p class="hero-sub">AI-powered systems engineered for mission reliability, autonomous decision making and intelligent surveillance across contested environments.</p>
+    <div class="hero-buttons">
+      <a href="#overview" class="btn-primary mag-btn-wrap">Explore Systems</a>
+      <a href="#video-showcase" class="btn-outline mag-btn-wrap">Watch Demo</a>
     </div>
-  </header>
-
-  <!-- Mobile Dropdown Navigation -->
-  <div class="mobile-nav">
-    <a href="index.html" class="mobile-nav-link">Home</a>
-    <a href="about.html" class="mobile-nav-link">About</a>
-    <a href="technologies.html" class="mobile-nav-link">Technologies</a>
-    <a href="showcase.html" class="mobile-nav-link">Showcase</a>
-    <a href="contact.html" class="mobile-nav-link">Contact</a>
-    <a href="contact.html" class="btn btn-primary btn-block">Get in Touch</a>
   </div>
 
-  <main>
-    <!-- Technologies Hero Section -->
-    <section class="hero-section" style="min-height: 50vh; padding-top: calc(var(--header-height) + 5rem); padding-bottom: 3rem;">
-      <div class="container">
-        <div class="badge-tag scroll-reveal">
-          <span class="badge-dot"></span>
-          Autonomous Platforms
-        </div>
-        <h1 class="hero-title scroll-reveal" style="max-width: 800px;">
-          Aerospace Intelligence & <span class="text-gradient">Hardware Protection</span>
-        </h1>
-        <p class="hero-subtitle scroll-reveal" style="max-width: 700px;">
-          Deploying tactical aerial monitoring arrays and automatic flotation systems to safeguard mission-critical hardware assets.
-        </p>
-      </div>
-    </section>
+  <div class="hero-scroll">
+    <span class="scroll-label">SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-    <!-- Detailed Core Cards Section -->
-    <section class="section-padding" style="border-top: 1px solid var(--border-color); background-color: var(--bg-secondary);">
-      <div class="container">
-        
-        <!-- Technology 1: Drone Surveillance System -->
-        <div class="about-card scroll-reveal" style="margin-bottom: 6rem; padding: 4rem; background: #ffffff;">
-          <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
-            <div>
-              <div style="margin-bottom: 1.5rem;">
-                <span class="badge badge-warning" style="margin-bottom: 1rem;">
-                  <span class="badge-pulse"></span>
-                  Under Development
-                </span>
-                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">WITHX Drone Surveillance System</h2>
-                <p style="font-weight: 600; color: var(--accent-blue);">Advanced Aerial Monitoring & Reconnaissance Platform</p>
-              </div>
-              <p style="margin-bottom: 2rem; font-size: 0.975rem; line-height: 1.7;">
-                The WITHX Drone Surveillance System provides real-time aerial monitoring, reconnaissance, and situational awareness capabilities for modern surveillance operations. Specially optimized for perimeter security, border control, and remote environmental surveys.
-              </p>
-
-              <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Core Features</h4>
-                <ul class="features-list" style="grid-template-columns: 1fr; gap: 0.75rem;">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Real-Time Video Monitoring & Sensor Stream
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    GPS-Based Waypoint & Mission Navigation
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Autonomous Flight Mechanics & Emergency Auto-Land
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Long-Range Surveillance (15km Operational Radius)
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Day & Night Dual-Sensor Optical Assemblies
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Live High-Bandwidth Telemetry Data Transmission
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Primary Applications</h4>
-                <div class="app-tags">
-                  <span class="app-tag">Security Monitoring</span>
-                  <span class="app-tag">Border Observation</span>
-                  <span class="app-tag">Disaster Assessment</span>
-                  <span class="app-tag">Search & Rescue Support</span>
-                  <span class="app-tag">Infrastructure Inspection</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-visual-box">
-
-  <div class="product-3d-viewer" data-product="drone"></div>
-
-  <div class="detail-image">
-    <img src="assets/surveillance_drone.png" alt="Drone Detailed View">
+<!-- ===== SECTION 2: TECHNOLOGY OVERVIEW ===== -->
+<section id="overview">
+  <div class="rings-wrap">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
   </div>
 
-</div>
-            
-              
-              <!-- Spec Table -->
-              <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-md);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">System Specifications</h3>
-                <div class="spec-rows">
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">Payload Capacity</span>
-                    <span class="spec-value">1.8 kg Max</span>
-                  </div>
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">Max Flight Time</span>
-                    <span class="spec-value">48 Minutes</span>
-                  </div>
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">Wind Resistance</span>
-                    <span class="spec-value">Level 6 (Up to 14 m/s)</span>
-                  </div>
-                  <div class="spec-row" style="padding: 0.5rem 0 0 0;">
-                    <span class="spec-label">Command Link</span>
-                    <span class="spec-value">Encrypted COFDM Telemetry</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Technology 2: Airbag Recovery System -->
-        <div class="about-card scroll-reveal" style="padding: 4rem; background: #ffffff;">
-          <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start;">
-            <div>
-              <div style="margin-bottom: 1.5rem;">
-                <span class="badge badge-info" style="margin-bottom: 1rem;">
-                  <span class="badge-pulse"></span>
-                  Research & Prototype Development
-                </span>
-                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">WITHX Drone Airbag Recovery System</h2>
-                <p style="font-weight: 600; color: var(--accent-blue);">Automatic Water-Activated Drone Recovery Technology</p>
-              </div>
-              <p style="margin-bottom: 2rem; font-size: 0.975rem; line-height: 1.7;">
-                The WITHX Drone Airbag Recovery System protects expensive drone hardware and payloads during accidental water landings. By deploying high-buoyancy flotation supports instantly upon water detection, it ensures that valuable assets do not sink.
-              </p>
-
-              <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Core Features</h4>
-                <ul class="features-list" style="grid-template-columns: 1fr; gap: 0.75rem;">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Water-Activated Deployment (<120ms latency)
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Automatic High-Buoyancy Flotation Support
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Ultra-Lightweight Carbon Gas Shell Assembly
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Zero Passive Electrical Power Required (Sensing Mode)
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    High-Frequency Water Conductivity Array Sensors
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Modular Fit For Multi-Rotor & Fixed-Wing Units
-                  </li>
-                </ul>
-              </div>
-
-              <div style="margin-bottom: 2rem;">
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Primary Applications</h4>
-                <div class="app-tags">
-                  <span class="app-tag">Marine Drone Operations</span>
-                  <span class="app-tag">Water Surveillance Missions</span>
-                  <span class="app-tag">Coastal Monitoring</span>
-                  <span class="app-tag">Rescue Operations</span>
-                  <span class="app-tag">Commercial & Research Drones</span>
-                </div>
-              </div>
-
-              <div>
-                <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">System Benefits</h4>
-                <ul class="benefits-list" style="gap: 0.5rem;">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="benefit-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Reduces Risk of Drone & Payload Loss
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="benefit-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Improves Recovery Success Rate in open oceans
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="benefit-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Enhances Operational Safety near crowded waterways
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="benefit-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Supports Water-Based Research Missions & Sensor Drops
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="product-visual-box">
-
-  <div class="product-3d-viewer" data-product="airbag"></div>
-
-  <div class="detail-image">
-    <img src="assets/water_recovery_drone.png" alt="Airbag Recovery Detailed View">
+  <div class="reveal">
+    <span class="section-label">CAPABILITIES</span>
+    <h2 class="section-title">CORE <span>TECHNOLOGY</span><br>SYSTEMS</h2>
+    <p class="section-sub">Four pillars of autonomous defence intelligence, engineered for precision in the most demanding operational environments.</p>
   </div>
 
-</div>
-              
-              <!-- Spec Table -->
-              <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-md);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">System Specifications</h3>
-                <div class="spec-rows">
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">System Dry Weight</span>
-                    <span class="spec-value">220g (Excluding gas canister)</span>
-                  </div>
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">Inflation Speed</span>
-                    <span class="spec-value">120ms (CO2 cold-gas cartridge)</span>
-                  </div>
-                  <div class="spec-row" style="border-bottom: 1px solid var(--border-color); padding: 0.5rem 0;">
-                    <span class="spec-label">Flotation Buoyancy</span>
-                    <span class="spec-value">Supports up to 25kg Payload</span>
-                  </div>
-                  <div class="spec-row" style="padding: 0.5rem 0 0 0;">
-                    <span class="spec-label">Sensing Array</span>
-                    <span class="spec-value">Quad Gold-Plated Electro-Resistive</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="overview-grid mt-60">
+
+    <div class="overview-card glass reveal" style="transition-delay:0.1s">
+      <div class="gradient-border"></div>
+      <img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="AI Tracking" />
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
         </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-<footer class="main-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-          <span class="logo-text">WITHX <span class="logo-accent">DEFENCE</span></span>
-        </a>
-        <p class="footer-desc">
-          Developing Next-Generation Surveillance and Recovery Technologies for Unmanned Systems.
-        </p>
-      </div>
-
-      <div class="footer-links-group">
-        <h4>Navigation</h4>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="technologies.html">Technologies</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-
-      <div class="footer-links-group">
-        <h4>Solutions</h4>
-        <div class="footer-links">
-          <a href="technologies.html">Surveillance System</a>
-          <a href="technologies.html">Airbag Recovery</a>
-          <a href="showcase.html">Showcase Model</a>
-        </div>
-      </div>
-
-      <div class="footer-links-group">
-        <h4>Compliance</h4>
-        <div class="footer-links">
-          <a href="#">Export Controlled (ITAR)</a>
-          <a href="#">Security Protocols</a>
-          <a href="#">Quality Assurance</a>
-        </div>
+        <div class="card-title">AI TRACKING</div>
+        <p class="card-desc">Autonomous multi-target tracking with real-time motion prediction and sub-100ms threat response latency.</p>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <p class="copyright">&copy; 2026 WITHX Defence. All rights reserved. Aerospace Engineering, Unmanned Systems R&D Division.</p>
-      <p class="security-classification">CLASSIFICATION: PUBLIC RELATIONS PROTOCOL SEC-441</p>
+    <div class="overview-card glass reveal" style="transition-delay:0.2s">
+      <div class="gradient-border"></div>
+      <img class="card-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="Computer Vision" />
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </div>
+        <div class="card-title">COMPUTER VISION</div>
+        <p class="card-desc">Deep-learning inference across thermal, optical, and radar modalities with 98% object detection accuracy.</p>
+      </div>
     </div>
-  </footer>
-      
 
-  <script src="script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="script.js"></script>
-  
-</body>
-  
+    <div class="overview-card glass reveal" style="transition-delay:0.3s">
+      <div class="gradient-border"></div>
+      <img class="card-img" src="https://images.unsplash.com/photo-1518364538800-6bae3c2ea0f2?w=600&q=80" alt="Swarm Intelligence" />
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <div class="card-title">SWARM INTELLIGENCE</div>
+        <p class="card-desc">Distributed multi-agent coordination enabling synchronized autonomous missions across contested airspace.</p>
+      </div>
+    </div>
+
+    <div class="overview-card glass reveal" style="transition-delay:0.4s">
+      <div class="gradient-border"></div>
+      <img class="card-img" src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80" alt="Airbag Recovery" />
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="card-title">AIRBAG RECOVERY</div>
+        <p class="card-desc">Rapid-deployment airbag system enabling controlled asset recovery from catastrophic failure scenarios.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 3: AI TRACKING SYSTEM ===== -->
+<section id="ai-tracking">
+  <div class="two-col">
+    <div class="glow-image-wrap reveal-left">
+      <img src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=900&q=80" alt="AI Drone Tracking" />
+    </div>
+    <div class="reveal-right">
+      <span class="section-label">SYSTEM 01</span>
+      <h2 class="section-title">AI <span>TRACKING</span><br>SYSTEM</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Persistent autonomous target acquisition driven by a proprietary neural prediction engine, operating at the edge in GPS-denied environments.</p>
+
+      <ul class="features-list">
+        <li><span class="feat-dot"></span>Autonomous Target Following</li>
+        <li><span class="feat-dot"></span>Motion Prediction &amp; Trajectory Modelling</li>
+        <li><span class="feat-dot"></span>Multi-Class Threat Detection</li>
+        <li><span class="feat-dot"></span>GPS Synchronization &amp; Dead Reckoning</li>
+        <li><span class="feat-dot"></span>Real-time Edge Monitoring Dashboard</li>
+      </ul>
+
+      <div class="progress-bars">
+        <div class="prog-item">
+          <div class="prog-label"><span>TARGET ACCURACY</span><span>99%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-width="99"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-label"><span>THREAT DETECTION</span><span>95%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-width="95"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-label"><span>RESPONSE TIME</span><span>97%</span></div>
+          <div class="prog-track"><div class="prog-fill" data-width="97"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: COMPUTER VISION ===== -->
+<section id="computer-vision">
+  <div class="grid-bg"></div>
+  <div class="vision-header reveal">
+    <span class="section-label">SYSTEM 02</span>
+    <h2 class="section-title">COMPUTER <span>VISION</span></h2>
+    <p class="section-sub" style="margin:16px auto 0;text-align:center">Multi-modal sensor fusion powering battlefield awareness at machine speed, far beyond human perception limits.</p>
+  </div>
+
+  <div class="stat-cards">
+    <div class="stat-card glass reveal" style="transition-delay:0.1s">
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="stat-number" data-count="98" data-suffix="%">0%</div>
+      <div class="stat-label">Object Detection Rate</div>
+    </div>
+    <div class="stat-card glass reveal" style="transition-delay:0.2s">
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="stat-number" data-count="96" data-suffix="%">0%</div>
+      <div class="stat-label">Thermal Analysis Accuracy</div>
+    </div>
+    <div class="stat-card glass reveal" style="transition-delay:0.3s">
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="radar-ring"></div>
+      <div class="stat-number" data-count="99" data-suffix="%">0%</div>
+      <div class="stat-label">Recognition Accuracy</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: SWARM INTELLIGENCE ===== -->
+<section id="swarm">
+  <div class="swarm-header reveal">
+    <span class="section-label">SYSTEM 03</span>
+    <h2 class="section-title">SWARM <span>INTELLIGENCE</span></h2>
+    <p class="section-sub" style="margin:16px auto 0;text-align:center;max-width:500px">Coordinated autonomous units operating as a unified cognitive system — no single point of failure.</p>
+  </div>
+
+  <div class="swarm-grid mt-60">
+
+    <div class="swarm-card glass reveal" style="transition-delay:0.1s">
+      <div class="swarm-icon">
+        <svg viewBox="0 0 24 24"><path d="M22.5 6.908V6h-3v.908C17.774 7.373 17 8.591 17 10c0 1.933 1.567 3.5 3.5 3.5S24 11.933 24 10c0-1.409-.774-2.627-1.5-3.092zM20.5 12c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm-17 .908V12h-3v.908C-.226 13.373-1 14.591-1 16c0 1.933 1.567 3.5 3.5 3.5S6 17.933 6 16c0-1.409-.774-2.627-1.5-3.092zM2.5 18c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 2C9.791 2 8 3.791 8 6s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 13c-2.757 0-5 1.565-5 3.5V18h2v-1.5c0-.827 1.346-1.5 3-1.5s3 .673 3 1.5V18h2v-1.5c0-1.935-2.243-3.5-5-3.5z"/></svg>
+      </div>
+      <div class="swarm-name">UNIT ALPHA</div>
+      <div class="swarm-id">ID: WX-A01</div>
+      <div class="swarm-status"><span class="status-dot"></span>ACTIVE</div>
+    </div>
+
+    <div class="swarm-card glass reveal" style="transition-delay:0.2s">
+      <div class="swarm-icon">
+        <svg viewBox="0 0 24 24"><path d="M22.5 6.908V6h-3v.908C17.774 7.373 17 8.591 17 10c0 1.933 1.567 3.5 3.5 3.5S24 11.933 24 10c0-1.409-.774-2.627-1.5-3.092zM20.5 12c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm-17 .908V12h-3v.908C-.226 13.373-1 14.591-1 16c0 1.933 1.567 3.5 3.5 3.5S6 17.933 6 16c0-1.409-.774-2.627-1.5-3.092zM2.5 18c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 2C9.791 2 8 3.791 8 6s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 13c-2.757 0-5 1.565-5 3.5V18h2v-1.5c0-.827 1.346-1.5 3-1.5s3 .673 3 1.5V18h2v-1.5c0-1.935-2.243-3.5-5-3.5z"/></svg>
+      </div>
+      <div class="swarm-name">UNIT BRAVO</div>
+      <div class="swarm-id">ID: WX-B02</div>
+      <div class="swarm-status"><span class="status-dot"></span>ACTIVE</div>
+    </div>
+
+    <div class="swarm-card glass reveal" style="transition-delay:0.3s">
+      <div class="swarm-icon">
+        <svg viewBox="0 0 24 24"><path d="M22.5 6.908V6h-3v.908C17.774 7.373 17 8.591 17 10c0 1.933 1.567 3.5 3.5 3.5S24 11.933 24 10c0-1.409-.774-2.627-1.5-3.092zM20.5 12c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm-17 .908V12h-3v.908C-.226 13.373-1 14.591-1 16c0 1.933 1.567 3.5 3.5 3.5S6 17.933 6 16c0-1.409-.774-2.627-1.5-3.092zM2.5 18c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 2C9.791 2 8 3.791 8 6s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 13c-2.757 0-5 1.565-5 3.5V18h2v-1.5c0-.827 1.346-1.5 3-1.5s3 .673 3 1.5V18h2v-1.5c0-1.935-2.243-3.5-5-3.5z"/></svg>
+      </div>
+      <div class="swarm-name">UNIT CHARLIE</div>
+      <div class="swarm-id">ID: WX-C03</div>
+      <div class="swarm-status"><span class="status-dot"></span>ACTIVE</div>
+    </div>
+
+    <div class="swarm-card glass reveal" style="transition-delay:0.4s">
+      <div class="swarm-icon">
+        <svg viewBox="0 0 24 24"><path d="M22.5 6.908V6h-3v.908C17.774 7.373 17 8.591 17 10c0 1.933 1.567 3.5 3.5 3.5S24 11.933 24 10c0-1.409-.774-2.627-1.5-3.092zM20.5 12c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm-17 .908V12h-3v.908C-.226 13.373-1 14.591-1 16c0 1.933 1.567 3.5 3.5 3.5S6 17.933 6 16c0-1.409-.774-2.627-1.5-3.092zM2.5 18c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 2C9.791 2 8 3.791 8 6s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/><path d="M12 13c-2.757 0-5 1.565-5 3.5V18h2v-1.5c0-.827 1.346-1.5 3-1.5s3 .673 3 1.5V18h2v-1.5c0-1.935-2.243-3.5-5-3.5z"/></svg>
+      </div>
+      <div class="swarm-name">UNIT DELTA</div>
+      <div class="swarm-id">ID: WX-D04</div>
+      <div class="swarm-status"><span class="status-dot"></span>ACTIVE</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:60px;display:flex;justify-content:center;">
+    <div class="radar-widget reveal">
+      <div class="radar-circle" style="width:60px;height:60px;"></div>
+      <div class="radar-circle" style="width:120px;height:120px;"></div>
+      <div class="radar-circle" style="width:180px;height:180px;"></div>
+      <div class="radar-circle" style="width:220px;height:220px;"></div>
+      <div class="radar-sweep"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: AIRBAG RECOVERY ===== -->
+<section id="airbag">
+  <div class="reveal" style="margin-bottom:60px;">
+    <span class="section-label">SYSTEM 04</span>
+    <h2 class="section-title">AIRBAG <span>RECOVERY</span><br>SYSTEM</h2>
+    <p class="section-sub">Millisecond-response pyrotechnic airbag deployment protecting mission-critical hardware during catastrophic failure — zero asset loss.</p>
+  </div>
+
+  <div class="airbag-inner">
+    <div class="airbag-media reveal-left">
+      <img src="https://images.unsplash.com/photo-1530971028763-d71dc500fe4e?w=900&q=80" alt="Airbag Recovery System" />
+    </div>
+
+    <div class="timeline-v reveal-right">
+      <div class="timeline-item">
+        <div class="timeline-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="t-content">
+          <div class="t-title">EMERGENCY DETECTED</div>
+          <p class="t-desc">Onboard IMU and barometric sensors detect anomalous flight dynamics within 8ms of onset.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="t-content">
+          <div class="t-title">AIRBAG DEPLOYMENT</div>
+          <p class="t-desc">Pyrotechnic charge ignites, inflating protective envelope in under 50ms — faster than human reaction.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-spine"><div class="t-dot"></div><div class="t-line"></div></div>
+        <div class="t-content">
+          <div class="t-title">CONTROLLED DESCENT</div>
+          <p class="t-desc">Aerodynamic drag from the airbag profile reduces terminal velocity by up to 74%.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-spine"><div class="t-dot"></div></div>
+        <div class="t-content">
+          <div class="t-title">IMPACT PROTECTION</div>
+          <p class="t-desc">Multi-layer foam core absorbs residual kinetic energy — payload integrity maintained on hard terrain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: WORKFLOW ===== -->
+<section id="workflow">
+  <div class="reveal">
+    <span class="section-label">PROCESS</span>
+    <h2 class="section-title">MISSION <span>WORKFLOW</span></h2>
+    <p class="section-sub" style="margin:16px auto 0;text-align:center">Every operation follows a deterministic AI-governed sequence from initialisation to autonomous response.</p>
+  </div>
+
+  <div class="workflow-timeline">
+    <div class="wf-item reveal">
+      <div class="wf-dot">01</div>
+      <div class="wf-text">
+        <div class="wf-title">MISSION START</div>
+        <div class="wf-sub">Parameters uploaded, unit integrity confirmed, comms handshake established.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+    <div class="wf-item reveal">
+      <div class="wf-dot">02</div>
+      <div class="wf-text">
+        <div class="wf-title">DATA COLLECTION</div>
+        <div class="wf-sub">Thermal, optical, and radar sensors stream 4K telemetry at 60 fps.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+    <div class="wf-item reveal">
+      <div class="wf-dot">03</div>
+      <div class="wf-text">
+        <div class="wf-title">AI PROCESSING</div>
+        <div class="wf-sub">Edge NPU runs inference at 120 TOPs — no cloud dependency required.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+    <div class="wf-item reveal">
+      <div class="wf-dot">04</div>
+      <div class="wf-text">
+        <div class="wf-title">OBJECT DETECTION</div>
+        <div class="wf-sub">Multi-class detection identifies and classifies objects with 98% precision.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+    <div class="wf-item reveal">
+      <div class="wf-dot">05</div>
+      <div class="wf-text">
+        <div class="wf-title">TARGET TRACKING</div>
+        <div class="wf-sub">Kalman-filter prediction maintains lock through occlusion and evasive manoeuvres.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+    <div class="wf-item reveal">
+      <div class="wf-dot">06</div>
+      <div class="wf-text">
+        <div class="wf-title">AUTONOMOUS RESPONSE</div>
+        <div class="wf-sub">Closed-loop actuation executes the optimal response vector in under 80ms.</div>
+      </div>
+      <div style="flex:1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: FEATURE GRID ===== -->
+<section id="features">
+  <div class="reveal text-center">
+    <span class="section-label">SUBSYSTEMS</span>
+    <h2 class="section-title">INTEGRATED <span>SENSOR</span><br>ARCHITECTURE</h2>
+  </div>
+
+  <div class="feature-grid mt-60">
+
+    <div class="feat-card glass reveal" style="transition-delay:0.05s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zM12 1L9 4h2V0h2v4h2L12 1zM12 23l3-3h-2v4h-2v-4H9l3 3zM1 12l3 3V13H0v-2h4V9L1 12zM23 12l-3-3v2h4v2h-4v2l3-3z"/></svg>
+      </div>
+      <div class="feat-name">THERMAL CAMERA</div>
+      <p class="feat-desc">640×512 uncooled LWIR sensor delivering 30fps imagery in zero-light, smoke, and adverse weather conditions.</p>
+    </div>
+
+    <div class="feat-card glass reveal" style="transition-delay:0.1s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 7.48 2 13h2c0-4.42 3.58-8 8-8s8 3.58 8 8h2c0-5.52-4.48-10-10-10zm0 4c-3.31 0-6 2.69-6 6h2c0-2.21 1.79-4 4-4s4 1.79 4 4h2c0-3.31-2.69-6-6-6zm1 9c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1z"/></svg>
+      </div>
+      <div class="feat-name">NIGHT VISION</div>
+      <p class="feat-desc">Gen-IV image intensification with 12-bit digital output — detects heat signatures at 800m in total darkness.</p>
+    </div>
+
+    <div class="feat-card glass reveal" style="transition-delay:0.15s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+      <div class="feat-name">GPS NAVIGATION</div>
+      <p class="feat-desc">Dual-band L1/L5 GNSS with inertial dead-reckoning maintains 10cm accuracy in signal-denied corridors.</p>
+    </div>
+
+    <div class="feat-card glass reveal" style="transition-delay:0.2s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+      </div>
+      <div class="feat-name">RADAR DETECTION</div>
+      <p class="feat-desc">FMCW radar with 200m detection range and 0.1m/s velocity resolution — immune to optical countermeasures.</p>
+    </div>
+
+    <div class="feat-card glass reveal" style="transition-delay:0.25s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </div>
+      <div class="feat-name">360° MONITORING</div>
+      <p class="feat-desc">Full-sphere situational awareness via overlapping sensor cones — blind spot elimination at any altitude.</p>
+    </div>
+
+    <div class="feat-card glass reveal" style="transition-delay:0.3s">
+      <div class="feat-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+      </div>
+      <div class="feat-name">AUTONOMOUS FLIGHT</div>
+      <p class="feat-desc">Redundant flight controller with obstacle avoidance and auto-return executing 400+ decision branches per second.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 9: COUNTERS ===== -->
+<section id="counters">
+  <div class="reveal" style="margin-bottom:60px">
+    <span class="section-label">BY THE NUMBERS</span>
+    <h2 class="section-title" style="text-align:center">PROVEN <span>PERFORMANCE</span></h2>
+  </div>
+
+  <div class="counter-grid">
+    <div class="counter-item reveal" style="transition-delay:0.1s">
+      <div class="counter-num" data-count="99" data-suffix="%">0%</div>
+      <div class="counter-label">AI Targeting Accuracy</div>
+    </div>
+    <div class="counter-item reveal" style="transition-delay:0.2s">
+      <div class="counter-num" data-count="95" data-suffix="%">0%</div>
+      <div class="counter-label">Mission Success Rate</div>
+    </div>
+    <div class="counter-item reveal" style="transition-delay:0.3s">
+      <div class="counter-num" data-count="50" data-suffix="+">0</div>
+      <div class="counter-label">Validated Test Flights</div>
+    </div>
+    <div class="counter-item reveal" style="transition-delay:0.4s">
+      <div class="counter-num" data-count="24" data-suffix="/7">0</div>
+      <div class="counter-label">Monitoring Operations</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 10: VIDEO SHOWCASE ===== -->
+<section id="video-showcase">
+  <video id="showcase-video" autoplay muted loop playsinline>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+  </video>
+  <div class="showcase-overlay"></div>
+  <div class="showcase-content reveal">
+    <div class="showcase-label">// LIVE DEMONSTRATION</div>
+    <h2 class="showcase-title">SEE THE <span style="color:var(--gold)">TECHNOLOGY</span><br>IN ACTION</h2>
+    <a href="#" class="btn-primary">Watch Full Demo</a>
+  </div>
+</section>
+
+<!-- ===== SECTION 11: R&D ===== -->
+<section id="rnd">
+  <div class="reveal text-center">
+    <span class="section-label">RESEARCH &amp; DEVELOPMENT</span>
+    <h2 class="section-title">ENGINEERING <span>FRONTIERS</span></h2>
+    <p class="section-sub" style="margin:16px auto 0;text-align:center">Three active research programmes pushing the boundaries of autonomous defence capability.</p>
+  </div>
+
+  <div class="rnd-grid mt-60">
+
+    <div class="rnd-card glass reveal" style="transition-delay:0.1s;overflow:hidden;">
+      <img class="rnd-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80" alt="Machine Learning" />
+      <div class="rnd-body">
+        <div class="rnd-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 11.25 12 11.25 9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-.75c0-1.99 3.33-3 5-3s5 1.01 5 3V17z"/></svg>
+        </div>
+        <div class="rnd-title">MACHINE LEARNING</div>
+        <p class="rnd-desc">Continual learning architectures that refine target classification from operational encounters without cloud sync — pure edge intelligence.</p>
+      </div>
+    </div>
+
+    <div class="rnd-card glass reveal" style="transition-delay:0.2s;overflow:hidden;">
+      <img class="rnd-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="Sensor Fusion" />
+      <div class="rnd-body">
+        <div class="rnd-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <div class="rnd-title">SENSOR FUSION</div>
+        <p class="rnd-desc">Bayesian multi-sensor fusion pipelines merge radar, thermal, and optical streams into a unified 4D environment model in real time.</p>
+      </div>
+    </div>
+
+    <div class="rnd-card glass reveal" style="transition-delay:0.3s;overflow:hidden;">
+      <img class="rnd-img" src="https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=700&q=80" alt="Autonomous Systems" />
+      <div class="rnd-body">
+        <div class="rnd-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        </div>
+        <div class="rnd-title">AUTONOMOUS SYSTEMS</div>
+        <p class="rnd-desc">Formal verification of autonomy stacks ensures provably safe behaviour boundaries even under adversarial environmental perturbations.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 12: FUTURE INNOVATIONS ===== -->
+<section id="future">
+  <div class="future-header reveal">
+    <span class="section-label">ROADMAP</span>
+    <h2 class="section-title">FUTURE <span>INNOVATIONS</span></h2>
+    <p class="section-sub" style="margin:16px auto 0;text-align:center">A strategic technology horizon built to redefine the frontier of autonomous defence.</p>
+  </div>
+
+  <div class="future-timeline">
+
+    <div class="future-item">
+      <div class="fi-card glass reveal-left">
+        <div class="fi-year">2026</div>
+        <div class="fi-title">AI TRACKING V2</div>
+        <p class="fi-desc">Neural target prediction extended to simultaneous 64-target lock with predictive trajectory modelling over 10-second horizons.</p>
+      </div>
+      <div class="fi-node"></div>
+      <div class="fi-spacer"></div>
+    </div>
+
+    <div class="future-item">
+      <div class="fi-spacer"></div>
+      <div class="fi-node"></div>
+      <div class="fi-card glass reveal-right">
+        <div class="fi-year">2027</div>
+        <div class="fi-title">SWARM COMMUNICATION</div>
+        <p class="fi-desc">Encrypted mesh networking enabling real-time swarm coordination across 5km dispersal with sub-10ms inter-unit latency.</p>
+      </div>
+    </div>
+
+    <div class="future-item">
+      <div class="fi-card glass reveal-left">
+        <div class="fi-year">2028</div>
+        <div class="fi-title">AUTONOMOUS DEFENCE PLATFORM</div>
+        <p class="fi-desc">Fully autonomous platform capable of independent theatre-level operations — mission planning to execution without human input.</p>
+      </div>
+      <div class="fi-node"></div>
+      <div class="fi-spacer"></div>
+    </div>
+
+    <div class="future-item">
+      <div class="fi-spacer"></div>
+      <div class="fi-node"></div>
+      <div class="fi-card glass reveal-right">
+        <div class="fi-year">2030</div>
+        <div class="fi-title">COMPLETE MISSION INTELLIGENCE</div>
+        <p class="fi-desc">Full-spectrum cognitive autonomy — strategic planning, real-time adaptation, and post-mission self-debriefing embedded at the unit level.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 13: FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">WITHX</div>
+      <p class="footer-tagline">Engineering autonomous defence systems at the intersection of artificial intelligence, precision hardware, and mission reliability.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="technologies.html">Technology</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Systems</div>
+      <ul class="footer-links">
+        <li><a href="#ai-tracking">AI Tracking</a></li>
+        <li><a href="#computer-vision">Computer Vision</a></li>
+        <li><a href="#swarm">Swarm Intelligence</a></li>
+        <li><a href="#airbag">Airbag Recovery</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:info@withxdefence.com">info@withxdefence.com</a></li>
+        <li><a href="#">Operations Centre</a></li>
+        <li><a href="#">Media Enquiries</a></li>
+        <li><a href="#">Partnership</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 WITHX DEFENCE. ALL RIGHTS RESERVED. // CLASSIFIED SYSTEMS</div>
+    <div class="footer-socials">
+      <div class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+      </div>
+      <div class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== CURSOR ===== */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top  = my + 'px';
+  document.getElementById('spotlight').style.setProperty('--mx', mx + 'px');
+  document.getElementById('spotlight').style.setProperty('--my', my + 'px');
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .glass, .nav-cta, .btn-primary, .btn-outline').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width  = '6px';
+    cursor.style.height = '6px';
+    ring.style.width    = '56px';
+    ring.style.height   = '56px';
+    ring.style.borderColor = 'rgba(212,175,55,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width  = '12px';
+    cursor.style.height = '12px';
+    ring.style.width    = '36px';
+    ring.style.height   = '36px';
+    ring.style.borderColor = 'rgba(212,175,55,0.5)';
+  });
+});
+
+/* ===== PARTICLES ===== */
+(function(){
+  const canvas = document.getElementById('particles-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W = canvas.width  = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+
+  const N = 90;
+  const pts = Array.from({length:N}, () => ({
+    x: Math.random()*W, y: Math.random()*H,
+    vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+    r:  Math.random()*1.5 + 0.5
+  }));
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0) p.x = W; if(p.x > W) p.x = 0;
+      if(p.y < 0) p.y = H; if(p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(212,175,55,0.6)';
+      ctx.fill();
+    });
+
+    for(let i=0;i<N;i++){
+      for(let j=i+1;j<N;j++){
+        const dx = pts[i].x - pts[j].x;
+        const dy = pts[i].y - pts[j].y;
+        const d  = Math.sqrt(dx*dx+dy*dy);
+        if(d < 120){
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = `rgba(37,99,235,${(1-d/120)*0.3})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ===== NAVBAR SCROLL ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 60) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+
+/* ===== SCROLL REVEAL ===== */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ===== COUNTER ANIMATION ===== */
+const counterEls = document.querySelectorAll('[data-count]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting && !e.target.dataset.done){
+      e.target.dataset.done = '1';
+      const target = parseInt(e.target.dataset.count);
+      const suffix = e.target.dataset.suffix || '';
+      let current = 0;
+      const step  = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        e.target.textContent = current + suffix;
+        if(current >= target) clearInterval(timer);
+      }, 25);
+    }
+  });
+}, { threshold: 0.5 });
+counterEls.forEach(el => counterObs.observe(el));
+
+/* ===== PROGRESS BARS ===== */
+const progEls = document.querySelectorAll('.prog-fill');
+const progObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting && !e.target.dataset.done){
+      e.target.dataset.done = '1';
+      const w = e.target.dataset.width;
+      setTimeout(() => { e.target.style.width = w + '%'; }, 200);
+    }
+  });
+}, { threshold: 0.5 });
+progEls.forEach(el => progObs.observe(el));
+
+/* ===== PARALLAX ON SHOWCASE VIDEO ===== */
+const showcaseVideo = document.getElementById('showcase-video');
+window.addEventListener('scroll', () => {
+  if(!showcaseVideo) return;
+  const rect = document.getElementById('video-showcase').getBoundingClientRect();
+  const offset = rect.top / window.innerHeight;
+  showcaseVideo.style.transform = `scale(1.1) translateY(${offset * 30}px)`;
+});
+
+/* ===== MAGNETIC BUTTONS ===== */
+document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top  - r.height/2;
+    btn.style.transform = `translate(${x*0.18}px, ${y*0.25}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+/* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
 </body>
 </html>
