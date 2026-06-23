@@ -1142,3 +1142,301 @@ margin-top:10px;
         align-items:center;
     }
 }
+/* =====================================================
+   WITHX DEFENCE DARK THEME OVERRIDE
+   Paste at the END of style.css
+===================================================== */
+
+:root{
+    --bg:#000000;
+    --card:#0d0d0d;
+    --card2:#111827;
+    --blue:#2563eb;
+    --blue-light:#60a5fa;
+    --text:#ffffff;
+    --text-soft:#cbd5e1;
+}
+
+/* GLOBAL */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000 !important;
+    color:#fff !important;
+}
+
+/* NAVBAR */
+
+header{
+    background:transparent;
+}
+
+.nav{
+    background:rgba(0,0,0,.88) !important;
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-links a{
+    color:#fff !important;
+}
+
+.nav-links a:hover{
+    color:var(--blue-light) !important;
+}
+
+.nav-touch{
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.nav-touch:hover{
+    background:var(--blue);
+    color:#fff;
+}
+
+/* HERO */
+
+.hero{
+    background:#000;
+}
+
+.hero-overlay{
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.45)
+    ) !important;
+}
+
+.hero-tag{
+    color:var(--blue-light);
+    border:1px solid rgba(37,99,235,.25);
+    background:rgba(37,99,235,.08);
+}
+
+.hero h1,
+#hero-title{
+    color:#fff;
+}
+
+.hero p{
+    color:var(--text-soft);
+}
+
+.hero-buttons a:first-child{
+    background:var(--blue) !important;
+    color:#fff !important;
+}
+
+.hero-buttons a:first-child:hover{
+    background:#3b82f6 !important;
+}
+
+.hero-buttons a:last-child{
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+}
+
+/* RADAR */
+
+.radar-circle{
+    border:1px solid rgba(37,99,235,.22);
+}
+
+/* INFO CARDS */
+
+.info-card{
+    background:rgba(13,13,13,.75);
+    border:1px solid rgba(37,99,235,.2);
+}
+
+.info-card h2{
+    color:#fff;
+}
+
+.info-card span{
+    color:var(--text-soft);
+}
+
+/* PLATFORMS */
+
+.platforms{
+    background:#000 !important;
+}
+
+.platform-header h2{
+    color:#fff !important;
+}
+
+.platform-header p{
+    color:var(--text-soft) !important;
+}
+
+.section-tag{
+    background:rgba(37,99,235,.12) !important;
+    border:1px solid rgba(37,99,235,.25) !important;
+    color:var(--blue-light) !important;
+}
+
+.platform-card{
+    background:var(--card) !important;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:none;
+}
+
+.platform-card:hover{
+    box-shadow:
+    0 0 30px rgba(37,99,235,.18);
+}
+
+.card-overlay{
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.5),
+        transparent
+    ) !important;
+}
+
+.card-overlay h3{
+    color:#fff !important;
+}
+
+.card-overlay p{
+    color:var(--text-soft) !important;
+}
+
+.card-overlay a{
+    color:var(--blue-light) !important;
+}
+
+/* TECHNOLOGY */
+
+.technology{
+    background:#050505 !important;
+}
+
+.tech-tag{
+    background:rgba(37,99,235,.12) !important;
+    color:var(--blue-light) !important;
+}
+
+.tech-header h2{
+    color:#fff !important;
+}
+
+.tech-header p{
+    color:var(--text-soft) !important;
+}
+
+.tech-card{
+    background:var(--card) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+}
+
+.tech-card:hover{
+    border-color:var(--blue-light);
+}
+
+.tech-card h3{
+    color:#fff !important;
+}
+
+.tech-card p{
+    color:var(--text-soft) !important;
+}
+
+.tech-icon{
+    background:rgba(37,99,235,.12) !important;
+    color:var(--blue-light) !important;
+}
+
+.tech-glow{
+    background:
+    radial-gradient(
+        circle,
+        rgba(37,99,235,.28),
+        transparent 70%
+    );
+}
+
+/* MISSION */
+
+.mission-section{
+    background:#000 !important;
+}
+
+.mission-tag{
+    background:rgba(37,99,235,.12) !important;
+    color:var(--blue-light) !important;
+}
+
+.mission-header h2{
+    color:#fff !important;
+}
+
+.mission-header p{
+    color:var(--text-soft) !important;
+}
+
+.mission-card{
+    background:var(--card) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+}
+
+.mission-card:hover{
+    border-color:var(--blue-light);
+}
+
+.mission-card h3,
+.mission-card span{
+    color:var(--blue-light) !important;
+}
+
+.mission-card h4{
+    color:#fff !important;
+}
+
+.mission-card p{
+    color:var(--text-soft) !important;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#000 !important;
+}
+
+.footer h2,
+.footer h3{
+    color:#fff !important;
+}
+
+.footer p,
+.footer a{
+    color:var(--text-soft) !important;
+}
+
+.footer a:hover{
+    color:var(--blue-light) !important;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#000;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--blue);
+    border-radius:10px;
+}
