@@ -49,7 +49,17 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
 
 /* CURSOR */
-
+/* CURSOR */
+#cursor {
+  width: 12px; height: 12px; background: var(--blue-soft); border-radius: 50%;
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%); transition: transform 0.1s, width 0.2s, height 0.2s;
+}
+#cursor-ring {
+  width: 36px; height: 36px; border: 1px solid rgba(96,165,250,0.4); border-radius: 50%;
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%); transition: transform 0.15s ease, width 0.3s, height 0.3s;
+}
 
 /* SPOTLIGHT */
 #spotlight {
