@@ -6,7 +6,6 @@
 <title>WITHX Defence | Advanced Technologies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -86,7 +85,7 @@ nav.scrolled {
   box-shadow: 0 2px 30px rgba(0,0,0,0.9);
 }
 .nav-logo {
-  font-family: 'Outfit', monospace; font-size: 1.3rem; font-weight: 900;
+  font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 900;
   letter-spacing: 3px; color: var(--white); text-decoration: none;
 }
 .nav-logo::after {
@@ -95,7 +94,7 @@ nav.scrolled {
 }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
-  font-family: 'inter', sans-serif; font-size: 0.82rem; font-weight: 600;
+  font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 600;
   letter-spacing: 2px; color: var(--muted-2); text-decoration: none; transition: color 0.3s; position: relative;
 }
 .nav-links a::after {
@@ -185,7 +184,7 @@ section { position: relative; z-index: 2; }
   margin-bottom: 28px; opacity: 0; animation: fadeDown 0.8s 0.3s forwards;
 }
 .hero-title {
-  font-family: 'inter', monospace; font-size: clamp(3rem, 8vw, 2rem);
+  font-family: 'Orbitron', monospace; font-size: clamp(3rem, 8vw, 2rem);
   font-weight: 900; letter-spacing: 4px; line-height: 0.95; min-height: 2.5em; color: var(--white);
 }
 .hero-title .line { display: block; overflow: hidden; }
@@ -196,7 +195,7 @@ section { position: relative; z-index: 2; }
 .hero-sub { max-width:540px; color:var(--muted-2); font-size:1rem; line-height:1.7; margin-top:32px; opacity:0; animation:fadeUp 0.8s 1.1s forwards; }
 .hero-buttons { display:flex; gap:20px; margin-top:40px; opacity:0; animation:fadeUp 0.8s 1.3s forwards; }
 .btn-primary {
-  font-family:'inter',sans-serif; font-size:0.85rem; font-weight:700; letter-spacing:2px;
+  font-family:'Rajdhani',sans-serif; font-size:0.85rem; font-weight:700; letter-spacing:2px;
   padding:16px 36px; background:var(--blue); color:#fff; border:none; cursor:pointer;
   text-decoration:none; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
   transition:all 0.3s; display:inline-block;
@@ -422,228 +421,28 @@ footer { background:#020202; border-top:1px solid rgba(37,99,235,0.12); padding:
   footer { padding:60px 24px 28px; }
   .footer-grid { grid-template-columns:1fr; gap:36px; }
 }
-
-
-
-
-
-
-
-  /* NAVBAR */
-
-header{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-z-index:1000;
-}
-
-.nav{
-
-height:90px;
-
-width:100%;
-
-background:black;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:0 60px;
-
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-/* LOGO */
-
-.nav-logo{
-
-width:150px;
-
-height:57px;
-
-background:url("withx_logo.png");
-
-background-size:cover;
-
-background-repeat:no-repeat;
-
-background-position:left center;
-}
-
-/* LINKS */
-
-.nav-links{
-
-display:flex;
-
-gap:45px;
-}
-
-.nav-links a{
-
-text-decoration:none;
-
-color:white;
-
-font-size:14px;
-
-font-weight:600;
-
-letter-spacing:2px;
-
-transition:0.2s;
-}
-
-.nav-links a:hover{
-
-color:var(--gold);
-text-decoration:underline;
-}
-
-/* BUTTON */
-
-.nav-touch{
-
-width:180px;
-
-height:52px;
-
-border:1px solid rgba(255,255,255,0.2);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-border-radius:12px;
-
-cursor:pointer;
-
-transition:0.3s;
-}
-
-.nav-touch:hover{
-
-background:white;
-
-color:black;
-}
-
-
-
-.scroll-arrow{
-position:absolute;
-bottom:40px;
-left:50%;
-transform:translateX(-50%);
-
-font-size:38px;
-color:#C9A44C;
-
-text-decoration:none;
-
-animation:arrowMove 1.8s infinite;
-}
-
-@keyframes arrowMove{
-0%,100%{
-transform:translate(-50%,0);
-}
-50%{
-transform:translate(-50%,10px);
-}
-}
-  
 </style>
 </head>
 <body>
 
-
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 <div id="spotlight"></div>
 <canvas id="particles-canvas"></canvas>
 
 <!-- NAVBAR -->
-<header id="header">
-  <div class="nav">
-    <div class="nav-logo border"></div>
-    <div class="nav-links">
-      <a href="index.html" class="border nav-link">HOME</a>
-      <a href="about.html" class="border nav-link">ABOUT</a>
-      <a href="technologies.html" class="border nav-link">TECHNOLOGY</a>
-
-      <!-- SEA MEGA MENU -->
-      <div class="mega-item">
-        <a>SEA</a>
-        <div class="mega-menu">
-          <div class="mega-col">
-            <h4>SEA DOMAIN</h4>
-            <p>Advanced maritime surveillance and recovery technologies designed for coastal monitoring, marine operations, water-based reconnaissance, and autonomous recovery missions.</p>
-          </div>
-          <div class="mega-col">
-            <h4>PRODUCTS</h4>
-            <button class="product-toggle" type="button">+ Sea Products</button>
-            <div class="product-list">
-              <a href="drone-recovery-bag.html">Drone Recovery Bag</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAND MEGA MENU -->
-      <div class="mega-item">
-        <a>LAND</a>
-        <div class="mega-menu">
-          <div class="mega-col">
-            <h4>LAND DOMAIN</h4>
-            <p>Autonomous monitoring and security technologies designed for infrastructure protection, perimeter surveillance, reconnaissance, and critical asset monitoring.</p>
-          </div>
-          <div class="mega-col">
-            <h4>PRODUCTS</h4>
-            <button class="product-toggle" type="button">+ Land Products</button>
-            <div class="product-list">
-              <a href="land-monitoring-system.html">Autonomous Monitoring System</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AIR MEGA MENU -->
-      <div class="mega-item">
-        <a>AIR</a>
-        <div class="mega-menu">
-          <div class="mega-col">
-            <h4>AIR DOMAIN</h4>
-            <p>Advanced aerial intelligence systems providing real-time surveillance, autonomous flight capability, reconnaissance, mapping, and situational awareness.</p>
-          </div>
-          <div class="mega-col">
-            <h4>PRODUCTS</h4>
-            <button class="product-toggle" type="button">+ Air Products</button>
-            <div class="product-list">
-              <a href="drone-surveillance-system.html">WITHX Drone Surveillance System</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a href="contact.html" class="border">CONTACT</a>
-    </div>
-    <div class="nav-touch border">
-      <p>Get in Touch</p>
-    </div>
-  </div>
-</header>
-
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">WITHX</a>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="technologies.html">TECHNOLOGY</a></li>
+    <li><a href="sea.html">SEA</a></li>
+    <li><a href="land.html">LAND</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">GET IN TOUCH</a>
+</nav>
 
 <!-- HERO -->
 <section id="hero">
@@ -664,9 +463,10 @@ transform:translate(-50%,10px);
       <a href="#ai-tracking" class="btn-outline">OUR SYSTEMS</a>
     </div>
   </div>
-  <a href="#overview" class="scroll-arrow">
-↓
-</a>
+  <div class="hero-scroll">
+    <span class="scroll-label">SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
 <!-- OVERVIEW -->
