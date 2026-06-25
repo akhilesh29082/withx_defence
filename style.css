@@ -124,22 +124,19 @@ color:black;
 
 
 .hero{
-min-height:110vh;
-position:relative;
+    position:relative;
+    width:100%;
 
-width:100%;
+    min-height:calc(100vh - 90px);
 
-height:150vh;
+    display:flex;
+    align-items:center;
 
-overflow:hidden;
+    overflow:hidden;
 
-display:flex;
-
-align-items:center;
-padding:70px 80px 0 80px;
+    padding:0 80px;
 }
-
-/* VIDEO */
+ /*VIDEO */
 
 .hero-video{
 
@@ -180,24 +177,28 @@ z-index:-2;
 /* MAIN CONTENT */
 
 .hero-content{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
 
-width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-z-index:5;
+    text-align:center;
 }
 
 /* LEFT */
 
 .hero-left{
-width:50%;
+    width:100%;
+    max-width:900px;
 
-max-width:650px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 /* TAG */
@@ -254,8 +255,7 @@ line-height:0.95;
 max-width:650px;
 
 white-space:pre-line;
- font-size:58px;
-    line-height:1;
+
 }.hero h1:hover{
 color:#ffffff;
 
@@ -263,12 +263,12 @@ transform:translateY(-2px);
 font-size:78px;
 text-shadow:
 
-0 0 8px rgba(255,255,255,0.25); 0 35px rgba(0,170,255,0.3);
+0 0 8px rgba(255,255,255,0.25); 
 
 }
 
 .typing{
-font-size:48px;
+font-size:58px;
 
 font-weight:800;
 
@@ -280,7 +280,7 @@ margin-bottom:25px;
 }
 
 
-}
+
 /* PARAGRAPH */
 
 .hero p{
@@ -497,7 +497,6 @@ font-size:45px;
 
 margin-top:10px;
 }
-
 
 
 
@@ -1440,4 +1439,120 @@ header{
 ::-webkit-scrollbar-thumb{
     background:var(--blue);
     border-radius:10px;
+}
+
+
+
+
+/* Make hero bigger and centered */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;          /* was calc(100vh - 90px) */
+    display: flex;
+    align-items: center;
+    justify-content: center;    /* ADD this */
+    overflow: hidden;
+    padding: 0 80px;
+}
+
+/* Center the content container */
+.hero-content {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hero left — now full width centered */
+.hero-left {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Make heading bigger to fill the space */
+#hero-title {
+    font-size: 82px;       /* was 72px */
+    font-weight: 800;
+    line-height: 0.95;
+    max-width: 900px;
+    white-space: pre-line;
+    text-align: center;
+}
+
+.typing {
+    font-size: 72px;       /* was 58px */
+    font-weight: 800;
+    line-height: 0.95;
+    max-width: 900px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Replace your existing .hero rule */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;              /* exact viewport height, no gap */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 80px;
+    margin: 0;                  /* no margin gap */
+}
+/* Fix typing text visibility */
+#hero-title {
+    color: #ffffff !important;
+    font-size: 76px !important;
+    font-weight: 800 !important;
+    line-height: 1.05 !important;
+    white-space: pre-line;
+    text-align: center;
+    margin-bottom: 25px;
+    min-height: 320px;          /* prevents layout shift while typing */
+}
+
+.typing {
+    color: #ffffff !important;
+    font-size: 76px !important;
+    text-align: center;
+}
+
+/* Remove black bottom gap */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;             /* prevents inline video bottom gap */
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
