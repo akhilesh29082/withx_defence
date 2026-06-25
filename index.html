@@ -110,7 +110,36 @@
   color: #c9a44c;
   transform: translateX(6px);
 }
+.hero{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
 
+
+.hero-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+}
 /* Mobile responsive mega menu */
 @media (max-width: 768px) {
   .mega-menu {
@@ -134,15 +163,15 @@
 </head>
 <body>
   
- <header>
+ <header id="header">
   <div class="nav">
 
     <div class="nav-logo border"></div>
 
     <div class="nav-links">
-      <a href="index.html" class="border">HOME</a>
-      <a href="about.html" class="border">ABOUT</a>
-      <a href="technologies.html" class="border">TECHNOLOGY</a>
+      <a href="index.html" class="border nav-link">HOME</a>
+      <a href="about.html" class="border nav-link">ABOUT</a>
+      <a href="technologies.html" class="border nav-link">TECHNOLOGY</a>
 
       <!-- SEA MEGA MENU -->
       <div class="mega-item">
@@ -226,11 +255,10 @@
   </div>
 </header>
 <section class="hero">
-
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="https://drive.google.com/file/d/1CUQI-RuP2JjWR0EVbc_1_I8vn1venTTe/view?usp=sharing">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://www.image2url.com/r2/default/videos/1782370808065-a54e1b54-6506-4db6-afef-e2eb99d1b1c5.mp4" type="video/mp4">
+</video>
     </video>
-
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -244,7 +272,9 @@
            <h1 class="typing" id="hero-title"></h1>
 
             <p>
-At WITHX Defence, we are building next-generation autonomous aerial systems designed to enhance surveillance,  and mission effectiveness. </p>
+            At WITHX Defence, we are building next-generation autonomous aerial 
+            systems designed to enhance surveillance,  and mission effectiveness. 
+            </p>
 
             <div class="hero-buttons">
                 <a href="#">Explore</a>
@@ -259,17 +289,17 @@ At WITHX Defence, we are building next-generation autonomous aerial systems desi
             <div class="radar-circle circle2"></div>
             <div class="radar-circle circle3"></div>
 
-                    <div class="info-card card1">
-    <span>MISSION SUCCESS</span>
-    <h2 id="mission">95%</h2>
-</div>
+            <div class="info-card card1">
+            <span>MISSION SUCCESS</span>
+            <h2 id="mission">95%</h2>
+            </div>
 
-<div class="info-card card2">
-    <span>AI TRACKING</span>
-    <h2 id="tracking">100%</h2>
-</div>
+        <div class="info-card card2">
+        <span>AI TRACKING</span>
+        <h2 id="tracking">100%</h2>
+        </div>
 
-    </div>
+        </div>
 
 </section>  
 
@@ -678,8 +708,7 @@ animateCounter("tracking",100);
 const hero=document.getElementById("hero-title");
 
 const text=`INTELLIGENT
-AERIAL
-SURVEILLANCE
+AERIAL SURVEILLANCE
 PLATFORM`;
 
 function startTyping(){
@@ -714,7 +743,6 @@ setTimeout(startTyping,700);
 
 
 
-<!-- for mission section-->
 const counters = document.querySelectorAll('.counter');
 
 const observer = new IntersectionObserver((entries) => {
