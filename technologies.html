@@ -41,7 +41,7 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: none;
+  cursor: auto;
 }
 
 ::-webkit-scrollbar { width: 4px; }
@@ -49,16 +49,7 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
 
 /* CURSOR */
-#cursor {
-  width: 12px; height: 12px; background: var(--blue-soft); border-radius: 50%;
-  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
-  transform: translate(-50%,-50%); transition: transform 0.1s, width 0.2s, height 0.2s;
-}
-#cursor-ring {
-  width: 36px; height: 36px; border: 1px solid rgba(96,165,250,0.4); border-radius: 50%;
-  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998;
-  transform: translate(-50%,-50%); transition: transform 0.15s ease, width 0.3s, height 0.3s;
-}
+
 
 /* SPOTLIGHT */
 #spotlight {
@@ -747,8 +738,7 @@ footer { background:#020202; border-top:1px solid rgba(37,99,235,0.12); padding:
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+
 <div id="spotlight"></div>
 <canvas id="particles-canvas"></canvas>
 
@@ -1125,15 +1115,7 @@ footer { background:#020202; border-top:1px solid rgba(37,99,235,0.12); padding:
 
 <script>
 /* CURSOR */
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => {
-  mx=e.clientX; my=e.clientY;
-  cursor.style.left=mx+'px'; cursor.style.top=my+'px';
-  document.getElementById('spotlight').style.setProperty('--mx',mx+'px');
-  document.getElementById('spotlight').style.setProperty('--my',my+'px');
-});
+
 function animateRing(){
   rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
   ring.style.left=rx+'px'; ring.style.top=ry+'px';
