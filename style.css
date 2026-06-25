@@ -124,7 +124,7 @@ color:black;
 
 
 .hero{
-
+min-height:110vh;
 position:relative;
 
 width:100%;
@@ -254,7 +254,8 @@ line-height:0.95;
 max-width:650px;
 
 white-space:pre-line;
-
+ font-size:58px;
+    line-height:1;
 }.hero h1:hover{
 color:#ffffff;
 
