@@ -318,12 +318,83 @@ color:#fff
 @media(max-width:850px){
 
 .domain-nav{
-padding:0 16px
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 28px;
+position:fixed;
+inset:0 0 auto 0;
+z-index:50;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.06)
+}
+
+.nav-logo img{
+    height:55px;
 }
 
 .nav-links{
-gap:14px;
-font-size:12px
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#60a5fa;
+}
+
+.nav-links a.active{
+    color:#60a5fa;
+}
+
+.nav-btn{
+    width:180px;
+    height:50px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    color:#fff;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    background:#2563eb;
+    border-color:#2563eb;
+}
+
+@media(max-width:991px){
+
+    .nav-links{
+        gap:18px;
+        font-size:12px;
+    }
+
+    .domain-nav{
+        padding:0 20px;
+    }
+
+    .nav-btn{
+        display:none;
+    }
 }
 
 .hero{
@@ -364,75 +435,309 @@ will-change: transform, opacity;
 }
 
 
-.footer{
-  width:100%;
-  box-sizing:border-box;
-}
 
-.footer-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:60px;
-}
 
-.footer h4{
-  color:#fff;
-  font-size:14px;          /* increased */
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
 
-.footer p{
-  margin:0;
-  max-width:360px;
-  line-height:1.6;
-  font-size:15px;          /* increased */
-  color:#b5b5b5;
-}
 
-.footer a{
-  display:block;
-  margin:10px 0;
-  font-size:15px;          /* increased */
-  color:#b5b5b5;
-  transition:0.25s;
-}
+/* RESPONSIVE */
 
-.footer a:hover{
-  color:#fff;
-  transform:translateX(4px);
-}
+@media(max-width:992px){
 
-.footer-bottom{
-  max-width:1100px;
-  margin:45px auto 0;
-  padding-top:18px;
-  border-top:1px solid rgba(255,255,255,.08);
-  font-size:13px;          /* increased */
-  color:#777;
+.hero-container,
+.about-grid,
+.domain-grid,
+.stats-grid,
+.footer-grid{
+    grid-template-columns:1fr;
+}
 }
 
 
+/* MEGA MENU */
 
+.mega-item{
+position:relative;
+}
+
+.mega-menu{
+position:fixed;
+top:90px;
+left:0;
+width:100%;
+
+background:#000;
+padding:55px;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+gap:80px;
+
+opacity:0;
+visibility:hidden;
+
+transform:translateY(-20px);
+
+transition:.35s;
+
+z-index:9999;
+}
+
+.mega-item:hover .mega-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.mega-col h4{
+font-size:14px;
+margin-bottom:20px;
+color:#fff;
+}
+
+.mega-col p{
+color:#d5d5d5;
+line-height:1.7;
+max-width:500px;
+}
+
+.product-toggle{
+background:none;
+border:none;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+.product-list{
+display:none;
+padding-left:20px;
+margin-top:15px;
+border-left:1px solid rgba(255,255,255,.15);
+}
+
+.product-list.show{
+display:block;
+}
+
+.product-list a{
+display:block;
+margin-bottom:12px;
+color:#fff;
+}
+
+.product-list a:hover{
+color:#60a5fa;
+}
+
+
+/* =========================================
+   WITHX MAIN NAVBAR
+========================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:90px;
+
+    background:#000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    z-index:9999;
+}
+
+.nav-logo{
+    width:170px;
+    height:55px;
+
+    background:url("withx_logo.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:left center;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#60a5fa;
+}
+
+.nav-touch{
+    width:180px;
+    height:50px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:14px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.nav-touch:hover{
+    background:#2563eb;
+    border-color:#2563eb;
+}
 
 </style>
 </head>
 
 <body>
 
-<nav class="domain-nav">
-<a class="brand" href="withx_index_megamenu.html">WITHX</a>
+<header>
+  <div class="nav">
 
-<div class="nav-links">
-<a href="sea-domain.html" class="active">Sea</a>
-<a href="land-domain.html">Land</a>
-<a href="air-domain.html">Air</a>
-<a href="withx_index_megamenu.html">Home</a>
-</div>
-</nav>
+    <div class="nav-logo"></div>
+
+    <div class="nav-links">
+
+      <a href="index.html">HOME</a>
+
+      <a href="about.html">ABOUT</a>
+
+      <a href="technologies.html">TECHNOLOGY</a>
+
+      <!-- SEA -->
+      <div class="mega-item">
+        <a href="sea-domain.html">SEA</a>
+
+        <div class="mega-menu">
+
+          <div class="mega-col">
+            <h4>SEA DOMAIN</h4>
+
+            <p>
+              Advanced maritime surveillance and recovery technologies
+              for coastal monitoring and autonomous recovery missions.
+            </p>
+          </div>
+
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+
+            <button class="product-toggle" type="button">
+              + Sea Products
+            </button>
+
+            <div class="product-list">
+              <a href="drone-recovery-bag.html">
+                Drone Recovery Bag
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LAND -->
+      <div class="mega-item">
+        <a href="land-domain.html">LAND</a>
+
+        <div class="mega-menu">
+
+          <div class="mega-col">
+            <h4>LAND DOMAIN</h4>
+
+            <p>
+              Autonomous monitoring and security technologies
+              for perimeter surveillance and critical asset monitoring.
+            </p>
+          </div>
+
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+
+            <button class="product-toggle" type="button">
+              + Land Products
+            </button>
+
+            <div class="product-list">
+              <a href="land-monitoring-system.html">
+                Autonomous Monitoring System
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AIR -->
+      <div class="mega-item">
+        <a href="air-domain.html">AIR</a>
+
+        <div class="mega-menu">
+
+          <div class="mega-col">
+            <h4>AIR DOMAIN</h4>
+
+            <p>
+              Advanced aerial intelligence systems providing
+              real-time surveillance and reconnaissance.
+            </p>
+          </div>
+
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+
+            <button class="product-toggle" type="button">
+              + Air Products
+            </button>
+
+            <div class="product-list">
+              <a href="drone-surveillance-system.html">
+                WITHX Drone Surveillance System
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <a href="contact.html">CONTACT</a>
+
+    </div>
+
+    <a href="contact.html" class="nav-touch">
+      <p>Get in Touch</p>
+    </a>
+
+  </div>
+</header>
 
 <section class="hero">
 <h1>Sea</h1>
@@ -506,31 +811,54 @@ Water activated recovery · Marine safety
 </section>
 
 <footer class="footer">
-  <div class="footer-inner">
 
-    <div class="footer-col">
-      <h4>WITHX Defence</h4>
-      <p>Advanced surveillance, recovery and autonomous monitoring systems.</p>
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <h2>WITHX Defence</h2>
+            <p>
+                Building next-generation autonomous aerial systems
+                for surveillance, intelligence gathering, and mission success.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="#">Technology</a>
+            <a href="#">Sea</a>
+            <a href="#">Land</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Systems</h3>
+
+            <a href="#">WITHX Falcon</a>
+            <a href="#">WITHX Sentinel</a>
+            <a href="#">WITHX Nexus AI</a>
+            <a href="#">WITHX Hydra</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Get In Touch</h3>
+
+            <p>Email: info@withxdefence.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Pune, Maharashtra, India</p>
+        </div>
+
     </div>
 
-    <div class="footer-col">
-      <h4>Domains</h4>
-      <a href="sea-domain.html">Sea</a>
-      <a href="land-domain.html">Land</a>
-      <a href="air-domain.html">Air</a>
+    <div class="footer-bottom">
+        <p>© 2026 WITHX Defence. All Rights Reserved.</p>
     </div>
 
-    <div class="footer-col">
-      <h4>Products</h4>
-      <a href="drone-recovery-bag.html">Drone Recovery Bag</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 WITHX Defence. All rights reserved.
-  </div>
 </footer>
+
+
 
 <script>
 // untouched JS
@@ -578,7 +906,31 @@ requestAnimationFrame(animate);
 }
 
 animate();
+
+
+
+/* Mega menu product open on + click */
+document.querySelectorAll('.product-toggle').forEach((btn) => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const list = this.nextElementSibling;
+    const isOpen = list.classList.contains('show');
+
+    document.querySelectorAll('.product-list').forEach(item => item.classList.remove('show'));
+    document.querySelectorAll('.product-toggle').forEach(item => item.classList.remove('active'));
+
+    if (!isOpen) {
+      list.classList.add('show');
+      this.classList.add('active');
+    }
+  });
+});
 </script>
+<script src="script.js"></script>
+
+
 
 </body>
 </html>
