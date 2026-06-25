@@ -415,6 +415,92 @@ will-change: transform, opacity;
   color:#777;
 }
 
+.domain-nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px;
+
+    background:#000;
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    z-index:9999;
+}
+
+.nav-logo img{
+    height:55px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#60a5fa;
+}
+
+.nav-links a.active{
+    color:#60a5fa;
+}
+
+.nav-btn{
+    width:180px;
+    height:50px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    color:#fff;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    background:#2563eb;
+    border-color:#2563eb;
+}
+
+@media(max-width:991px){
+
+    .nav-links{
+        gap:18px;
+        font-size:12px;
+    }
+
+    .domain-nav{
+        padding:0 20px;
+    }
+
+    .nav-btn{
+        display:none;
+    }
+}
+
+
 
 
 
@@ -424,16 +510,30 @@ will-change: transform, opacity;
 <body>
 
 <nav class="domain-nav">
-<a class="brand" href="withx_index_megamenu.html">WITHX</a>
+
+<div class="nav-logo">
+    <img src="withx_logo.png" alt="WITHX">
+</div>
 
 <div class="nav-links">
-<a href="sea-domain.html" class="active">Sea</a>
-<a href="land-domain.html">Land</a>
-<a href="air-domain.html">Air</a>
-<a href="withx_index_megamenu.html">Home</a>
-</div>
-</nav>
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="technologies.html">TECHNOLOGY</a>
 
+    <a href="sea-domain.html" class="active">SEA</a>
+
+    <a href="land-domain.html">LAND</a>
+
+    <a href="air-domain.html">AIR</a>
+
+    <a href="contact.html">CONTACT</a>
+</div>
+
+<a href="contact.html" class="nav-btn">
+    Get in Touch
+</a>
+
+</nav>
 <section class="hero">
 <h1>Air</h1>
 
