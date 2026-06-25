@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Land Systems | WITHX Defence — Autonomous Ground Intelligence</title>
+<meta name="description" content="WITHX Defence is developing next-generation land-based surveillance, autonomous monitoring, and AI threat detection systems for border security and infrastructure protection.">
+<style>
+:root{
+  --black:#000000;
+  --navy:#0A1923;
+  --navy-2:#0F1F2C;
+  --blue:#2563EB;
+  --blue-bright:#3B82F6;
+  --text:#E8EDF2;
+  --text-dim:#9CA8B4;
+  --line:rgba(255,255,255,0.08);
+  --glass:rgba(255,255,255,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 60px;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:22px;letter-spacing:1px;}
+.logo span{color:var(--blue-bright);}
+.nav-links{display:flex;gap:40px;list-style:none;}
+.nav-links li a{font-size:14px;letter-spacing:1.5px;font-weight:600;color:#cfd8e0;position:relative;transition:color .25s;}
+.nav-links li a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:2px;background:var(--blue-bright);transition:width .3s;}
+.nav-links li a:hover{color:#fff;}
+.nav-links li a:hover::after,.nav-links li a.active::after{width:100%;}
+.nav-links li a.active{color:#fff;}
+.get-in-touch{border:1px solid var(--line);background:#0d0d0d;color:#fff;padding:11px 24px;border-radius:6px;font-weight:600;font-size:14px;letter-spacing:0.5px;cursor:pointer;transition:all .25s;}
+.get-in-touch:hover{border-color:var(--blue-bright);box-shadow:0 0 18px rgba(37,99,235,0.5);}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.menu-toggle span{width:26px;height:2px;background:#fff;}
+
+/* HERO */
+.hero{
+  position:relative;min-height:88vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:170px 24px 100px;overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(37,99,235,0.18), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(37,99,235,0.12), transparent 45%),
+    linear-gradient(180deg,#000 0%, var(--navy) 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(circle at center, black 0%, transparent 70%);
+  animation:gridmove 30s linear infinite;
+}
+.hero::after{
+  content:"";position:absolute;bottom:0;left:0;width:100%;height:45%;
+  background-image:repeating-linear-gradient(0deg, transparent 0 2px, rgba(59,130,246,0.05) 2px 3px);
+  transform:perspective(400px) rotateX(60deg);
+  transform-origin:bottom;
+  opacity:.5;
+}
+@keyframes gridmove{0%{background-position:0 0;}100%{background-position:48px 48px;}}
+.hero-tag{display:inline-block;border:1px solid rgba(59,130,246,0.4);background:rgba(37,99,235,0.08);color:#7fb0ff;padding:8px 20px;border-radius:30px;font-size:12px;letter-spacing:2px;font-weight:700;margin-bottom:28px;position:relative;z-index:2;}
+.hero h1{font-size:56px;font-weight:800;line-height:1.12;max-width:980px;position:relative;z-index:2;}
+.hero h1 span{color:var(--blue-bright);}
+.hero p{max-width:700px;color:var(--text-dim);font-size:17px;line-height:1.7;margin-top:24px;position:relative;z-index:2;}
+.hero-btns{display:flex;gap:18px;margin-top:38px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--blue);color:#fff;padding:16px 30px;border-radius:8px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .3s;}
+.btn-primary:hover{box-shadow:0 0 30px rgba(37,99,235,0.6);transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:#fff;padding:16px 30px;border-radius:8px;font-weight:700;font-size:15px;border:1px solid var(--line);cursor:pointer;transition:all .3s;}
+.btn-secondary:hover{border-color:var(--blue-bright);background:rgba(37,99,235,0.08);}
+
+/* SECTION */
+section{padding:100px 60px;position:relative;}
+.section-tag{font-size:12px;letter-spacing:2px;color:#7fb0ff;font-weight:700;text-transform:uppercase;margin-bottom:14px;display:block;text-align:center;}
+.section-title{font-size:38px;font-weight:800;text-align:center;margin-bottom:18px;}
+.section-sub{max-width:720px;margin:0 auto 60px;text-align:center;color:var(--text-dim);font-size:16px;line-height:1.7;}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* MISSION CARDS */
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1300px;margin:0 auto;}
+.cap-card{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:32px 24px;transition:all .35s;text-align:center;}
+.cap-card:hover{transform:translateY(-6px);border-color:rgba(59,130,246,0.5);box-shadow:0 10px 40px rgba(37,99,235,0.18);}
+.cap-icon{width:54px;height:54px;border-radius:12px;background:rgba(37,99,235,0.12);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px;}
+.cap-card h3{font-size:16px;font-weight:700;}
+
+/* FEATURE CARDS */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1300px;margin:0 auto;}
+.feature-card{background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));border:1px solid var(--line);border-radius:16px;padding:34px 28px;transition:all .35s;position:relative;overflow:hidden;}
+.feature-card::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle, rgba(37,99,235,0.1), transparent 60%);opacity:0;transition:opacity .4s;}
+.feature-card:hover::before{opacity:1;}
+.feature-card:hover{transform:translateY(-6px);border-color:rgba(59,130,246,0.45);}
+.feature-num{font-size:13px;color:var(--blue-bright);font-weight:700;letter-spacing:2px;margin-bottom:16px;display:block;}
+.feature-card h3{font-size:18px;margin-bottom:10px;font-weight:700;}
+.feature-card p{color:var(--text-dim);font-size:14px;line-height:1.65;}
+
+/* ROADMAP TIMELINE */
+.timeline{max-width:1000px;margin:0 auto;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg, rgba(59,130,246,0.7), rgba(59,130,246,0.05));}
+.tl-item{position:relative;padding-bottom:46px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-40px;top:4px;width:20px;height:20px;border-radius:50%;background:#03070a;border:2px solid var(--blue-bright);box-shadow:0 0 16px rgba(59,130,246,0.6);}
+.tl-phase{font-size:12px;color:#7fb0ff;font-weight:700;letter-spacing:2px;margin-bottom:6px;}
+.tl-item h3{font-size:19px;font-weight:700;margin-bottom:6px;}
+.tl-item p{color:var(--text-dim);font-size:14px;}
+
+/* APPLICATIONS */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1300px;margin:0 auto;}
+.app-card{
+  border:1px solid var(--line);border-radius:14px;padding:30px 26px;background:var(--glass);
+  transition:all .3s;display:flex;align-items:center;gap:16px;
+}
+.app-card:hover{border-color:rgba(59,130,246,0.45);background:rgba(37,99,235,0.05);}
+.app-dot{width:10px;height:10px;border-radius:50%;background:var(--blue-bright);box-shadow:0 0 10px rgba(59,130,246,0.8);flex-shrink:0;}
+.app-card span{font-size:15.5px;font-weight:600;}
+
+/* VISION */
+.vision-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1300px;margin:0 auto;align-items:center;}
+.vision-text h2{font-size:32px;font-weight:800;margin-bottom:20px;}
+.vision-text p{color:var(--text-dim);font-size:16px;line-height:1.8;}
+.network-vis{
+  position:relative;height:380px;border-radius:18px;border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%, #0c1c2c 0%, #04090d 80%);overflow:hidden;
+}
+.network-vis svg{width:100%;height:100%;}
+.node{fill:#3B82F6;filter:drop-shadow(0 0 6px rgba(59,130,246,0.9));}
+.netline{stroke:rgba(59,130,246,0.35);stroke-width:1;}
+.pulse{animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* COMING SOON */
+.soon-card{
+  max-width:1100px;margin:0 auto;text-align:center;
+  background:linear-gradient(180deg, rgba(37,99,235,0.08), rgba(255,255,255,0.02));
+  border:1px solid rgba(59,130,246,0.3);border-radius:24px;padding:70px 50px;position:relative;overflow:hidden;
+}
+.soon-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(59,130,246,0.18), transparent 50%);
+}
+.soon-card h2{font-size:34px;font-weight:800;position:relative;z-index:2;margin-bottom:18px;letter-spacing:1px;}
+.soon-card p{color:var(--text-dim);font-size:16px;max-width:680px;margin:0 auto 32px;position:relative;z-index:2;line-height:1.7;}
+
+/* PARTNERSHIP */
+.partner-box{
+  max-width:900px;margin:0 auto;text-align:center;border:1px solid var(--line);
+  border-radius:18px;padding:50px;background:var(--glass);
+}
+
+/* CTA */
+.cta-section{
+  text-align:center;padding:120px 24px;
+  background:linear-gradient(180deg, var(--navy) 0%, #000 100%);
+  position:relative;
+}
+.cta-section h2{font-size:40px;font-weight:800;margin-bottom:30px;}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid var(--line);padding:70px 60px 30px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;max-width:1300px;margin:0 auto 50px;}
+.footer-logo{font-size:22px;font-weight:800;margin-bottom:14px;}
+.footer-logo span{color:var(--blue-bright);}
+.footer-grid p{color:var(--text-dim);font-size:14px;line-height:1.7;}
+.footer-col h4{font-size:14px;letter-spacing:1px;margin-bottom:18px;color:#cfd8e0;}
+.footer-col a{display:block;color:var(--text-dim);font-size:14px;margin-bottom:10px;transition:color .25s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid var(--line);padding-top:24px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;color:#6b7785;font-size:13px;flex-wrap:wrap;gap:10px;}
+
+@media(max-width:1024px){
+  .cap-grid{grid-template-columns:repeat(2,1fr);}
+  .feature-grid{grid-template-columns:1fr 1fr;}
+  .app-grid{grid-template-columns:1fr 1fr;}
+  .vision-wrap{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .get-in-touch{display:none;}
+  .hero h1{font-size:34px;}
+  section{padding:70px 24px;}
+  .cap-grid{grid-template-columns:1fr;}
+  .feature-grid{grid-template-columns:1fr;}
+  .app-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .soon-card{padding:46px 26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">WITH<span>X</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="technology.html">TECHNOLOGY</a></li>
+    <li><a href="sea.html">SEA</a></li>
+    <li><a href="land.html" class="active">LAND</a></li>
+    <li><a href="air.html">AIR</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+  <button class="get-in-touch">Get in Touch</button>
+  <div class="menu-toggle"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-tag">LAND DOMAIN</span>
+  <h1>INTELLIGENT LAND SURVEILLANCE & <span>AUTONOMOUS SECURITY SYSTEMS</span></h1>
+  <p>WITHX Defence is developing next-generation land-based surveillance, monitoring, and autonomous intelligence solutions designed to improve situational awareness, border security, infrastructure protection, and mission effectiveness.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('capabilities').scrollIntoView({behavior:'smooth'})">Explore Capabilities</button>
+    <a href="contact.html"><button class="btn-secondary">Contact Us</button></a>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section>
+  <span class="section-tag">Mission</span>
+  <h2 class="section-title reveal">Securing Critical Ground Environments</h2>
+  <p class="section-sub reveal">Our land technologies are being designed to provide intelligent monitoring, real-time threat detection, autonomous patrol capabilities, and advanced decision support systems for defence and security operations.</p>
+  <div class="cap-grid">
+    <div class="cap-card reveal"><div class="cap-icon">🛰️</div><h3>Border Surveillance</h3></div>
+    <div class="cap-card reveal"><div class="cap-icon">🏗️</div><h3>Infrastructure Protection</h3></div>
+    <div class="cap-card reveal"><div class="cap-icon">🤖</div><h3>Autonomous Monitoring</h3></div>
+    <div class="cap-card reveal"><div class="cap-icon">🧠</div><h3>AI Threat Detection</h3></div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <span class="section-tag">Roadmap Focus</span>
+  <h2 class="section-title reveal">Future Operational Capabilities</h2>
+  <div class="feature-grid">
+    <div class="feature-card reveal"><span class="feature-num">01</span><h3>Autonomous Ground Monitoring</h3><p>Real-time monitoring of critical areas using AI-powered sensors and surveillance systems.</p></div>
+    <div class="feature-card reveal"><span class="feature-num">02</span><h3>Perimeter Security Intelligence</h3><p>Continuous monitoring of sensitive locations with automated alert systems.</p></div>
+    <div class="feature-card reveal"><span class="feature-num">03</span><h3>Situational Awareness Platform</h3><p>Integrated intelligence dashboards providing real-time operational insights.</p></div>
+    <div class="feature-card reveal"><span class="feature-num">04</span><h3>AI-Based Threat Detection</h3><p>Advanced analytics for identifying unusual activity and security risks.</p></div>
+    <div class="feature-card reveal"><span class="feature-num">05</span><h3>Multi-Sensor Integration</h3><p>Combining camera feeds, thermal sensors, radar, and autonomous systems.</p></div>
+    <div class="feature-card reveal"><span class="feature-num">06</span><h3>Command & Control Connectivity</h3><p>Centralized monitoring and decision-making support.</p></div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <span class="section-tag">Roadmap</span>
+  <h2 class="section-title reveal">Development Roadmap</h2>
+  <div class="timeline">
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-phase">PHASE 01</div><h3>Research & Concept Development</h3><p>Defining technical requirements and exploring foundational technologies.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-phase">PHASE 02</div><h3>Prototype Monitoring Systems</h3><p>Building early-stage sensing and monitoring prototypes for validation.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-phase">PHASE 03</div><h3>AI Intelligence Integration</h3><p>Embedding AI-driven analytics for detection and decision support.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-phase">PHASE 04</div><h3>Autonomous Ground Operations</h3><p>Enabling self-directed patrol and monitoring capabilities.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-phase">PHASE 05</div><h3>Field Deployment & Testing</h3><p>Real-world trials and operational validation in controlled environments.</p></div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section>
+  <span class="section-tag">Use Cases</span>
+  <h2 class="section-title reveal">Potential Applications</h2>
+  <div class="app-grid">
+    <div class="app-card reveal"><div class="app-dot"></div><span>Border Security</span></div>
+    <div class="app-card reveal"><div class="app-dot"></div><span>Critical Infrastructure Protection</span></div>
+    <div class="app-card reveal"><div class="app-dot"></div><span>Industrial Facility Monitoring</span></div>
+    <div class="app-card reveal"><div class="app-dot"></div><span>Smart Defence Installations</span></div>
+    <div class="app-card reveal"><div class="app-dot"></div><span>Military Reconnaissance</span></div>
+    <div class="app-card reveal"><div class="app-dot"></div><span>Emergency Response Operations</span></div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section>
+  <div class="vision-wrap">
+    <div class="vision-text reveal">
+      <span class="section-tag" style="text-align:left;">Vision</span>
+      <h2>The Future of Autonomous Land Systems</h2>
+      <p>WITHX Defence envisions intelligent land systems capable of autonomous monitoring, predictive threat detection, and seamless integration with aerial and maritime platforms, creating a unified defence ecosystem.</p>
+    </div>
+    <div class="network-vis reveal">
+      <svg viewBox="0 0 400 380">
+        <line class="netline" x1="60" y1="80" x2="200" y2="190"/>
+        <line class="netline" x1="200" y1="190" x2="340" y2="70"/>
+        <line class="netline" x1="200" y1="190" x2="320" y2="300"/>
+        <line class="netline" x1="200" y1="190" x2="80" y2="300"/>
+        <line class="netline" x1="60" y1="80" x2="320" y2="300"/>
+        <line class="netline" x1="340" y1="70" x2="80" y2="300"/>
+        <circle class="node pulse" cx="200" cy="190" r="9"/>
+        <circle class="node pulse" cx="60" cy="80" r="6" style="animation-delay:.3s"/>
+        <circle class="node pulse" cx="340" cy="70" r="6" style="animation-delay:.6s"/>
+        <circle class="node pulse" cx="320" cy="300" r="6" style="animation-delay:.9s"/>
+        <circle class="node pulse" cx="80" cy="300" r="6" style="animation-delay:1.2s"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section>
+  <div class="soon-card reveal">
+    <h2>LAND SYSTEMS UNDER DEVELOPMENT</h2>
+    <p>Our engineering and research teams are actively exploring innovative technologies for next-generation autonomous land surveillance and intelligence systems.</p>
+    <a href="contact.html"><button class="btn-primary">Contact For Collaboration</button></a>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section>
+  <span class="section-tag">Collaborate</span>
+  <h2 class="section-title reveal">Research & Collaboration Opportunities</h2>
+  <div class="partner-box reveal">
+    <p style="color:var(--text-dim);font-size:16px;line-height:1.8;">WITHX Defence welcomes collaboration with government agencies, defence organizations, research institutions, universities, and industry partners to accelerate innovation in autonomous land systems.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal">Shape The Future Of Ground Intelligence</h2>
+  <a href="contact.html"><button class="btn-primary reveal">Get In Touch</button></a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">WITH<span>X</span></div>
+      <p>Building next-generation autonomous aerial systems for intelligent surveillance and mission effectiveness.</p>
+    </div>
+    <div class="footer-col">
+      <h4>QUICK LINKS</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="technology.html">Technology</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>SYSTEMS</h4>
+      <a href="sea.html">Sea</a>
+      <a href="land.html">Land</a>
+      <a href="air.html">Air</a>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <a href="mailto:withx.innovations@gmail.com">withx.innovations@gmail.com</a>
+      <a href="tel:+917666936323">+91 7666936323</a>
+      <a href="https://withx.in">withx.in</a>
+      <a>ED Cell, MIT Academy of Engineering, Alandi, Pune – 412105</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 WITHX Defence. All rights reserved.</span>
+    <span>Designed for next-generation defence innovation.</span>
+  </div>
+</footer>
+
+<script>
+const items=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+items.forEach(i=>obs.observe(i));
+
+document.querySelector('.menu-toggle').addEventListener('click',()=>{
+  const links=document.querySelector('.nav-links');
+  const show = links.style.display!=='flex';
+  links.style.display = show ? 'flex' : 'none';
+  links.style.flexDirection='column';
+  links.style.position='absolute';
+  links.style.top='70px';
+  links.style.right='24px';
+  links.style.background='#000';
+  links.style.padding='20px';
+  links.style.border='1px solid rgba(255,255,255,0.08)';
+  links.style.borderRadius='10px';
+});
+</script>
+
+</body>
+</html>
