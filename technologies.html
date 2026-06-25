@@ -1115,7 +1115,19 @@ footer { background:#020202; border-top:1px solid rgba(37,99,235,0.12); padding:
 
 <script>
 /* CURSOR */
+/* CURSOR */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursor-ring');
 
+let mx=0,my=0,rx=0,ry=0;
+
+document.addEventListener('mousemove', ... );
+
+function animateRing(){ ... }
+
+animateRing();
+
+document.querySelectorAll('a,button,.glass,.nav-cta,.btn-primary,.btn-outline')
 function animateRing(){
   rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
   ring.style.left=rx+'px'; ring.style.top=ry+'px';
