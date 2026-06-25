@@ -4,22 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WITHX Defence | Next-Generation Surveillance & Recovery Technologies</title>
-  <meta name="description" content="Developing advanced drone systems that improve monitoring, situational awareness, operational safety, and mission reliability. Discover WITHX Drone Surveillance and Airbag Recovery systems.">
+  <meta name="description" content="Developing advanced drone systems that improve monitoring, situational awareness, operational safety, and mission reliability.">
   
-  <!-- Preconnect to fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Local Styles -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Three.js from CDN for interactive 3D model showcase -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-
 <style>
-/* ================= ANDURIL STYLE CLICK MEGA MENU ================= */
+
+/* ================= RESET ================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ================= MEGA MENU ================= */
 .mega-item { position: relative; }
 .mega-btn { cursor: pointer; }
 
@@ -40,7 +39,7 @@
   transform: translateY(-18px);
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
   z-index: 9999;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .mega-item:hover .mega-menu,
@@ -110,37 +109,126 @@
   color: #c9a44c;
   transform: translateX(6px);
 }
-.hero{
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-
-.hero-video{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
 }
 
-.hero-overlay{
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 1;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
 }
 
-.hero-content{
-    position: relative;
-    z-index: 2;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-/* Mobile responsive mega menu */
+
+.hero-tag {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 40px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  color: #6bbcff;
+  background: rgba(37,99,235,0.08);
+}
+
+#hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.0;
+  color: #ffffff;
+  white-space: pre-line;
+  text-align: center;
+  margin-bottom: 30px;
+  min-height: 300px;
+  display: block;
+  width: 100%;
+}
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 600px;
+  color: #cbd5e1;
+  margin-bottom: 45px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-buttons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 40px;
+  height: 55px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons a:first-child {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.hero-buttons a:first-child:hover {
+  background: #3b82f6;
+  transform: translateY(-3px);
+}
+
+.hero-buttons a:last-child {
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.hero-buttons a:last-child:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+}
+
 @media (max-width: 768px) {
   .mega-menu {
     position: absolute;
@@ -152,22 +240,21 @@
     grid-template-columns: 1fr;
     gap: 25px;
   }
-
-  .mega-col h4 { margin-bottom: 14px; }
-  .mega-col p { font-size: 15px; }
-  .product-toggle { font-size: 18px; }
-  .product-list a { font-size: 16px; }
+  #hero-title { font-size: 48px; min-height: 200px; }
+  .hero-content p { font-size: 16px; }
 }
-</style>
 
+@media (max-width: 480px) {
+  #hero-title { font-size: 36px; min-height: 160px; }
+}
+
+</style>
 </head>
 <body>
-  
- <header id="header">
+
+<header id="header">
   <div class="nav">
-
     <div class="nav-logo border"></div>
-
     <div class="nav-links">
       <a href="index.html" class="border nav-link">HOME</a>
       <a href="about.html" class="border nav-link">ABOUT</a>
@@ -176,17 +263,11 @@
       <!-- SEA MEGA MENU -->
       <div class="mega-item">
         <a>SEA</a>
-
         <div class="mega-menu">
           <div class="mega-col">
             <h4>SEA DOMAIN</h4>
-            <p>
-              Advanced maritime surveillance and recovery technologies designed
-              for coastal monitoring, marine operations, water-based
-              reconnaissance, and autonomous recovery missions.
-            </p>
+            <p>Advanced maritime surveillance and recovery technologies designed for coastal monitoring, marine operations, water-based reconnaissance, and autonomous recovery missions.</p>
           </div>
-
           <div class="mega-col">
             <h4>PRODUCTS</h4>
             <button class="product-toggle" type="button">+ Sea Products</button>
@@ -200,17 +281,11 @@
       <!-- LAND MEGA MENU -->
       <div class="mega-item">
         <a>LAND</a>
-
         <div class="mega-menu">
           <div class="mega-col">
             <h4>LAND DOMAIN</h4>
-            <p>
-              Autonomous monitoring and security technologies designed for
-              infrastructure protection, perimeter surveillance, reconnaissance,
-              and critical asset monitoring.
-            </p>
+            <p>Autonomous monitoring and security technologies designed for infrastructure protection, perimeter surveillance, reconnaissance, and critical asset monitoring.</p>
           </div>
-
           <div class="mega-col">
             <h4>PRODUCTS</h4>
             <button class="product-toggle" type="button">+ Land Products</button>
@@ -224,17 +299,11 @@
       <!-- AIR MEGA MENU -->
       <div class="mega-item">
         <a>AIR</a>
-
         <div class="mega-menu">
           <div class="mega-col">
             <h4>AIR DOMAIN</h4>
-            <p>
-              Advanced aerial intelligence systems providing real-time
-              surveillance, autonomous flight capability, reconnaissance,
-              mapping, and situational awareness.
-            </p>
+            <p>Advanced aerial intelligence systems providing real-time surveillance, autonomous flight capability, reconnaissance, mapping, and situational awareness.</p>
           </div>
-
           <div class="mega-col">
             <h4>PRODUCTS</h4>
             <button class="product-toggle" type="button">+ Air Products</button>
@@ -247,558 +316,251 @@
 
       <a href="contact.html" class="border">CONTACT</a>
     </div>
-
     <div class="nav-touch border">
       <p>Get in Touch</p>
     </div>
-
   </div>
 </header>
+
+<!-- ================= HERO ================= -->
 <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="https://www.image2url.com/r2/default/videos/1782370808065-a54e1b54-6506-4db6-afef-e2eb99d1b1c5.mp4" type="video/mp4">
-</video>
-    </video>
-    <div class="hero-overlay"></div>
+  </video>
+  <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-
-        <div class="hero-left">
-
-            <div class="hero-tag">
-                NEXT GENERATION UAV SYSTEMS
-            </div>
-
-           <h1 class="typing" id="hero-title"></h1>
-
-            <p>
-            At WITHX Defence, we are building next-generation autonomous aerial 
-            systems designed to enhance surveillance,  and mission effectiveness. 
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#">Explore</a>
-                <a href="#">Contact</a>
-            </div>
-
-                   </div>
-
-        <div class="hero-right">
-
-            <div class="radar-circle circle1"></div>
-            <div class="radar-circle circle2"></div>
-            <div class="radar-circle circle3"></div>
-
-            <div class="info-card card1">
-            <span>MISSION SUCCESS</span>
-            <h2 id="mission">95%</h2>
-            </div>
-
-        <div class="info-card card2">
-        <span>AI TRACKING</span>
-        <h2 id="tracking">100%</h2>
-        </div>
-
-        </div>
-
-</section>  
+  <div class="hero-content">
+    <div class="hero-tag">NEXT GENERATION UAV SYSTEMS</div>
+    <h1 id="hero-title"></h1>
+    <p>At WITHX Defence, we are building next-generation autonomous aerial systems designed to enhance surveillance and mission effectiveness.</p>
+    <div class="hero-buttons">
+      <a href="#">Explore</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</section>
 
 
-
-
-<!-- after hero section -->
-<!-- ================= Platforms Section ================= -->
-
+<!-- ================= PLATFORMS SECTION ================= -->
 <section class="platforms">
+  <div class="platform-header">
+    <span class="section-tag">OUR SYSTEMS</span>
+    <h2>Next Generation Defence<br>Technologies</h2>
+    <p>Autonomous systems engineered for surveillance, mission intelligence, and operational effectiveness across air, land, and maritime environments.</p>
+  </div>
 
-    <div class="platform-header">
-        <span class="section-tag">OUR SYSTEMS</span>
-
-        <h2>
-            Next Generation Defence
-            <br>
-            Technologies
-        </h2>
-
-        <p>
-            Autonomous systems engineered for surveillance,
-            mission intelligence, and operational effectiveness
-            across air, land, and maritime environments.
-        </p>
+  <div class="platform-grid">
+    <div class="platform-card large">
+      <img src="aerial.webp" alt="Falcon UAV">
+      <div class="card-overlay">
+        <span>AERIAL SYSTEMS</span>
+        <h3>WITHX Falcon</h3>
+        <p>Advanced UAV platform designed for intelligent surveillance and reconnaissance.</p>
+        <a href="#">Explore →</a>
+      </div>
     </div>
 
-
-    <div class="platform-grid">
-
-        <!-- Card 1 -->
-        <div class="platform-card large">
-
-            <img src="aerial.webp" alt="Falcon UAV">
-
-            <div class="card-overlay">
-
-                <span>AERIAL SYSTEMS</span>
-
-                <h3>WITHX Falcon</h3>
-
-                <p>
-                    Advanced UAV platform designed for
-                    intelligent surveillance and reconnaissance.
-                </p>
-
-                <a href="#">Explore →</a>
-
-            </div>
-
-        </div>
-
-
-        <!-- Card 2 -->
-
-        <div class="platform-card">
-
-            <img src="border.avif" alt="Sentinel Drone">
-
-            <div class="card-overlay">
-
-                <span>BORDER SECURITY</span>
-
-                <h3>WITHX Sentinel</h3>
-
-                <p>
-                    AI-powered monitoring system for
-                    real-time threat detection.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Card 3 -->
-
-        <div class="platform-card">
-
-            <img src="command.avif" alt="AI Platform">
-
-            <div class="card-overlay">
-
-                <span>COMMAND SYSTEM</span>
-
-                <h3>WITHX Nexus AI</h3>
-
-                <p>
-                    Unified command and mission control platform.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Card 4 -->
-
-        <div class="platform-card wide">
-
-            <img src="ocean.avif" alt="Maritime">
-
-            <div class="card-overlay">
-
-                <span>MARITIME SYSTEMS</span>
-
-                <h3>WITHX Hydra</h3>
-
-                <p>
-                    Persistent ocean surveillance and
-                    autonomous response capabilities.
-                </p>
-
-                <a href="#">Discover →</a>
-
-            </div>
-
-        </div>
-
+    <div class="platform-card">
+      <img src="border.avif" alt="Sentinel Drone">
+      <div class="card-overlay">
+        <span>BORDER SECURITY</span>
+        <h3>WITHX Sentinel</h3>
+        <p>AI-powered monitoring system for real-time threat detection.</p>
+      </div>
     </div>
 
+    <div class="platform-card">
+      <img src="command.avif" alt="AI Platform">
+      <div class="card-overlay">
+        <span>COMMAND SYSTEM</span>
+        <h3>WITHX Nexus AI</h3>
+        <p>Unified command and mission control platform.</p>
+      </div>
+    </div>
+
+    <div class="platform-card wide">
+      <img src="ocean.avif" alt="Maritime">
+      <div class="card-overlay">
+        <span>MARITIME SYSTEMS</span>
+        <h3>WITHX Hydra</h3>
+        <p>Persistent ocean surveillance and autonomous response capabilities.</p>
+        <a href="#">Discover →</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 
-
-
+<!-- ================= TECHNOLOGY SECTION ================= -->
 <section class="technology">
+  <div class="tech-header">
+    <span class="tech-tag">OUR TECHNOLOGY</span>
+    <h2>Intelligence Behind<br>Every Mission</h2>
+    <p>Advanced AI-powered systems engineered to enhance surveillance, mission reliability, and autonomous decision-making.</p>
+  </div>
 
-    <div class="tech-header">
-
-        <span class="tech-tag">OUR TECHNOLOGY</span>
-
-        <h2>
-            Intelligence Behind
-            Every Mission
-        </h2>
-
-        <p>
-            Advanced AI-powered systems engineered to enhance surveillance,
-            mission reliability, and autonomous decision-making.
-        </p>
-
+  <div class="tech-container">
+    <div class="tech-features">
+      <div class="tech-card active">
+        <div class="tech-icon">✦</div>
+        <div>
+          <h3>AI Tracking</h3>
+          <p>Real-time object detection and autonomous target tracking powered by advanced machine learning.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">◉</div>
+        <div>
+          <h3>Computer Vision</h3>
+          <p>Intelligent image analysis for enhanced situational awareness and threat identification.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">⬡</div>
+        <div>
+          <h3>Swarm Intelligence</h3>
+          <p>Coordinated multi-drone operations enabling efficient area coverage and mission execution.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">⬢</div>
+        <div>
+          <h3>Airbag Recovery System</h3>
+          <p>Innovative recovery technology designed to improve landing safety and protect critical equipment.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="tech-container">
-
-        <!-- Left Side -->
-
-        <div class="tech-features">
-
-            <div class="tech-card active">
-
-                <div class="tech-icon">✦</div>
-
-                <div>
-                    <h3>AI Tracking</h3>
-
-                    <p>
-                        Real-time object detection and autonomous target
-                        tracking powered by advanced machine learning.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="tech-card">
-
-                <div class="tech-icon">◉</div>
-
-                <div>
-                    <h3>Computer Vision</h3>
-
-                    <p>
-                        Intelligent image analysis for enhanced situational
-                        awareness and threat identification.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="tech-card">
-
-                <div class="tech-icon">⬡</div>
-
-                <div>
-                    <h3>Swarm Intelligence</h3>
-
-                    <p>
-                        Coordinated multi-drone operations enabling efficient
-                        area coverage and mission execution.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="tech-card">
-
-                <div class="tech-icon">⬢</div>
-
-                <div>
-                    <h3>Airbag Recovery System</h3>
-
-                    <p>
-                        Innovative recovery technology designed to improve
-                        landing safety and protect critical equipment.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Right Side -->
-
-        <div class="tech-visual">
-
-            <!-- Replace with image/video later -->
-
-            <img src="techno-drone.avif" alt="Technology Drone">
-
-            <div class="tech-glow"></div>
-
-        </div>
-
+    <div class="tech-visual">
+      <img src="techno-drone.avif" alt="Technology Drone">
+      <div class="tech-glow"></div>
     </div>
-
+  </div>
 </section>
 
 
-
-
-
+<!-- ================= MISSION STATS ================= -->
 <section class="mission-section">
+  <div class="mission-header">
+    <span class="mission-tag">MISSION IMPACT</span>
+    <h2>Built For Mission Success</h2>
+    <p>Our intelligent systems are designed to maximize operational effectiveness, reliability, and situational awareness.</p>
+  </div>
 
-    <div class="mission-header">
-
-        <span class="mission-tag">MISSION IMPACT</span>
-
-        <h2>Built For Mission Success</h2>
-
-        <p>
-            Our intelligent systems are designed to maximize
-            operational effectiveness, reliability, and situational awareness.
-        </p>
-
+  <div class="mission-grid">
+    <div class="mission-card">
+      <h3 class="counter" data-target="95">0</h3><span>%</span>
+      <h4>Mission Reliability</h4>
+      <p>Engineered for dependable performance during critical operations.</p>
     </div>
-
-    <div class="mission-grid">
-
-        <div class="mission-card">
-            <h3 class="counter" data-target="95">0</h3>
-            <span>%</span>
-
-            <h4>Mission Reliability</h4>
-
-            <p>
-                Engineered for dependable performance
-                during critical operations.
-            </p>
-        </div>
-
-        <div class="mission-card">
-            <h3 class="counter" data-target="100">0</h3>
-            <span>%</span>
-
-            <h4>AI Tracking Accuracy</h4>
-
-            <p>
-                Advanced algorithms delivering
-                precise target monitoring.
-            </p>
-        </div>
-
-        <div class="mission-card">
-            <h3 class="counter" data-target="24">0</h3>
-            <span>/7</span>
-
-            <h4>Operational Monitoring</h4>
-
-            <p>
-                Continuous surveillance capabilities
-                for enhanced security.
-            </p>
-        </div>
-
-        <div class="mission-card">
-            <h3 class="counter" data-target="50">0</h3>
-            <span>+</span>
-
-            <h4>Test Flight Hours</h4>
-
-            <p>
-                Extensive testing ensuring
-                mission readiness and safety.
-            </p>
-        </div>
-
+    <div class="mission-card">
+      <h3 class="counter" data-target="100">0</h3><span>%</span>
+      <h4>AI Tracking Accuracy</h4>
+      <p>Advanced algorithms delivering precise target monitoring.</p>
     </div>
-
+    <div class="mission-card">
+      <h3 class="counter" data-target="24">0</h3><span>/7</span>
+      <h4>Operational Monitoring</h4>
+      <p>Continuous surveillance capabilities for enhanced security.</p>
+    </div>
+    <div class="mission-card">
+      <h3 class="counter" data-target="50">0</h3><span>+</span>
+      <h4>Test Flight Hours</h4>
+      <p>Extensive testing ensuring mission readiness and safety.</p>
+    </div>
+  </div>
 </section>
 
 
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
-
-    <div class="footer-container">
-
-        <div class="footer-about">
-            <h2>WITHX Defence</h2>
-            <p>
-                Building next-generation autonomous aerial systems
-                for surveillance, intelligence gathering, and mission success.
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="#">Technology</a>
-            <a href="#">Sea</a>
-            <a href="#">Land</a>
-            <a href="#">Contact</a>
-        </div>
-
-        <div class="footer-links">
-            <h3>Systems</h3>
-
-            <a href="#">WITHX Falcon</a>
-            <a href="#">WITHX Sentinel</a>
-            <a href="#">WITHX Nexus AI</a>
-            <a href="#">WITHX Hydra</a>
-        </div>
-
-        <div class="footer-contact">
-            <h3>Get In Touch</h3>
-
-            <p>Email: info@withxdefence.com</p>
-            <p>Phone: +91 98765 43210</p>
-            <p>Pune, Maharashtra, India</p>
-        </div>
-
+  <div class="footer-container">
+    <div class="footer-about">
+      <h2>WITHX Defence</h2>
+      <p>Building next-generation autonomous aerial systems for surveillance, intelligence gathering, and mission success.</p>
     </div>
-
-    <div class="footer-bottom">
-        <p>© 2026 WITHX Defence. All Rights Reserved.</p>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="#">Technology</a>
+      <a href="#">Sea</a>
+      <a href="#">Land</a>
+      <a href="#">Contact</a>
     </div>
-
+    <div class="footer-links">
+      <h3>Systems</h3>
+      <a href="#">WITHX Falcon</a>
+      <a href="#">WITHX Sentinel</a>
+      <a href="#">WITHX Nexus AI</a>
+      <a href="#">WITHX Hydra</a>
+    </div>
+    <div class="footer-contact">
+      <h3>Get In Touch</h3>
+      <p>Email: info@withxdefence.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Pune, Maharashtra, India</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 WITHX Defence. All Rights Reserved.</p>
+  </div>
 </footer>
 
 
-   <script>
+<script>
+// ================= TYPING ANIMATION =================
+const hero = document.getElementById("hero-title");
+const text = `INTELLIGENT\nAERIAL\nSURVEILLANCE\nPLATFORM`;
 
-function animateCounter(id,target){
-
-let element=document.getElementById(id);
-
-let count=0;
-
-clearInterval(element.timer);
-
-element.timer=setInterval(()=>{
-
-count++;
-
-element.innerHTML=count+"%";
-
-if(count>=target){
-
-clearInterval(element.timer);
-
+function startTyping() {
+  hero.innerText = "";
+  let i = 0;
+  let typing = setInterval(() => {
+    hero.innerText = text.substring(0, i);
+    i++;
+    if (i > text.length) {
+      clearInterval(typing);
+      setTimeout(startTyping, 5000);
+    }
+  }, 45);
 }
 
-},20);
-
-}
-
-/* Start on page load */
-
-window.addEventListener("load",()=>{
-
-animateCounter("mission",95);
-
-animateCounter("tracking",100);
-
-});
-
-/* Hover effect */
-
-document.querySelector(".card1").addEventListener("mouseenter",()=>{
-
-animateCounter("mission",95);
-
-});
-
-document.querySelector(".card2").addEventListener("mouseenter",()=>{
-
-animateCounter("tracking",100);
-
-});
+setTimeout(startTyping, 700);
 
 
-
-
-const hero=document.getElementById("hero-title");
-
-const text=`INTELLIGENT
-AERIAL 
-SURVEILLANCE
-PLATFORM`;
-
-function startTyping(){
-
-hero.innerText="";
-
-let i=0;
-
-let typing=setInterval(()=>{
-
-hero.innerText=text.substring(0,i);
-
-i++;
-
-if(i>text.length){
-
-clearInterval(typing);
-
-setTimeout(startTyping,5000);
-
-}
-
-},45);
-
-}
-
-setTimeout(startTyping,700);
-
-
-
-
-
-
-
+// ================= COUNTER ANIMATION =================
 const counters = document.querySelectorAll('.counter');
 
 const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      const target = +counter.dataset.target;
+      let count = 0;
+      const update = () => {
+        count++;
+        counter.innerText = count;
+        if (count < target) requestAnimationFrame(update);
+      };
+      update();
+      observer.unobserve(counter);
+    }
+  });
+}, { threshold: 0.5 });
 
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            const counter = entry.target;
-
-            const target = +counter.dataset.target;
-
-            let count = 0;
-
-            const update = () => {
-
-                count++;
-
-                counter.innerText = count;
-
-                if(count < target){
-                    requestAnimationFrame(update);
-                }
-            }
-
-            update();
-
-            observer.unobserve(counter);
-        }
-    });
-
-},{
-    threshold:0.5
-});
-
-counters.forEach(counter=>{
-    observer.observe(counter);
-});
+counters.forEach(counter => observer.observe(counter));
 
 
-</script>
-
-<script>
-/* Mega menu product open on + click */
+// ================= MEGA MENU =================
 document.querySelectorAll('.product-toggle').forEach((btn) => {
-  btn.addEventListener('click', function (e) {
+  btn.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-
     const list = this.nextElementSibling;
     const isOpen = list.classList.contains('show');
-
     document.querySelectorAll('.product-list').forEach(item => item.classList.remove('show'));
     document.querySelectorAll('.product-toggle').forEach(item => item.classList.remove('active'));
-
     if (!isOpen) {
       list.classList.add('show');
       this.classList.add('active');
@@ -806,6 +568,7 @@ document.querySelectorAll('.product-toggle').forEach((btn) => {
   });
 });
 </script>
+
 <script src="script.js"></script>
 </body>
 </html>
