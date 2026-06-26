@@ -265,6 +265,89 @@
   {
     font-size:18px;
   }
+
+
+
+
+
+.section-tag-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+
+
+.section-tag-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.systems-popup{
+    position:absolute;
+    top:45px;
+    left:0;
+    width:300px;
+    padding:18px;
+    background:#111;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.25s ease;
+
+    pointer-events:none;
+    z-index:9999;
+}
+
+.section-tag-wrapper:hover .systems-popup,
+.systems-popup.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+
+
+.card-overlay a
+{
+text-decoration:none;
+color:white;
+transition:0.5s linear all;
+}
+
+.card-overlay h3
+{
+transition:0.5s linear all;
+}
+
+.card-overlay a:hover 
+{
+font-size:17px;
+}
+
+.card-overlay h3:hover
+{
+font-size:34px;
+}
+
+
+
+
+.tech-tag a
+{
+text-decoration:none;
+color:white;
+transition:0.2s linear all;
+}
+.tech-tag a:hover
+{
+font-size:13px;
+}
 </style>
 </head>
 <body>
@@ -361,7 +444,30 @@
 <!-- ================= PLATFORMS SECTION ================= -->
 <section class="platforms">
   <div class="platform-header">
-    <span class="section-tag">OUR SYSTEMS</span>
+  
+
+
+<div class="section-tag-wrapper">
+
+    <span class="section-tag">
+        <a href="#" id="systemsBtn">OUR SYSTEMS</a>
+    </span>
+
+    <div class="systems-popup" id="systemsPopup">
+
+               <h4>Our Systems</h4>
+
+        <p>
+            WITHX Defence develops autonomous aerial, land and maritime
+            systems for surveillance, reconnaissance and mission intelligence.
+        </p>
+
+    </div>
+
+</div>
+
+
+
     <h2>Next Generation Defence<br>Technologies</h2>
     <p>Autonomous systems engineered for surveillance, mission intelligence, and operational effectiveness across air, land, and maritime environments.</p>
   </div>
@@ -370,18 +476,18 @@
     <div class="platform-card large">
       <img src="aerial.webp" alt="Falcon UAV">
       <div class="card-overlay">
-        <span>AERIAL SYSTEMS</span>
-        <h3>WITHX Falcon</h3>
+        <span><a href="air.html">AERIAL SYSTEMS</span>
+        <h3>WITHX SkyShield</h3></a>
         <p>Advanced UAV platform designed for intelligent surveillance and reconnaissance.</p>
-        <a href="#">Explore →</a>
+        <a href="technologies.html">Explore →</a>
       </div>
     </div>
 
     <div class="platform-card">
       <img src="border.avif" alt="Sentinel Drone">
       <div class="card-overlay">
-        <span>BORDER SECURITY</span>
-        <h3>WITHX Sentinel</h3>
+        <span><a href="land.html">BORDER SECURITY</span>
+        <h3>WITHX BorderEye</h3></a>
         <p>AI-powered monitoring system for real-time threat detection.</p>
       </div>
     </div>
@@ -390,7 +496,7 @@
       <img src="command.avif" alt="AI Platform">
       <div class="card-overlay">
         <span>COMMAND SYSTEM</span>
-        <h3>WITHX Nexus AI</h3>
+        <h3><a href="about.html">WITHX Vision</h3></a>
         <p>Unified command and mission control platform.</p>
       </div>
     </div>
@@ -399,9 +505,9 @@
       <img src="ocean.avif" alt="Maritime">
       <div class="card-overlay">
         <span>MARITIME SYSTEMS</span>
-        <h3>WITHX Hydra</h3>
+        <h3><a href="sea.html">WITHX Hydra</h3></a>
         <p>Persistent ocean surveillance and autonomous response capabilities.</p>
-        <a href="#">Discover →</a>
+        <a href="technologies.html">Discover →</a>
       </div>
     </div>
   </div>
@@ -411,7 +517,7 @@
 <!-- ================= TECHNOLOGY SECTION ================= -->
 <section class="technology">
   <div class="tech-header">
-    <span class="tech-tag">OUR TECHNOLOGY</span>
+    <span class="tech-tag"><a href="technologies.html">OUR TECHNOLOGY</span></a>
     <h2>Intelligence Behind<br>Every Mission</h2>
     <p>Advanced AI-powered systems engineered to enhance surveillance, mission reliability, and autonomous decision-making.</p>
   </div>
@@ -584,8 +690,33 @@ document.querySelectorAll('.product-toggle').forEach((btn) => {
     }
   });
 });
+
+
+
+
+
+const wrapper = document.querySelector(".section-tag-wrapper");
+const btn = document.getElementById("systemsBtn");
+const popup = document.getElementById("systemsPopup");
+
+// Click/Tap
+btn.addEventListener("click", function(e){
+    e.preventDefault();
+    popup.classList.toggle("show");
+});
+
+// Click outside
+document.addEventListener("click", function(e){
+    if(!wrapper.contains(e.target)){
+        popup.classList.remove("show");
+    }
+});
 </script>
 
 <script src="script.js"></script>
+
+
+
+
 </body>
 </html>
