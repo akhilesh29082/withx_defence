@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | WITHX Defence — Next-Generation UAV Systems</title>
 <meta name="description" content="Contact WITHX Defence for partnerships, demonstrations, and collaboration on next-generation autonomous aerial surveillance systems.">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
 :root{
   --black:#000000;
@@ -29,37 +33,7 @@ h1,h2,h3{font-family:'Segoe UI',Arial,sans-serif;letter-spacing:0.5px;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;}
 
-/* ===== NAV ===== */
-nav{
-  position:fixed;top:0;left:0;width:100%;z-index:1000;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 60px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:22px;letter-spacing:1px;}
-.logo span{color:var(--blue-bright);}
-.nav-links{display:flex;gap:40px;list-style:none;}
-.nav-links li a{
-  font-size:14px;letter-spacing:1.5px;font-weight:600;color:#cfd8e0;
-  position:relative;transition:color .25s;
-}
-.nav-links li a::after{
-  content:"";position:absolute;left:0;bottom:-8px;width:0;height:2px;background:var(--blue-bright);
-  transition:width .3s;
-}
-.nav-links li a:hover{color:#fff;}
-.nav-links li a:hover::after,.nav-links li a.active::after{width:100%;}
-.nav-links li a.active{color:#fff;}
-.get-in-touch{
-  border:1px solid var(--line);background:#0d0d0d;color:#fff;
-  padding:11px 24px;border-radius:6px;font-weight:600;font-size:14px;
-  letter-spacing:0.5px;cursor:pointer;transition:all .25s;
-}
-.get-in-touch:hover{border-color:var(--blue-bright);box-shadow:0 0 18px rgba(37,99,235,0.5);}
-.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
-.menu-toggle span{width:26px;height:2px;background:#fff;}
+
 
 /* ===== HERO ===== */
 .hero{
@@ -81,6 +55,20 @@ nav{
   mask-image:radial-gradient(circle at center, black 0%, transparent 70%);
   animation:gridmove 30s linear infinite;
 }
+
+.brand-logo-box{
+  height:54px;
+  min-width:76px;
+  padding:8px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:14px;
+}
+
+.brand-logo-box img{height:38px;width:auto}
+
 @keyframes gridmove{0%{background-position:0 0;}100%{background-position:48px 48px;}}
 .hero-tag{
   display:inline-block;border:1px solid rgba(59,130,246,0.4);
@@ -274,60 +262,524 @@ section{padding:100px 60px;position:relative;}
 .map-frame iframe{width:100%;height:100%;border:0;filter:invert(0.92) hue-rotate(180deg) contrast(0.9);}
 
 /* ===== FOOTER ===== */
-footer{
-  background:#000;border-top:1px solid var(--line);padding:70px 60px 30px;
-}
-.footer-grid{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;max-width:1300px;margin:0 auto 50px;
-}
-.footer-logo{font-size:22px;font-weight:800;margin-bottom:14px;}
-.footer-logo span{color:var(--blue-bright);}
-.footer-grid p{color:var(--text-dim);font-size:14px;line-height:1.7;}
-.footer-col h4{font-size:14px;letter-spacing:1px;margin-bottom:18px;color:#cfd8e0;}
-.footer-col a{display:block;color:var(--text-dim);font-size:14px;margin-bottom:10px;transition:color .25s;}
-.footer-col a:hover{color:#fff;}
-.footer-bottom{
-  border-top:1px solid var(--line);padding-top:24px;max-width:1300px;margin:0 auto;
-  display:flex;justify-content:space-between;color:#6b7785;font-size:13px;flex-wrap:wrap;gap:10px;
+/* FOOTER */
+
+
+
+.footer-contact{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:1024px){
-  .info-grid{grid-template-columns:repeat(2,1fr);}
-  .contact-wrap{grid-template-columns:1fr;}
-  .partner-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
+.footer-contact h3{
+    color:#fff;
+    margin-bottom:10px;
 }
-@media(max-width:768px){
-  nav{padding:16px 24px;}
-  .nav-links{display:none;}
-  .menu-toggle{display:flex;}
-  .get-in-touch{display:none;}
-  .hero h1{font-size:38px;}
-  section{padding:70px 24px;}
-  .info-grid{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;}
-  .form-panel{padding:28px;}
+
+.footer-contact a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#d8d8d8;
+    text-decoration:none;
+    transition:.3s;
+    font-size:15px;
 }
+
+.footer-contact a:hover{
+    color:#fff;
+    transform:translateX(6px);
+}
+
+.footer-contact i{
+    width:22px;
+    font-size:19px;
+}
+
+/* Brand Colors */
+
+.location{
+    color:#ffffff;
+}
+
+.phone{
+    color:#60a5fa;
+}
+
+.email{
+    color:ffffff;
+}
+
+.whatsapp{
+    color:#25D366;
+}
+
+.linkedin{
+    color:#0A66C2;
+}
+
+.instagram{
+    color:#E1306C;
+}
+
+.youtube{
+    color:#FF0000;
+}
+
+.footer-links a{
+    display:block;
+    color:#d8d8d8;
+    text-decoration:none;
+    margin:10px 0;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:white;
+    padding-left:6px;
+}
+
+
+
+
+.footer{
+    background:#050816;
+    color:white;
+    padding-top:70px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+
+    padding-bottom:50px;
+}
+
+.footer h2{
+    font-family:'Outfit',sans-serif;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.footer h3{
+    font-size:1.1rem;
+    margin-bottom:18px;
+    color:#4fc3ff;
+}
+
+.footer p{
+    color:#b8c1d1;
+    line-height:1.8;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:#b8c1d1;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#4fc3ff;
+    transform:translateX(5px);
+}
+
+.footer-contact p{
+    margin-bottom:10px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.08);
+    text-align:center;
+    padding:20px;
+}
+
+.footer-bottom p{
+    color:#8d98ab;
+    font-size:0.9rem;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+    .footer-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .footer-links{
+        align-items:center;
+    }
+}
+
+
+
+.info-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
+
+.info-link .info-card{
+    height:100%;
+    cursor:pointer;
+}
+
+.info-link:hover .info-card{
+    transform:translateY(-8px);
+}
+
+.info-link:hover .info-icon{
+    background:#2563EB;
+    color:#fff;
+    transform:scale(1.08);
+}
+
+.info-icon{
+    transition:0.3s ease;
+    font-size:22px;
+}
+
+.value{
+    color:#9fc4ff;
+    font-weight:600;
+}
+
+.info-link:hover .value{
+    color:#fff;
+}
+
+
+/* ================= MEGA MENU ================= */
+.mega-item { position: relative; }
+.mega-btn { cursor: pointer; }
+
+.mega-menu {
+  position: fixed;
+  top: 78px;
+  left: 0;
+  width: 100%;
+  min-height: 300px;
+  background: #000;
+  color: #fff;
+  padding: 55px 45px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 90px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-18px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+  z-index: 9999;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.mega-item:hover .mega-menu,
+.mega-item.active .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #fff;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.mega-col p {
+  color: #f2f2f2;
+  font-size: 19px;
+  line-height: 1.35;
+  max-width: 470px;
+  font-weight: 500;
+}
+
+.product-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.product-toggle:hover,
+.product-toggle.active {
+  color: #c9a44c;
+  transform: translateX(6px);
+}
+
+.product-list {
+  display: none;
+  margin-top: 14px;
+  padding-left: 28px;
+  border-left: 1px solid rgba(255,255,255,0.18);
+}
+
+.product-list.show { display: block; }
+
+.product-list a {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.product-list a:hover {
+  color: #c9a44c;
+  transform: translateX(6px);
+}
+
+.nav-touch a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+.nav-touch a:hover { font-weight:bold; color:black; }
+.nav-touch:hover  {  color: black;}
+.nav-touch:hover a {
+  color: black;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .mega-menu {
+    position: absolute;
+    top: 38px;
+    left: -120px;
+    width: 320px;
+    min-height: auto;
+    padding: 25px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+
+
+/* NAVBAR */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:1000;
+}
+
+.nav{
+
+height:90px;
+
+width:100%;
+
+background:black;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 60px;
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGO */
+
+.nav-logo{
+
+width:150px;
+
+height:57px;
+
+background:url("withx_logo.png");
+
+background-size:cover;
+
+background-repeat:no-repeat;
+
+background-position:left center;
+}
+
+/* LINKS */
+
+.nav-links{
+
+display:flex;
+
+gap:45px;
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:14px;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+transition:0.2s;
+}
+
+.nav-links a:hover{
+
+color:var(--gold);
+text-decoration:underline;
+}
+
+/* BUTTON */
+
+.nav-touch{
+
+width:180px;
+
+height:52px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.nav-touch:hover{
+
+background:white;
+
+color:black;
+}
+
+
+.mega-item:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mega-item > a {
+  display: block;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">WITH<span>X</span></div>
-  <ul class="nav-links">
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT</a></li>
-    <li><a href="technologies.html">TECHNOLOGY</a></li>
-    <li><a href="drone-recovery-bag.html">SEA</a></li>
-    <li><a href="land.html">LAND</a></li>
-    <li><a href="drone-surveillance-system.html">AIR</a></li>
-    <li><a href="contact.html" class="active">CONTACT</a></li>
-  </ul>
-  <button class="get-in-touch">Get in Touch</button>
-  <div class="menu-toggle"><span></span><span></span><span></span></div>
-</nav>
+<header id="header">
+  <div class="nav">
+    <div class="nav-logo border"></div>
+    <div class="nav-links">
+      <a href="index.html" class="border nav-link">HOME</a>
+      <a href="about.html" class="border nav-link">ABOUT</a>
+      <a href="technologies.html" class="border nav-link">TECHNOLOGY</a>
+
+      <!-- SEA MEGA MENU -->
+      <div class="mega-item">
+        <a>SEA</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>SEA DOMAIN</h4>
+            <p>Advanced maritime surveillance and recovery technologies designed for coastal monitoring, marine operations, water-based reconnaissance, and autonomous recovery missions.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Sea Products</button>
+            <div class="product-list">
+              <a href="drone-recovery-bag.html">Drone Recovery Bag</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAND MEGA MENU -->
+      <div class="mega-item">
+        <a>LAND</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>LAND DOMAIN</h4>
+            <p>Autonomous monitoring and security technologies designed for infrastructure protection, perimeter surveillance, reconnaissance, and critical asset monitoring.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Land Products</button>
+            <div class="product-list">
+              <a href="land-monitoring-system.html">Autonomous Monitoring System</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AIR MEGA MENU -->
+      <div class="mega-item">
+        <a>AIR</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>AIR DOMAIN</h4>
+            <p>Advanced aerial intelligence systems providing real-time surveillance, autonomous flight capability, reconnaissance, mapping, and situational awareness.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Air Products</button>
+            <div class="product-list">
+              <a href="drone-surveillance-system.html">WITHX Drone Surveillance System</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="border">CONTACT</a>
+    </div>
+    <div class="nav-touch border">
+      <p><a href="contact.html">GET IN TOUCH</a></p>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero" style="padding-top:160px;">
@@ -341,11 +793,97 @@ footer{
 </section>
 
 <!-- CONTACT INFO -->
-    
+<div class="info-grid">
 
+    <!-- Email -->
+    <a href="mailto:withx.innovations@gmail.com" class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Email</h3>
+            <div class="value">withx.innovations@gmail.com</div>
+            <div class="desc">Business inquiries & partnerships.</div>
+        </div>
+    </a>
 
+    <!-- Phone -->
+    <a href="tel:+917666936323" class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <h3>Phone</h3>
+            <div class="value">+91 7666936323</div>
+            <div class="desc">Available Monday – Saturday.</div>
+        </div>
+    </a>
 
-<!-- FORM + RADAR -->
+    <!-- Office -->
+    <a href="https://maps.google.com/?q=MIT+Academy+of+Engineering+Alandi+Pune"
+       target="_blank"
+       class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+            <h3>Office</h3>
+            <div class="value">MIT Academy of Engineering</div>
+            <div class="desc">Open location in Google Maps.</div>
+        </div>
+    </a>
+
+    <!-- Website -->
+    <a href="https://withx.in" target="_blank" class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fas fa-globe"></i></div>
+            <h3>Website</h3>
+            <div class="value">withx.in</div>
+            <div class="desc">Visit our official website.</div>
+        </div>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/917666936323" target="_blank" class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>WhatsApp</h3>
+            <div class="value">Chat with us</div>
+            <div class="desc">Quick support & discussions.</div>
+        </div>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/withx-innovations/"
+       target="_blank"
+       class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fab fa-linkedin"></i></div>
+            <h3>LinkedIn</h3>
+            <div class="value">WITHX Innovations</div>
+            <div class="desc">Connect professionally.</div>
+        </div>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/withx.in/"
+       target="_blank"
+       class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fab fa-instagram"></i></div>
+            <h3>Instagram</h3>
+            <div class="value">@withx.in</div>
+            <div class="desc">Latest updates & behind the scenes.</div>
+        </div>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@withxinnovation"
+       target="_blank"
+       class="info-link">
+        <div class="info-card">
+            <div class="info-icon"><i class="fab fa-youtube"></i></div>
+            <h3>YouTube</h3>
+            <div class="value">@withxinnovation</div>
+            <div class="desc">Watch demos and technology videos.</div>
+        </div>
+    </a>
+
+</div><!-- FORM + RADAR -->
 <section id="contact-form">
   <span class="section-tag">Inquiry</span>
   <h2 class="section-title">Send Us a Message</h2>
@@ -372,10 +910,42 @@ footer{
       </form>
     </div>
 
+    <div class="radar-panel">
+      <div class="radar-rings">
+        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
+        <div class="sweep"></div>
+      </div>
+      <div class="drone-icon">✈</div>
+      <div class="stat-float stat-1"><div class="label">AI TRACKING</div><div class="num">100%</div></div>
+      <div class="stat-float stat-2"><div class="label">MISSION SUCCESS</div><div class="num">95%</div></div>
+      <div class="stat-float stat-3"><div class="label">MONITORING</div><div class="num">24/7</div></div>
+    </div>
   </div>
 </section>
 
-
+<!-- PARTNERSHIPS -->
+<section>
+  <span class="section-tag">Collaborate</span>
+  <h2 class="section-title">Strategic Partnerships</h2>
+  <p class="section-sub">WITHX Defence welcomes collaboration opportunities with defence agencies, government organizations, research institutes, universities, and technology partners.</p>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <span class="pnum">01</span>
+      <h3>Government Projects</h3>
+      <p>Defence surveillance and security solutions.</p>
+    </div>
+    <div class="partner-card">
+      <span class="pnum">02</span>
+      <h3>Research Collaboration</h3>
+      <p>Joint development of advanced technologies.</p>
+    </div>
+    <div class="partner-card">
+      <span class="pnum">03</span>
+      <h3>Industry Partnerships</h3>
+      <p>Strategic innovation and deployment programs.</p>
+    </div>
+  </div>
+</section>
 
 <!-- FAQ -->
 <section>
@@ -411,60 +981,118 @@ footer{
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo">WITH<span>X</span></div>
-      <p>Building next-generation autonomous aerial systems for intelligent surveillance and mission effectiveness.</p>
+<footer class="footer">
+
+<div class="footer-container">
+
+    <!-- Company -->
+    <div class="footer-about">
+        <h2>WITHX Defence</h2>
+
+        <p>
+            Developing intelligent aerial, land and maritime technologies
+            for surveillance, monitoring and autonomous mission operations.
+        </p>
     </div>
-    <div class="footer-col">
-      <h4>QUICK LINKS</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="technology.html">Technology</a>
-      <a href="contact.html">Contact</a>
+
+    <!-- Quick Links -->
+
+    <div class="footer-links">
+        <h3>Quick Links</h3>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="technologies.html">Technology</a>
+        <a href="contact.html">Contact</a>
     </div>
-    <div class="footer-col">
-      <h4>SYSTEMS</h4>
-      <a href="sea.html">Sea</a>
-      <a href="land.html">Land</a>
-      <a href="air.html">Air</a>
+
+    <!-- Systems -->
+
+    <div class="footer-links">
+        <h3>Our Solutions</h3>
+
+        <a href="drone-recovery-bag.html">Air Surveillance</a>
+        <a href="land-monitoring-system.html">Border Monitoring</a>
+        <a href="drone-surveillance-system.html">Marine Surveillance</a>
+        <a href="contact.html">contact.html</a>
     </div>
-    <div class="footer-col">
-      <h4>CONTACT</h4>
-      <a href="mailto:withx.innovations@gmail.com">withx.innovations@gmail.com</a>
-      <a href="tel:+917666936323">+91 7666936323</a>
-      <a href="https://withx.in">withx.in</a>
-      <a>ED Cell, MIT Academy of Engineering, Alandi, Pune – 412105</a>
+
+    <!-- Contact -->
+
+    <div class="footer-contact">
+
+        <h3>Connect With Us</h3>
+
+        <a href="https://maps.google.com/?q=MIT+Academy+of+Engineering+Alandi+Pune" target="_blank">
+            <i class="fas fa-location-dot location"></i>
+            EDF, MITAoE Campus, Alandi, Pune
+        </a>
+
+        <a href="https://wa.me/919876543210" target="_blank">
+            <i class="fab fa-whatsapp whatsapp"></i>
+            WhatsApp
+        </a>
+
+        <a href="tel:+919876543210">
+            <i class="fas fa-phone phone"></i>
+            +91 98765 43210
+        </a>
+
+        <a href="mailto:withx.innovations@gmail.com">
+            <i class="fas fa-envelope email"></i>
+            withx.innovations@gmail.com
+        </a>
+
+        <a href="https://www.linkedin.com/company/withx-innovations/" target="_blank">
+            <i class="fab fa-linkedin linkedin"></i>
+            LinkedIn
+        </a>
+
+        <a href="https://www.instagram.com/withx.in" target="_blank">
+            <i class="fab fa-instagram instagram"></i>
+            Instagram
+        </a>
+
+        <a href="https://youtube.com/@withxinnovation" target="_blank">
+            <i class="fab fa-youtube youtube"></i>
+            YouTube
+        </a>
+
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 WITHX Defence. All rights reserved.</span>
-    <span>Designed for next-generation defence innovation.</span>
-  </div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2026 WITHX Innovations Private Limited. All Rights Reserved.
+</div>
+
 </footer>
 
 <script>
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const item=q.parentElement;
-    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});
-    item.classList.toggle('open');
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+      item.classList.toggle('open');
+    });
   });
-});
-document.querySelector('.menu-toggle').addEventListener('click',()=>{
-  const links=document.querySelector('.nav-links');
-  links.style.display = links.style.display==='flex' ? 'none' : 'flex';
-  links.style.flexDirection='column';
-  links.style.position='absolute';
-  links.style.top='70px';
-  links.style.right='24px';
-  links.style.background='#000';
-  links.style.padding='20px';
-  links.style.border='1px solid rgba(255,255,255,0.08)';
-  links.style.borderRadius='10px';
-});
-</script>
 
+  // Product toggle inside mega menu
+  document.querySelectorAll('.product-toggle').forEach((btn) => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const list = this.nextElementSibling;
+      const isOpen = list.classList.contains('show');
+      document.querySelectorAll('.product-list').forEach(item => item.classList.remove('show'));
+      document.querySelectorAll('.product-toggle').forEach(item => item.classList.remove('active'));
+      if (!isOpen) {
+        list.classList.add('show');
+        this.classList.add('active');
+      }
+    });
+  });
+</script>
 </body>
 </html>
