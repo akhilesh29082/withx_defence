@@ -334,24 +334,318 @@ section{padding:100px 60px;position:relative;}
 
 
 
+
+
+
+
+/* ================= MEGA MENU ================= */
+.mega-item { position: relative; }
+.mega-btn { cursor: pointer; }
+
+.mega-menu {
+  position: fixed;
+  top: 78px;
+  left: 0;
+  width: 100%;
+  min-height: 300px;
+  background: #000;
+  color: #fff;
+  padding: 55px 45px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 90px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-18px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+  z-index: 9999;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.mega-item:hover .mega-menu,
+.mega-item.active .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #fff;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.mega-col p {
+  color: #f2f2f2;
+  font-size: 19px;
+  line-height: 1.35;
+  max-width: 470px;
+  font-weight: 500;
+}
+
+.product-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.product-toggle:hover,
+.product-toggle.active {
+  color: #c9a44c;
+  transform: translateX(6px);
+}
+
+.product-list {
+  display: none;
+  margin-top: 14px;
+  padding-left: 28px;
+  border-left: 1px solid rgba(255,255,255,0.18);
+}
+
+.product-list.show { display: block; }
+
+.product-list a {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.product-list a:hover {
+  color: #c9a44c;
+  transform: translateX(6px);
+}
+
+.nav-touch a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+.nav-touch a:hover { font-weight:bold; color:black; }
+.nav-touch:hover  {  color: black;}
+.nav-touch:hover a {
+  color: black;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .mega-menu {
+    position: absolute;
+    top: 38px;
+    left: -120px;
+    width: 320px;
+    min-height: auto;
+    padding: 25px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+
+
+/* NAVBAR */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:1000;
+}
+
+.nav{
+
+height:90px;
+
+width:100%;
+
+background:black;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 60px;
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGO */
+
+.nav-logo{
+
+width:150px;
+
+height:57px;
+
+background:url("withx_logo.png");
+
+background-size:cover;
+
+background-repeat:no-repeat;
+
+background-position:left center;
+}
+
+/* LINKS */
+
+.nav-links{
+
+display:flex;
+
+gap:45px;
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:14px;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+transition:0.2s;
+}
+
+.nav-links a:hover{
+
+color:var(--gold);
+text-decoration:underline;
+}
+
+/* BUTTON */
+
+.nav-touch{
+
+width:180px;
+
+height:52px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.nav-touch:hover{
+
+background:white;
+
+color:black;
+}
+
+}
+
+
+
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">WITH<span>X</span></div>
-  <ul class="nav-links">
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT</a></li>
-    <li><a href="technology.html">TECHNOLOGY</a></li>
-    <li><a href="sea.html">SEA</a></li>
-    <li><a href="land.html" class="active">LAND</a></li>
-    <li><a href="air.html">AIR</a></li>
-    <li><a href="contact.html">CONTACT</a></li>
-  </ul>
-  <button class="get-in-touch">Get in Touch</button>
-  <div class="menu-toggle"><span></span><span></span><span></span></div>
-</nav>
+<header id="header">
+  <div class="nav">
+    <div class="nav-logo border"></div>
+    <div class="nav-links">
+      <a href="index.html" class="border nav-link">HOME</a>
+      <a href="about.html" class="border nav-link">ABOUT</a>
+      <a href="technologies.html" class="border nav-link">TECHNOLOGY</a>
+
+      <!-- SEA MEGA MENU -->
+      <div class="mega-item">
+        <a>SEA</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>SEA DOMAIN</h4>
+            <p>Advanced maritime surveillance and recovery technologies designed for coastal monitoring, marine operations, water-based reconnaissance, and autonomous recovery missions.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Sea Products</button>
+            <div class="product-list">
+              <a href="drone-recovery-bag.html">Drone Recovery Bag</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAND MEGA MENU -->
+      <div class="mega-item">
+        <a>LAND</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>LAND DOMAIN</h4>
+            <p>Autonomous monitoring and security technologies designed for infrastructure protection, perimeter surveillance, reconnaissance, and critical asset monitoring.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Land Products</button>
+            <div class="product-list">
+              <a href="land-monitoring-system.html">Autonomous Monitoring System</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AIR MEGA MENU -->
+      <div class="mega-item">
+        <a>AIR</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>AIR DOMAIN</h4>
+            <p>Advanced aerial intelligence systems providing real-time surveillance, autonomous flight capability, reconnaissance, mapping, and situational awareness.</p>
+          </div>
+          <div class="mega-col">
+            <h4>PRODUCTS</h4>
+            <button class="product-toggle" type="button">+ Air Products</button>
+            <div class="product-list">
+              <a href="drone-surveillance-system.html">WITHX Drone Surveillance System</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="border">CONTACT</a>
+    </div>
+    <div class="nav-touch border">
+      <p><a href="contact.html">GET IN TOUCH</a></p>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -577,6 +871,25 @@ document.querySelector('.menu-toggle').addEventListener('click',()=>{
   links.style.border='1px solid rgba(255,255,255,0.08)';
   links.style.borderRadius='10px';
 });
+
+
+
+
+document.querySelectorAll('.product-toggle').forEach((btn) => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const list = this.nextElementSibling;
+    const isOpen = list.classList.contains('show');
+    document.querySelectorAll('.product-list').forEach(item => item.classList.remove('show'));
+    document.querySelectorAll('.product-toggle').forEach(item => item.classList.remove('active'));
+    if (!isOpen) {
+      list.classList.add('show');
+      this.classList.add('active');
+    }
+  });
+});
+
 </script>
 
 </body>
