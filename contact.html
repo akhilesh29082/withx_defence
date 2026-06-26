@@ -81,6 +81,20 @@ nav{
   mask-image:radial-gradient(circle at center, black 0%, transparent 70%);
   animation:gridmove 30s linear infinite;
 }
+
+.brand-logo-box{
+  height:54px;
+  min-width:76px;
+  padding:8px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:14px;
+}
+
+.brand-logo-box img{height:38px;width:auto}
+
 @keyframes gridmove{0%{background-position:0 0;}100%{background-position:48px 48px;}}
 .hero-tag{
   display:inline-block;border:1px solid rgba(59,130,246,0.4);
@@ -315,7 +329,9 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">WITH<span>X</span></div>
+   <div class="brand-logo-box">
+      <img src="withx_logo.png" alt="WITHX Defence Logo">
+   </div>
   <ul class="nav-links">
     <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT</a></li>
