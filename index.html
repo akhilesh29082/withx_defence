@@ -265,92 +265,6 @@
   {
     font-size:18px;
   }
-
-
-
-
-
-  /* Background */
-.systems-popup{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    opacity:0;
-    visibility:hidden;
-    transition:.3s;
-    z-index:9999;
-}
-
-.systems-popup.active{
-    opacity:1;
-    visibility:visible;
-}
-
-/* Popup Box */
-.popup-content{
-    width:90%;
-    max-width:500px;
-    background:#111;
-    border:1px solid #00c8ff;
-    border-radius:14px;
-    padding:35px;
-    position:relative;
-    color:#fff;
-    box-shadow:0 0 30px rgba(0,200,255,.3);
-    animation:popup .3s ease;
-}
-
-@keyframes popup{
-    from{
-        transform:scale(.85);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-.popup-content h2{
-    color:#00c8ff;
-    margin-bottom:15px;
-}
-
-.popup-content p{
-    color:#cfcfcf;
-    line-height:1.7;
-}
-
-.popup-content ul{
-    margin-top:18px;
-    padding-left:20px;
-}
-
-.popup-content li{
-    margin:10px 0;
-    color:#ddd;
-}
-
-/* Close Button */
-.close-popup{
-    position:absolute;
-    top:12px;
-    right:15px;
-    border:none;
-    background:none;
-    color:#fff;
-    font-size:30px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.close-popup:hover{
-    color:#00c8ff;
-    transform:rotate(90deg);
-}
 </style>
 </head>
 <body>
@@ -447,9 +361,7 @@
 <!-- ================= PLATFORMS SECTION ================= -->
 <section class="platforms">
   <div class="platform-header">
-    <span class="section-tag">
-    <a href="#" id="openSystems">OUR SYSTEMS</a>
-</span>
+    <span class="section-tag">OUR SYSTEMS</span>
     <h2>Next Generation Defence<br>Technologies</h2>
     <p>Autonomous systems engineered for surveillance, mission intelligence, and operational effectiveness across air, land, and maritime environments.</p>
   </div>
@@ -675,66 +587,5 @@ document.querySelectorAll('.product-toggle').forEach((btn) => {
 </script>
 
 <script src="script.js"></script>
-
-<!-- OUR SYSTEMS POPUP -->
-<div class="systems-popup" id="systemsPopup">
-    <div class="popup-content">
-
-        <button class="close-popup" id="closeSystems">
-            &times;
-        </button>
-
-        <h2>Our Systems</h2>
-
-        <p>
-            WITHX Defence develops next-generation autonomous systems
-            for defence, surveillance, reconnaissance, and mission
-            intelligence. Our platforms combine Artificial Intelligence,
-            advanced sensors, secure communication, and real-time
-            decision support for modern military operations.
-        </p>
-
-        <ul>
-            <li>✦ AI-Powered UAV Platforms</li>
-            <li>✦ Autonomous Ground Vehicles</li>
-            <li>✦ Maritime Surveillance Systems</li>
-            <li>✦ Mission Intelligence Software</li>
-            <li>✦ Secure Defence Communication</li>
-        </ul>
-
-    </div>
-</div>
-
-
-
-
-
-  const openBtn = document.getElementById("openSystems");
-const popup = document.getElementById("systemsPopup");
-const closeBtn = document.getElementById("closeSystems");
-
-openBtn.addEventListener("click", function(e){
-    e.preventDefault();
-    popup.classList.add("active");
-});
-
-closeBtn.addEventListener("click", function(){
-    popup.classList.remove("active");
-});
-
-// Close when clicking outside the popup
-popup.addEventListener("click", function(e){
-    if(e.target === popup){
-        popup.classList.remove("active");
-    }
-});
-
-// Close with ESC key
-document.addEventListener("keydown", function(e){
-    if(e.key === "Escape"){
-        popup.classList.remove("active");
-    }
-});
-
 </body>
 </html>
