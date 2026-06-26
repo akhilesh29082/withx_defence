@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | WITHX Defence — Next-Generation UAV Systems</title>
 <meta name="description" content="Contact WITHX Defence for partnerships, demonstrations, and collaboration on next-generation autonomous aerial surveillance systems.">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
 :root{
   --black:#000000;
@@ -85,20 +81,6 @@ nav{
   mask-image:radial-gradient(circle at center, black 0%, transparent 70%);
   animation:gridmove 30s linear infinite;
 }
-
-.brand-logo-box{
-  height:54px;
-  min-width:76px;
-  padding:8px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  border-radius:14px;
-}
-
-.brand-logo-box img{height:38px;width:auto}
-
 @keyframes gridmove{0%{background-position:0 0;}100%{background-position:48px 48px;}}
 .hero-tag{
   display:inline-block;border:1px solid rgba(59,130,246,0.4);
@@ -292,216 +274,48 @@ section{padding:100px 60px;position:relative;}
 .map-frame iframe{width:100%;height:100%;border:0;filter:invert(0.92) hue-rotate(180deg) contrast(0.9);}
 
 /* ===== FOOTER ===== */
-/* FOOTER */
-
-
-
-.footer-contact{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
+footer{
+  background:#000;border-top:1px solid var(--line);padding:70px 60px 30px;
 }
-
-.footer-contact h3{
-    color:#fff;
-    margin-bottom:10px;
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;max-width:1300px;margin:0 auto 50px;
 }
-
-.footer-contact a{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    color:#d8d8d8;
-    text-decoration:none;
-    transition:.3s;
-    font-size:15px;
-}
-
-.footer-contact a:hover{
-    color:#fff;
-    transform:translateX(6px);
-}
-
-.footer-contact i{
-    width:22px;
-    font-size:19px;
-}
-
-/* Brand Colors */
-
-.location{
-    color:#ffffff;
-}
-
-.phone{
-    color:#60a5fa;
-}
-
-.email{
-    color:ffffff;
-}
-
-.whatsapp{
-    color:#25D366;
-}
-
-.linkedin{
-    color:#0A66C2;
-}
-
-.instagram{
-    color:#E1306C;
-}
-
-.youtube{
-    color:#FF0000;
-}
-
-.footer-links a{
-    display:block;
-    color:#d8d8d8;
-    text-decoration:none;
-    margin:10px 0;
-    transition:.3s;
-}
-
-.footer-links a:hover{
-    color:white;
-    padding-left:6px;
-}
-
-
-
-
-.footer{
-    background:#050816;
-    color:white;
-    padding-top:70px;
-    border-top:1px solid rgba(255,255,255,0.08);
-}
-
-.footer-container{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1.5fr;
-    gap:50px;
-
-    padding-bottom:50px;
-}
-
-.footer h2{
-    font-family:'Outfit',sans-serif;
-    font-size:2rem;
-    margin-bottom:15px;
-}
-
-.footer h3{
-    font-size:1.1rem;
-    margin-bottom:18px;
-    color:#4fc3ff;
-}
-
-.footer p{
-    color:#b8c1d1;
-    line-height:1.8;
-}
-
-.footer-links{
-    display:flex;
-    flex-direction:column;
-}
-
-.footer-links a{
-    text-decoration:none;
-    color:#b8c1d1;
-    margin-bottom:12px;
-    transition:0.3s;
-}
-
-.footer-links a:hover{
-    color:#4fc3ff;
-    transform:translateX(5px);
-}
-
-.footer-contact p{
-    margin-bottom:10px;
-}
-
+.footer-logo{font-size:22px;font-weight:800;margin-bottom:14px;}
+.footer-logo span{color:var(--blue-bright);}
+.footer-grid p{color:var(--text-dim);font-size:14px;line-height:1.7;}
+.footer-col h4{font-size:14px;letter-spacing:1px;margin-bottom:18px;color:#cfd8e0;}
+.footer-col a{display:block;color:var(--text-dim);font-size:14px;margin-bottom:10px;transition:color .25s;}
+.footer-col a:hover{color:#fff;}
 .footer-bottom{
-    border-top:1px solid rgba(255,255,255,0.08);
-    text-align:center;
-    padding:20px;
+  border-top:1px solid var(--line);padding-top:24px;max-width:1300px;margin:0 auto;
+  display:flex;justify-content:space-between;color:#6b7785;font-size:13px;flex-wrap:wrap;gap:10px;
 }
 
-.footer-bottom p{
-    color:#8d98ab;
-    font-size:0.9rem;
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .info-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-wrap{grid-template-columns:1fr;}
+  .partner-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
 }
-
-/* Responsive */
-
-@media(max-width:900px){
-
-    .footer-container{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .footer-links{
-        align-items:center;
-    }
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .get-in-touch{display:none;}
+  .hero h1{font-size:38px;}
+  section{padding:70px 24px;}
+  .info-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .form-panel{padding:28px;}
 }
-
-
-
-.info-link{
-    text-decoration:none;
-    color:inherit;
-    display:block;
-}
-
-.info-link .info-card{
-    height:100%;
-    cursor:pointer;
-}
-
-.info-link:hover .info-card{
-    transform:translateY(-8px);
-}
-
-.info-link:hover .info-icon{
-    background:#2563EB;
-    color:#fff;
-    transform:scale(1.08);
-}
-
-.info-icon{
-    transition:0.3s ease;
-    font-size:22px;
-}
-
-.value{
-    color:#9fc4ff;
-    font-weight:600;
-}
-
-.info-link:hover .value{
-    color:#fff;
-}
-
-
-
 </style>
 </head>
 <body>
 
 <nav>
-   <div class="brand-logo-box">
-      <img src="withx_logo.png" alt="WITHX Defence Logo">
-   </div>
+  <div class="logo">WITH<span>X</span></div>
   <ul class="nav-links">
     <li><a href="index.html">HOME</a></li>
     <li><a href="about.html">ABOUT</a></li>
@@ -527,97 +341,11 @@ section{padding:100px 60px;position:relative;}
 </section>
 
 <!-- CONTACT INFO -->
-<div class="info-grid">
+    
 
-    <!-- Email -->
-    <a href="mailto:withx.innovations@gmail.com" class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fas fa-envelope"></i></div>
-            <h3>Email</h3>
-            <div class="value">withx.innovations@gmail.com</div>
-            <div class="desc">Business inquiries & partnerships.</div>
-        </div>
-    </a>
 
-    <!-- Phone -->
-    <a href="tel:+917666936323" class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fas fa-phone"></i></div>
-            <h3>Phone</h3>
-            <div class="value">+91 7666936323</div>
-            <div class="desc">Available Monday – Saturday.</div>
-        </div>
-    </a>
 
-    <!-- Office -->
-    <a href="https://maps.google.com/?q=MIT+Academy+of+Engineering+Alandi+Pune"
-       target="_blank"
-       class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fas fa-location-dot"></i></div>
-            <h3>Office</h3>
-            <div class="value">MIT Academy of Engineering</div>
-            <div class="desc">Open location in Google Maps.</div>
-        </div>
-    </a>
-
-    <!-- Website -->
-    <a href="https://withx.in" target="_blank" class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fas fa-globe"></i></div>
-            <h3>Website</h3>
-            <div class="value">withx.in</div>
-            <div class="desc">Visit our official website.</div>
-        </div>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/917666936323" target="_blank" class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-            <h3>WhatsApp</h3>
-            <div class="value">Chat with us</div>
-            <div class="desc">Quick support & discussions.</div>
-        </div>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/company/withx-innovations/"
-       target="_blank"
-       class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fab fa-linkedin"></i></div>
-            <h3>LinkedIn</h3>
-            <div class="value">WITHX Innovations</div>
-            <div class="desc">Connect professionally.</div>
-        </div>
-    </a>
-
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/withx.in/"
-       target="_blank"
-       class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fab fa-instagram"></i></div>
-            <h3>Instagram</h3>
-            <div class="value">@withx.in</div>
-            <div class="desc">Latest updates & behind the scenes.</div>
-        </div>
-    </a>
-
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@withxinnovation"
-       target="_blank"
-       class="info-link">
-        <div class="info-card">
-            <div class="info-icon"><i class="fab fa-youtube"></i></div>
-            <h3>YouTube</h3>
-            <div class="value">@withxinnovation</div>
-            <div class="desc">Watch demos and technology videos.</div>
-        </div>
-    </a>
-
-</div><!-- FORM + RADAR -->
+<!-- FORM + RADAR -->
 <section id="contact-form">
   <span class="section-tag">Inquiry</span>
   <h2 class="section-title">Send Us a Message</h2>
@@ -644,42 +372,10 @@ section{padding:100px 60px;position:relative;}
       </form>
     </div>
 
-    <div class="radar-panel">
-      <div class="radar-rings">
-        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
-        <div class="sweep"></div>
-      </div>
-      <div class="drone-icon">✈</div>
-      <div class="stat-float stat-1"><div class="label">AI TRACKING</div><div class="num">100%</div></div>
-      <div class="stat-float stat-2"><div class="label">MISSION SUCCESS</div><div class="num">95%</div></div>
-      <div class="stat-float stat-3"><div class="label">MONITORING</div><div class="num">24/7</div></div>
-    </div>
   </div>
 </section>
 
-<!-- PARTNERSHIPS -->
-<section>
-  <span class="section-tag">Collaborate</span>
-  <h2 class="section-title">Strategic Partnerships</h2>
-  <p class="section-sub">WITHX Defence welcomes collaboration opportunities with defence agencies, government organizations, research institutes, universities, and technology partners.</p>
-  <div class="partner-grid">
-    <div class="partner-card">
-      <span class="pnum">01</span>
-      <h3>Government Projects</h3>
-      <p>Defence surveillance and security solutions.</p>
-    </div>
-    <div class="partner-card">
-      <span class="pnum">02</span>
-      <h3>Research Collaboration</h3>
-      <p>Joint development of advanced technologies.</p>
-    </div>
-    <div class="partner-card">
-      <span class="pnum">03</span>
-      <h3>Industry Partnerships</h3>
-      <p>Strategic innovation and deployment programs.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- FAQ -->
 <section>
@@ -715,91 +411,37 @@ section{padding:100px 60px;position:relative;}
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-
-<div class="footer-container">
-
-    <!-- Company -->
-    <div class="footer-about">
-        <h2>WITHX Defence</h2>
-
-        <p>
-            Developing intelligent aerial, land and maritime technologies
-            for surveillance, monitoring and autonomous mission operations.
-        </p>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">WITH<span>X</span></div>
+      <p>Building next-generation autonomous aerial systems for intelligent surveillance and mission effectiveness.</p>
     </div>
-
-    <!-- Quick Links -->
-
-    <div class="footer-links">
-        <h3>Quick Links</h3>
-
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="technologies.html">Technology</a>
-        <a href="contact.html">Contact</a>
+    <div class="footer-col">
+      <h4>QUICK LINKS</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="technology.html">Technology</a>
+      <a href="contact.html">Contact</a>
     </div>
-
-    <!-- Systems -->
-
-    <div class="footer-links">
-        <h3>Our Solutions</h3>
-
-        <a href="drone-recovery-bag.html">Air Surveillance</a>
-        <a href="land-monitoring-system.html">Border Monitoring</a>
-        <a href="drone-surveillance-system.html">Marine Surveillance</a>
-        <a href="contact.html">contact.html</a>
+    <div class="footer-col">
+      <h4>SYSTEMS</h4>
+      <a href="sea.html">Sea</a>
+      <a href="land.html">Land</a>
+      <a href="air.html">Air</a>
     </div>
-
-    <!-- Contact -->
-
-    <div class="footer-contact">
-
-        <h3>Connect With Us</h3>
-
-        <a href="https://maps.google.com/?q=MIT+Academy+of+Engineering+Alandi+Pune" target="_blank">
-            <i class="fas fa-location-dot location"></i>
-            EDF, MITAoE Campus, Alandi, Pune
-        </a>
-
-        <a href="https://wa.me/919876543210" target="_blank">
-            <i class="fab fa-whatsapp whatsapp"></i>
-            WhatsApp
-        </a>
-
-        <a href="tel:+919876543210">
-            <i class="fas fa-phone phone"></i>
-            +91 98765 43210
-        </a>
-
-        <a href="mailto:withx.innovations@gmail.com">
-            <i class="fas fa-envelope email"></i>
-            withx.innovations@gmail.com
-        </a>
-
-        <a href="https://www.linkedin.com/company/withx-innovations/" target="_blank">
-            <i class="fab fa-linkedin linkedin"></i>
-            LinkedIn
-        </a>
-
-        <a href="https://www.instagram.com/withx.in" target="_blank">
-            <i class="fab fa-instagram instagram"></i>
-            Instagram
-        </a>
-
-        <a href="https://youtube.com/@withxinnovation" target="_blank">
-            <i class="fab fa-youtube youtube"></i>
-            YouTube
-        </a>
-
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <a href="mailto:withx.innovations@gmail.com">withx.innovations@gmail.com</a>
+      <a href="tel:+917666936323">+91 7666936323</a>
+      <a href="https://withx.in">withx.in</a>
+      <a>ED Cell, MIT Academy of Engineering, Alandi, Pune – 412105</a>
     </div>
-
-</div>
-
-<div class="footer-bottom">
-    © 2026 WITHX Innovations Private Limited. All Rights Reserved.
-</div>
-
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 WITHX Defence. All rights reserved.</span>
+    <span>Designed for next-generation defence innovation.</span>
+  </div>
 </footer>
 
 <script>
