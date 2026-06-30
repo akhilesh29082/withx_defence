@@ -20,6 +20,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 /* ================= RESET ================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* DRONE CURSOR */
+#drone-cursor {
+  position: fixed;
+  top: -25px; /* half of height */
+  left: -25px; /* half of width */
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  transition: background-image 0.2s ease-in-out;
+  will-change: transform, background-image;
+}
+
 /* ================= MEGA MENU ================= */
 .mega-item { position: relative; }
 .mega-btn { cursor: pointer; }
@@ -516,7 +532,7 @@ font-size:13px;
         </div>
       </div>
 
-      <a href="contact.html" class="border">CONTACT</a>
+      <a href="contact.html" class="border nav-link">CONTACT</a>
     </div>
     <div class="nav-touch border">
       <p><a href="contact.html">GET IN TOUCH</a></p>
@@ -846,6 +862,41 @@ document.querySelectorAll('.product-toggle').forEach((btn) => {
     }
   });
 });
+
+/* DRONE CURSOR */
+const cursor = document.createElement('div');
+cursor.id = 'drone-cursor';
+document.body.appendChild(cursor);
+
+const normalDrone = 'https://static.vecteezy.com/system/resources/thumbnails/049/514/995/small/drone-hovering-in-mid-air-above-a-landscape-during-daylight-cut-out-transparent-png.png';
+
+const hoverDrone = 'https://static.vecteezy.com/system/resources/thumbnails/049/514/995/small/drone-hovering-in-mid-air-above-a-landscape-during-daylight-cut-out-transparent-png.png';
+
+cursor.style.backgroundImage = `url('${normalDrone}')`;
+
+let mx = 0, my = 0; // Mouse target position
+let cx = 0, cy = 0; // Cursor current position
+let speed = 0.1; // Smoothing factor (lower is slower)
+
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+});
+
+function animateCursor() {
+  cx += (mx - cx) * speed;
+  cy += (my - cy) * speed;
+  cursor.style.transform = `translate(${cx}px, ${cy}px)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .platform-card, .tech-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cursor.style.backgroundImage = `url('${hoverDrone}')`; });
+  el.addEventListener('mouseleave',()=>{ cursor.style.backgroundImage = `url('${normalDrone}')`; });
+});
+
+
+
 
 
 
