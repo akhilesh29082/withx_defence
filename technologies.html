@@ -732,6 +732,22 @@ body {
   letter-spacing: 2px;
   color: var(--white);
 }
+
+/* DRONE CURSOR */
+#drone-cursor {
+  position: fixed;
+  top: -35px; /* half of height */
+  left: -35px; /* half of width */
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+  transition: background-image 0.2s ease-in-out;
+  will-change: transform, background-image;
+}
 </style>
 
 </head>
@@ -1160,6 +1176,36 @@ body {
 
 
 <script>
+/* DRONE CURSOR */
+const drone_cursor = document.createElement('div');
+drone_cursor.id = 'drone-cursor';
+document.body.appendChild(drone_cursor);
+
+const normalDrone = 'https://png.pngtree.com/png-vector/20241022/ourmid/pngtree-drone-camera-png-image_14144053.png';
+const hoverDrone = 'https://png.pngtree.com/png-vector/20241022/ourmid/pngtree-drone-camera-png-image_14144053.png';
+drone_cursor.style.backgroundImage = `url('${normalDrone}')`;
+
+let mx_drone = 0, my_drone = 0; // Mouse target position
+let cx_drone = 0, cy_drone = 0; // Cursor current position
+let speed_drone = 0.1; // Smoothing factor (lower is slower)
+
+document.addEventListener('mousemove', e => {
+  mx_drone=e.clientX; my_drone=e.clientY;
+});
+
+function animateDroneCursor() {
+  cx_drone += (mx_drone - cx_drone) * speed_drone;
+  cy_drone += (my_drone - cy_drone) * speed_drone;
+  drone_cursor.style.transform = `translate(${cx_drone}px, ${cy_drone}px)`;
+  requestAnimationFrame(animateDroneCursor);
+}
+animateDroneCursor();
+
+document.querySelectorAll('a, button, .overview-card, .feat-card, .rnd-card, .fi-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ drone_cursor.style.backgroundImage = `url('${hoverDrone}')`; });
+  el.addEventListener('mouseleave',()=>{ drone_cursor.style.backgroundImage = `url('${normalDrone}')`; });
+});
+
 /* CURSOR */
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
@@ -1270,3 +1316,4 @@ document.querySelectorAll('.product-toggle').forEach((btn) => {
 </script>
 </body>
 </html>
+
